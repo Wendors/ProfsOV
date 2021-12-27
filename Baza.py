@@ -1375,7 +1375,7 @@ if __name__ == "__main__":
     splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pix.mask())
     font = splash.font()
-    font.setPixelSize(12)
+    font.setPixelSize(14)
     font.setWeight(QtGui.QFont.Bold)
     splash.setFont(font)
     splash.showMessage("Завантаження...", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red)
