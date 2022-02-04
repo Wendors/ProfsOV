@@ -1339,8 +1339,10 @@ class Ui_Form(object):
                     if str(ip) == str(i):
                         self.sefi.write("\t<p align=\"Center\"><font face=\"Times New Roman\" size=\"4\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
                         if self.i.__len__() > 0:
+                            self.list_keys = list(self.i.keys())
+                            self.list_keys.sort()
                             self.xx = 0
-                            for ia in self.i:
+                            for ia in self.list_keys:
                                 self.xx += 1
                                 self.priis = self.i.setdefault(ia)
                                 self._soname = str("{0}".format(self.priis['soname']))
@@ -1356,7 +1358,7 @@ class Ui_Form(object):
             self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>виправна колонія (№76)»</b></font></p>")
             self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>капітан внутрішньої служби &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                             "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Полунець С.В. </b></font></p><br>")
+                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Полунець С.В. </b></font></p><br>")
 
         except:
             self.sefi.close()

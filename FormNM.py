@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
+from encodings.punycode import selective_find
+
 import WrData
 import zlib
 import os
@@ -104,6 +106,7 @@ class Ui_FormN(object):
         self.dateEdit_2.setFont(font)
         self.dateEdit_2.setStyleSheet("")
         self.dateEdit_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.dateEdit_2.setDisplayFormat("dd.MM.yyyy")
         self.dateEdit_2.setMinimumDate(QtCore.QDate(1945, 1, 1))
         self.dateEdit_2.setDate(QtCore.QDate(2001, 1, 1))
         self.dateEdit_2.setObjectName("dateEdit_2")
@@ -157,6 +160,7 @@ class Ui_FormN(object):
         self.dateEdit_3.setFont(font)
         self.dateEdit_3.setStyleSheet("")
         self.dateEdit_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.dateEdit_3.setDisplayFormat("dd.MM.yyyy")
         self.dateEdit_3.setMinimumDate(QtCore.QDate(1945, 1, 1))
         self.dateEdit_3.setDate(QtCore.QDate(2016, 1, 3))
         self.dateEdit_3.setObjectName("dateEdit_3")
@@ -241,6 +245,7 @@ class Ui_FormN(object):
         self.dateEdit_4.setFont(font)
         self.dateEdit_4.setStyleSheet("")
         self.dateEdit_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.dateEdit_4.setDisplayFormat("dd.MM.yyyy")
         self.dateEdit_4.setMinimumDate(QtCore.QDate(1945, 1, 1))
         self.dateEdit_4.setDate(QtCore.QDate(2017, 1, 1))
         self.dateEdit_4.setObjectName("dateEdit_4")
@@ -278,6 +283,7 @@ class Ui_FormN(object):
         font.setWeight(75)
         self.dateEdit.setFont(font)
         self.dateEdit.setStyleSheet("")
+        self.dateEdit.setDisplayFormat("dd.MM.yyyy")
         self.dateEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.dateEdit.setMinimumDate(QtCore.QDate(1925, 1, 1))
         self.dateEdit.setDate(QtCore.QDate(1930, 9, 17))
@@ -292,6 +298,7 @@ class Ui_FormN(object):
         self.dateEdit_6.setFont(font)
         self.dateEdit_6.setStyleSheet("")
         self.dateEdit_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.dateEdit_6.setDisplayFormat("dd.MM.yyyy")
         self.dateEdit_6.setMinimumDate(QtCore.QDate(1945, 1, 1))
         self.dateEdit_6.setDate(QtCore.QDate(2018, 1, 2))
         self.dateEdit_6.setObjectName("dateEdit_6")
@@ -305,6 +312,7 @@ class Ui_FormN(object):
         self.dateEdit_5.setFont(font)
         self.dateEdit_5.setStyleSheet("")
         self.dateEdit_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.dateEdit_5.setDisplayFormat("dd.MM.yyyy")
         self.dateEdit_5.setMinimumDate(QtCore.QDate(1945, 1, 1))
         self.dateEdit_5.setDate(QtCore.QDate(2017, 1, 1))
         self.dateEdit_5.setObjectName("dateEdit_5")
