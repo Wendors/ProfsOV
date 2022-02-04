@@ -806,17 +806,16 @@ class Ui_Form(object):
         self.sefi.write("\t<meta charset=\"windows-1251\">")
         self.sefi.write("</head>")
         self.sefi.write("<body>")
+        self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
         self.sefi.write(
-            "\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"5\">Список підоблікових осіб станом {0}р.</font> </h1>".format(
+            "\t<h1 align=\"center\"><b>Список підоблікових осіб станом {0}р.<b> </h1>".format(
                 time.strftime("%d.%m.%Y")))
-        self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style>")
         self.proers = self.dats
         for ai in self.proers:
             self.i = self.lispr.get(ai)
             if ai == self.texts:
-                self.sefi.write("<style>p {line-height: 2;} p {line-height: 1;}</style><br>")
-                self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"6\"><b>* {0}</font> </p>".format(str(self.texts)))
-                self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style><br>")
+                self.sefi.write("\t<p align=\"left\"><b><br>* {0} </p>".format(str(self.texts)))
+                self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.7;}</style>")
                 self.list_keys = list(self.i.keys())
                 self.list_keys.sort()
                 for ip in self.list_keys:
@@ -838,8 +837,9 @@ class Ui_Form(object):
                         self.wisitse = "ТИМЧАСОВО ВИБУВ З УСТАНОВИ"
                     else:
                         self.wisitse = ""
+                    self.sefi.write("<style>p {line-height: 1;} p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
                     self.sefi.write(
-                        "\t<p align=\"left\"><font face=\"Times New Roman\" size=\"3\">- {0} {1} {2}, {3} р. н.  {4} {5}</font> </p>".format(
+                        "\t<pre><p align=\"left\">\t- {0} {1} {2}, {3} р. н.  {4} {5}</p></pre>".format(
                             self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
 
         for i in self.proers:
@@ -849,9 +849,8 @@ class Ui_Form(object):
             if self.texts == "Всі підоблікові":
                 self.i = self.proers.get(i)
                 if self.i.__len__() > 0:
-                    self.sefi.write("<style>p {line-height: 2;} p {line-height: 1;}</style><br>")
-                    self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>* {0}</b></font> </p>".format(str(i)))
-                    self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style><br>")
+                    self.sefi.write("<style>p {line-height: 1;} p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</b></style>")
+                    self.sefi.write("\t<p align=\"left\"><b><br>* {0}</b> </p>".format(str(i)))
                 self.list_keys = list(self.i.keys())
                 self.list_keys.sort()
                 for ia in self.list_keys:
@@ -873,9 +872,9 @@ class Ui_Form(object):
                         self.wisitse = "ТИМЧАСОВО ВИБУВ З УСТАНОВИ"
                     else:
                         self.wisitse = ""
+
                     self.sefi.write(
-                        "\t<p align=\"left\"><font size=\"3\">- {0} {1} {2}, {3} р. н.  {4} "
-                        "</font> <font color=\"red\" font face=\"Times New Roman\" size=\"3\" ><b>{5}</b></font></p>".format(
+                        "\t<pre><p align=\"left\">\t- {0} {1} {2}, {3} р. н.  {4} <font color=\"red\"><b>{5}</b></font></p></pre>".format(
                             self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
         self.sefi.write("<br>")
         self.sefi.close()
@@ -1228,7 +1227,7 @@ class Ui_Form(object):
             for self.i in range(0, len(self.monslist)):
                 if self.i + 1 == int(time.strftime("%m")):
                     self.mun = self.monslist[self.i]
-        self.sefi.write("\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"18\">Матеріали на {0} {1}p.</font> </h1>".format(self.mun,
+        self.sefi.write("\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"6\">Матеріали на {0} {1}p.</font> </h1>".format(self.mun,
                                                                                                                str(
                                                                                                                    self.years)))
         self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
@@ -1316,7 +1315,7 @@ class Ui_Form(object):
                          "Тероризм": "п. 13",
                          "Вступили в незаконні бандитські угрупування": "п. 14",
                          "Масові заворушення": "п. 15",
-                         "Усфері державної таємниці": "п. 16",
+                         "У сфері державної таємниці": "п. 16",
                          "Розв'язування війни": "п. 17",
                          "Злочинний вплив": "п. 18",
                          #"Напад":"п.19",
@@ -1330,8 +1329,9 @@ class Ui_Form(object):
         self.sefi.write("<head>")
         self.sefi.write("\t<meta charset=\"windows-1251\">")
         self.sefi.write("</head>")
-        self.sefi.write("\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"6\">Державна установа<br>«Полицька виправна колонія (№76)»</font> </h1>")
-        self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style>")
+        self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
+        self.sefi.write("\t<h1 align=\"center\">Державна установа<br>«Полицька виправна колонія (№76)»</font> </h1>")
+        self.sefi.write("<style>p {line-height: 1;} p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</b></style>")
         self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
         self.filess = self.ffs.read()
         self.ffs.close()
@@ -1345,7 +1345,7 @@ class Ui_Form(object):
                 for ip in self.proerss:
                     self.i = self.proerss.get(i)
                     if str(ip) == str(i):
-                        self.sefi.write("\t<p align=\"Center\"><font face=\"Times New Roman\" size=\"4\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
+                        self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
                         if self.i.__len__() > 0:
                             self.list_keys = list(self.i.keys())
                             self.list_keys.sort()
@@ -1358,15 +1358,13 @@ class Ui_Form(object):
                                 self._father = str("{0}".format(self.priis['father']))
                                 self._brsd = str("{0}".format(self.priis['birsdey']))
                                 self.sefi.write(
-                                    "\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"> {0}. {1} {2} {3} {4} р.н."
+                                    "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
                                     "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
-            self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style><br><br>")
-            self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>Оперуповноважений оперативного відділу </b></font></p>")
-            self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>державної установи «Полицька </b></font></p>")
-            self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>виправна колонія (№76)»</b></font></p>")
-            self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>капітан внутрішньої служби &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Полунець С.В. </b></font></p><br>")
+            self.sefi.write("<style>p {line-height: 3;} p {line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style><br><br><br>")
+            self.sefi.write("\t<p align=\"left\"><b>Оперуповноважений оперативного відділу </b></font></p>")
+            self.sefi.write("\t<p align=\"left\"><b>державної установи «Полицька </b></font></p>")
+            self.sefi.write("\t<p align=\"left\"><b>виправна колонія (№76)»</b></font></p>")
+            self.sefi.write("\t<pre><p align=\"left\"><b>капітан внутрішньої служби\t\t\tПолунець С.В.</pre></font></p><br>")
 
         except:
             self.sefi.close()
