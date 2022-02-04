@@ -798,6 +798,7 @@ class Ui_Form(object):
 
     def Exports(self):
         self.temfil = self.pathtemp + "/_temp.html"
+        self.prof_list = []
         self.sefi = open(self.temfil, 'w')
         self.sefi.write("<!DOCTYPE html>")
         self.sefi.write("<html lang=\"en\">")
@@ -816,7 +817,9 @@ class Ui_Form(object):
                 self.sefi.write("<style>p {line-height: 2;} p {line-height: 1;}</style><br>")
                 self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"6\"><b>* {0}</font> </p>".format(str(self.texts)))
                 self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style><br>")
-                for ip in self.i:
+                self.list_keys = list(self.i.keys())
+                self.list_keys.sort()
+                for ip in self.list_keys:
                     self.priis = self.i.setdefault(ip)
                     self._soname = str("{0}".format(self.priis['soname']))
                     self._name = str("{0}".format(self.priis['name']))
@@ -840,13 +843,18 @@ class Ui_Form(object):
                             self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
 
         for i in self.proers:
+            self.prof_list.append(i)
+            self.prof_list.sort()
+        for i in self.prof_list:
             if self.texts == "Всі підоблікові":
                 self.i = self.proers.get(i)
                 if self.i.__len__() > 0:
                     self.sefi.write("<style>p {line-height: 2;} p {line-height: 1;}</style><br>")
                     self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"4\"><b>* {0}</b></font> </p>".format(str(i)))
                     self.sefi.write("<style>p {line-height: 2;} p {line-height: 0.5;}</style><br>")
-                for ia in self.i:
+                self.list_keys = list(self.i.keys())
+                self.list_keys.sort()
+                for ia in self.list_keys:
                     self.priis = self.i.setdefault(ia)
                     self._soname = str("{0}".format(self.priis['soname']))
                     self._name = str("{0}".format(self.priis['name']))
