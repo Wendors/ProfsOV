@@ -1168,22 +1168,21 @@ class Ui_Form(object):
             self.OSK = (self.avt + self.ban + self.kil + self.sep + self.lid + self.prot +
                         self.narc + self.ter + self.zar + self.vlad + self.zlo + self.mzav +
                         self.kosh + self.zmii + self.war + self.pod + self.vin + self.slu)
-            self.sefi.write("\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"18\">Звіт ствном на {0}р.</font> </h1>".format(
-                time.strftime("%d.%m.%Y")))
-            self.sefi.write(
-                "\t<p align=\"left\"><font face=\"Times New Roman\" size=\"6\">* Всіх на обліку: {0}</font> </p>".format(
-                    str(self.allss - self.oth)))
-            self.sefi.write(
-                "\t<p align=\"left\"><font face=\"Times New Roman\" size=\"6\">* На обліку ОСК: {0}</font> </p>".format(str(self.OSK)))
-            self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"6\">* Інші підоблікові: {0}</font> </p>".format(
-                ((self.allss - self.oth) - self.OSK)))
+            self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
+            self.sefi.write("\t<h1 align=\"center\">Звіт ствном на {0}р. </h1>".format(time.strftime("%d.%m.%Y")))
+            self.sefi.write("<style>p {line-height: 2;} p{line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+            self.sefi.write("\t<p align=\"left\">* Всіх на обліку: {0} </p>".format(str(self.allss - self.oth)))
+            self.sefi.write("<style>p {line-height: 2;} p{line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+            self.sefi.write("\t<p align=\"left\">* На обліку ОСК: {0} </p>".format(str(self.OSK)))
+            self.sefi.write("<style>p {line-height: 2;} p{line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+            self.sefi.write("\t<p align=\"left\">* Інші підоблікові: {0}</p>".format(((self.allss - self.oth) - self.OSK)))
             self.sefi.close()
             self.uiN = Window("Звіт по підобліовим")
             self.uiN.handleOpen()
             self.uiN.show()
         except:
-            self.sefi.write("\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"18\">Звіт ствном на {0}р.</font> </h1>".format(
-                time.strftime("%d.%m.%Y")))
+            self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
+            self.sefi.write("\t<h1 align=\"center\">Звіт ствном на {0}р.</h1>".format(time.strftime("%d.%m.%Y")))
             self.sefi.close()
             self.uiN = Window("Звіт по підобліовим")
             self.uiN.handleOpen()
@@ -1227,9 +1226,8 @@ class Ui_Form(object):
             for self.i in range(0, len(self.monslist)):
                 if self.i + 1 == int(time.strftime("%m")):
                     self.mun = self.monslist[self.i]
-        self.sefi.write("\t<h1 align=\"center\"> <font face=\"Times New Roman\" size=\"6\">Матеріали на {0} {1}p.</font> </h1>".format(self.mun,
-                                                                                                               str(
-                                                                                                                   self.years)))
+        self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
+        self.sefi.write("\t<h1 align=\"center\"> Матеріали на {0} {1}p. </h1>".format(self.mun,str(self.years)))
         self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
         self.files = self.ff.read()
         self.ff.close()
@@ -1283,15 +1281,18 @@ class Ui_Form(object):
                 if self.seconds <= self.timuot_dsr <= self.seconds_next:
                     self.run_0 = "<b>-</b><b> ДСР</b> {3} {0} {1} {2}\n".format(self._soname, self._name, self._father,
                                                                                 self._dsr)
-                    self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"5\"> {0}</font> </p>".format(str(self.run_0)))
+                    self.sefi.write("<style>p {line-height: 2;} p{line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+                    self.sefi.write("\t<p align=\"left\"> {0} </p>".format(str(self.run_0)))
                 if self.seconds <= self.timuot_zbm <= self.seconds_next:
                     self.run_1 = "<b>-</b><b> ЗБМ</b> {3} {0} {1} {2}\n".format(self._soname, self._name, self._father,
                                                                                 self._zbm)
-                    self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"5\"> {0}</font> </p>".format(str(self.run_1)))
+                    self.sefi.write("<style>p {line-height: 2;} p{line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+                    self.sefi.write("\t<p align=\"left\"> {0} </p>".format(str(self.run_1)))
                 if self.seconds <= self.timuot_udz <= self.seconds_next:
                     self.run_2 = "<b>-</b><b> УДЗ</b> {3} {0} {1} {2}\n".format(self._soname, self._name, self._father,
                                                                                 self._udz)
-                    self.sefi.write("\t<p align=\"left\"><font face=\"Times New Roman\" size=\"5\"> {0}</font> </p>".format(str(self.run_2)))
+                    self.sefi.write("<style>p {line-height: 2;} p{line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+                    self.sefi.write("\t<p align=\"left\"> {0} </p>".format(str(self.run_2)))
         self.sefi.close()
         self.uiN = Window("Пільги по підобліовим")
         self.uiN.handleOpen()

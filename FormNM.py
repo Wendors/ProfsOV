@@ -627,7 +627,7 @@ class Ui_FormN(object):
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
         try:
-            self.pr = self.profiless
+            self.pr = self.proxfiless
         except:
             self.pr = "Авторитет"
         self.mains.params(soname=self.lineEdit_42.text(), name=self.lineEdit_43.text(), father=self.lineEdit_44.text(),

@@ -51,22 +51,28 @@ class Window(QtWidgets.QWidget):
             self.editor.setPlainText(text)
 
     def handlePrint(self):
-        dialog = QtPrintSupport.QPrintDialog()
         icon = QtGui.QIcon()
-        dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
         icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        dialog.setWindowIcon(icon)
-        if dialog.exec_() == QtWidgets.QDialog.Accepted:
-            self.editor.document().print_(dialog.printer())
+        if 'ANDROID_BOOTLOGO' in os.environ:
+            pass
+        else:
+            dialog = QtPrintSupport.QPrintDialog()
+            dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
+            dialog.setWindowIcon(icon)
+            if dialog.exec_() == QtWidgets.QDialog.Accepted:
+                self.editor.document().print_(dialog.printer())
 
     def handlePreview(self):
-        dialog = QtPrintSupport.QPrintPreviewDialog()
-        dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        dialog.setWindowIcon(icon)
-        dialog.paintRequested.connect(self.editor.print_)
-        dialog.exec_()
+        if 'ANDROID_BOOTLOGO' in os.environ:
+            pass
+        else:
+            dialog = QtPrintSupport.QPrintPreviewDialog()
+            dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
+            dialog.setWindowIcon(icon)
+            dialog.paintRequested.connect(self.editor.print_)
+            dialog.exec_()
 
     def handleTextChanged(self):
         enable = not self.editor.document().isEmpty()
@@ -85,9 +91,12 @@ class Window(QtWidgets.QWidget):
             location = self.pathtemp + "/_temp.html"
             html = open(location).read()
             doc.setHtml(html)
-            printer = QtPrintSupport.QPrinter()
-            printer.setOutputFileName(self.files)
-            printer.setOutputFormat(QtPrintSupport.QPrinter.PdfFormat)
-            printer.setPageSize(QtPrintSupport.QPrinter.A4)
-            printer.setPageMargins(0, 0, 0, 0, QtPrintSupport.QPrinter.Millimeter)
-            doc.print_(printer)
+            if 'ANDROID_BOOTLOGO' in os.environ:
+                pass
+            else:
+                printer = QtPrintSupport.QPrinter()
+                printer.setOutputFileName(self.files)
+                printer.setOutputFormat(QtPrintSupport.QPrinter.PdfFormat)
+                printer.setPageSize(QtPrintSupport.QPrinter.A4)
+                printer.setPageMargins(0, 0, 0, 0, QtPrintSupport.QPrinter.Millimeter)
+                doc.print_(printer)
