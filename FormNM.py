@@ -418,6 +418,7 @@ class Ui_FormN(object):
         self.comboBox_5.addItem("")
         self.comboBox_5.addItem("")
         self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
         self.gridLayout_10.addWidget(self.comboBox_5, 7, 1, 1, 2)
         self.label = QtWidgets.QLabel(FormN)
         font = QtGui.QFont()
@@ -545,10 +546,11 @@ class Ui_FormN(object):
         self.comboBox_5.setItemText(19, _translate("FormN", "Резонанс в ЗМІ"))
         self.comboBox_5.setItemText(20, _translate("FormN", "Розв'язування війни"))
         self.comboBox_5.setItemText(21, _translate("FormN", "Службові злочини"))
-        self.comboBox_5.setItemText(22, _translate("FormN", "Тероризм"))
-        self.comboBox_5.setItemText(23, _translate("FormN", "У сфері державної таємниці"))
-        self.comboBox_5.setItemText(24, _translate("FormN", "Ухилення від сплати податків"))
-        self.comboBox_5.setItemText(25, _translate("FormN", "Шахрайство"))
+        self.comboBox_5.setItemText(22, _translate("FormN", "Телефонні шахраї"))
+        self.comboBox_5.setItemText(23, _translate("FormN", "Тероризм"))
+        self.comboBox_5.setItemText(24, _translate("FormN", "У сфері державної таємниці"))
+        self.comboBox_5.setItemText(25, _translate("FormN", "Ухилення від сплати податків"))
+        self.comboBox_5.setItemText(26, _translate("FormN", "Шахрайство"))
         self.pushButton_9.setText(_translate("FormN", "Вибрати фото"))
         self.comboBox_6.setItemText(0, _translate("FormN", "1"))
         self.comboBox_6.setItemText(1, _translate("FormN", "2"))
@@ -587,7 +589,6 @@ class Ui_FormN(object):
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
         else:
-
             self.imag = QtGui.QPixmap(self.filesph)
             self.imagp = self.imag.scaled(QtCore.QSize(135, 130))
             self.imagp.save(self.pathtemp + "/_zpn.png")
@@ -596,7 +597,6 @@ class Ui_FormN(object):
             self.fpb = self.fp.read()
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
-
 
     def combo_chosens(self):
         self.profiless = self.comboBox_5.currentText()
@@ -607,6 +607,7 @@ class Ui_FormN(object):
     def combo_fil(self):
         self.vid = self.comboBox_6.currentText()
         self.cengbut()
+        self.checkBox.stateChanged.connect(lambda: self.cengbut())
 
     def _saves(self):
         try:
@@ -729,8 +730,7 @@ class Ui_FormN(object):
     def cengbut(self):
         if self.lineEdit_42.text() == "" or self.lineEdit_43.text() == "" or self.lineEdit_44.text() == "" or self.checkBox.isChecked() == True:
             self.pushButton_11.setEnabled(False)
-            self.checkBox.setChecked(True)
         else:
             self.pushButton_11.setEnabled(True)
-            self.checkBox.setChecked(False)
             self.out = "present"
+

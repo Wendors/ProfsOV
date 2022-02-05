@@ -181,6 +181,7 @@ class Ui_Form(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.gridLayout.addWidget(self.comboBox, 2, 0, 1, 6)
         self.label_14 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
@@ -557,10 +558,11 @@ class Ui_Form(object):
         self.comboBox.setItemText(20, _translate("Form", "Резонанс в ЗМІ"))
         self.comboBox.setItemText(21, _translate("Form", "Розв'язування війни"))# ст.437
         self.comboBox.setItemText(22, _translate("Form", "Службові злочини"))# ч.5 ст.191
-        self.comboBox.setItemText(23, _translate("Form", "Тероризм"))# ст.258-ст.258\5
-        self.comboBox.setItemText(24, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
-        self.comboBox.setItemText(25, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
-        self.comboBox.setItemText(26, _translate("Form", "Шахрайство"))# ч.4 ст.190
+        self.comboBox.setItemText(23, _translate("Form", "Телефонні шахраї"))
+        self.comboBox.setItemText(24, _translate("Form", "Тероризм"))# ст.258-ст.258\5"Телефонні шахраї"
+        self.comboBox.setItemText(25, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
+        self.comboBox.setItemText(26, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
+        self.comboBox.setItemText(27, _translate("Form", "Шахрайство"))# ч.4 ст.190
         self.label_8.setText(_translate("Form", "УДЗ"))
         self.label_12.setText(_translate("Form", "Зловживання владою або службовим становищем"))
         self.label_7.setText(_translate("Form", "ЗБМ"))
@@ -1319,7 +1321,7 @@ class Ui_Form(object):
                          "У сфері державної таємниці": "п. 16",
                          "Розв'язування війни": "п. 17",
                          "Злочинний вплив": "п. 18",
-                         #"Напад":"п.19",
+                         "Напад":"п.19",
                          "Дії що дезорганізують роботу установи": "п. 18",
                          "Вживання наркотичних речовин": "п. 21",
                          "Телефонні шахраї": "п.22"}
@@ -1343,24 +1345,27 @@ class Ui_Form(object):
             self.proerss = self.datas
             self.plist = []
             for i in self.listprof:
-                for ip in self.proerss:
-                    self.i = self.proerss.get(i)
-                    if str(ip) == str(i):
-                        self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
-                        if self.i.__len__() > 0:
-                            self.list_keys = list(self.i.keys())
-                            self.list_keys.sort()
-                            self.xx = 0
-                            for ia in self.list_keys:
-                                self.xx += 1
-                                self.priis = self.i.setdefault(ia)
-                                self._soname = str("{0}".format(self.priis['soname']))
-                                self._name = str("{0}".format(self.priis['name']))
-                                self._father = str("{0}".format(self.priis['father']))
-                                self._brsd = str("{0}".format(self.priis['birsdey']))
-                                self.sefi.write(
-                                    "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
-                                    "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
+                if i == "Напад":
+                    pass
+                else:
+                    for ip in self.proerss:
+                        self.i = self.proerss.get(i)
+                        if str(ip) == str(i):
+                            self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
+                            if self.i.__len__() > 0:
+                                self.list_keys = list(self.i.keys())
+                                self.list_keys.sort()
+                                self.xx = 0
+                                for ia in self.list_keys:
+                                    self.xx += 1
+                                    self.priis = self.i.setdefault(ia)
+                                    self._soname = str("{0}".format(self.priis['soname']))
+                                    self._name = str("{0}".format(self.priis['name']))
+                                    self._father = str("{0}".format(self.priis['father']))
+                                    self._brsd = str("{0}".format(self.priis['birsdey']))
+                                    self.sefi.write(
+                                        "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
+                                        "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
             self.sefi.write("<style>p {line-height: 3;} p {line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style><br><br><br>")
             self.sefi.write("\t<p align=\"left\"><b>Оперуповноважений оперативного відділу </b></font></p>")
             self.sefi.write("\t<p align=\"left\"><b>державної установи «Полицька </b></font></p>")
