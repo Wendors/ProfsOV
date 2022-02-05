@@ -794,7 +794,7 @@ class Ui_Form(object):
         self.label_26.setText("")
 
     def Exitss(self):
-        self._Control()
+        self.Control()
 
     def Exports(self):
         self.temfil = self.pathtemp + "/_temp.html"
@@ -1298,7 +1298,7 @@ class Ui_Form(object):
         self.uiN.handleOpen()
         self.uiN.show()
 
-    def _Control(self):
+    def Control(self):
         self.listprof = {"Злодіїв в законі": "п. 1 <З>",
                          "Авторитет": "п. 1 <А>",
                          "Лідер ОЗГ": "п. 1  <Л>",
