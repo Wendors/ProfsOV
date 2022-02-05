@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-iltins
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.3.8.1.1"
+__versions__ = "v.3.8.1.5"
 
 import argparse
 import datetime
@@ -13,6 +13,8 @@ import tempfile
 import time
 import zlib
 import operator
+from itertools import product
+
 import Profs_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
 import WrData
@@ -59,7 +61,7 @@ class Ui_Form(object):
         self.gridLayout.setObjectName("gridLayout")
         self.label_4 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
@@ -73,7 +75,7 @@ class Ui_Form(object):
         self.label_13 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_13.setFont(font)
@@ -83,35 +85,35 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_13, 9, 5, 1, 2)
         self.label_3 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 7, 3, 1, 1)
         self.label_6 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.gridLayout.addWidget(self.label_6, 11, 3, 1, 1)
         self.label_2 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 9, 3, 1, 1)
         self.label_5 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.gridLayout.addWidget(self.label_5, 10, 3, 1, 1)
         self.label_9 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
@@ -140,7 +142,7 @@ class Ui_Form(object):
         self.label_18 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_18.setFont(font)
@@ -186,7 +188,7 @@ class Ui_Form(object):
         self.label_14 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_14.setFont(font)
@@ -250,7 +252,7 @@ class Ui_Form(object):
         self.label_10.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_10.setFont(font)
@@ -286,7 +288,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.line_9, 6, 9, 9, 1)
         self.label_15 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -297,7 +299,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_15, 11, 5, 1, 2)
         self.label_11 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -317,7 +319,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.line_8, 6, 4, 9, 1)
         self.label_8 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
@@ -325,7 +327,7 @@ class Ui_Form(object):
         self.label_12 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_12.setFont(font)
@@ -335,7 +337,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_12, 8, 5, 1, 2)
         self.label_7 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
@@ -401,7 +403,7 @@ class Ui_Form(object):
         self.label_16 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_16.setFont(font)
@@ -411,7 +413,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_16, 12, 5, 1, 2)
         self.label = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setPointSize(10)
         self.label.setFont(font)
         self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -420,7 +422,7 @@ class Ui_Form(object):
         self.label_17 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily("Book Antiqua")
+        font.setFamily(self.fontp)
         font.setBold(False)
         font.setItalic(False)
         self.label_17.setFont(font)
@@ -527,7 +529,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         self.clearform()
-        Form.setWindowTitle(_translate("Form", "База профілактичного обліку " + __versions__))
+        Form.setWindowTitle(_translate("Form", "База профілактичного обліку"))
         self.label_4.setText(_translate("Form", "Підстава на облік"))
         self.pushButton.setText(_translate("Form", "Створити новий"))
         self.label_3.setText(_translate("Form", "Рік народження"))
@@ -1384,17 +1386,47 @@ class Ui_Form(object):
 
 
 if __name__ == "__main__":
+    DEFAULT_STYLE = """
+                QProgressBar{
+                    border: 2px solid grey;
+                    border-radius: 5px;
+                    text-align: center
+                }
+                QProgressBar::chunk {
+                    background-color: lightblue;
+                    width: 10px;
+                    margin: 1px;
+                }
+                """
+
+    COMPLETED_STYLE = """
+                QProgressBar{
+                    border: 2px solid grey;
+                    border-radius: 5px;
+                    text-align: center
+                }
+                
+                QProgressBar::chunk {
+                    background-color: red;
+                }
+                """
     app = QtWidgets.QApplication(sys.argv)
     splash_pix = QtGui.QPixmap(":/image/Splash.png")
     splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash.setFixedSize(428,265)
+    progressBar = QtWidgets.QProgressBar(splash)
+    progressBar.setStyleSheet(DEFAULT_STYLE )
+    p_y = progressBar.geometry().height()
+    x = splash.geometry().x()
+    progressBar.setFixedSize(x-41, 20)
+    progressBar.move(0, 275-p_y)
     splash.setMask(splash_pix.mask())
     font = splash.font()
     font.setPixelSize(14)
     font.setWeight(QtGui.QFont.Bold)
     splash.setFont(font)
-    splash.showMessage("Завантаження...", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red)
+    splash.showMessage("ЗАВАНТАЖЕННЯ", QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop, QtCore.Qt.red)
     splash.show()
-    app.processEvents()
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?')
     args = parser.parse_args()
@@ -1405,7 +1437,14 @@ if __name__ == "__main__":
             pethstart = os.environ['USERPROFILE'] + "\Профоблік.dbs"
         if sys.platform == 'linux':
             pethstart = os.environ['HOME'] + "/Профоблік.dbs"
-    time.sleep(3)
+    for i in range(0, 101):
+        if  i == progressBar.maximum():
+            progressBar.setStyleSheet(COMPLETED_STYLE)
+        progressBar.setValue(i)
+        t = time.time()
+        while time.time() < t + 0.05:
+
+            app.processEvents()
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form, path=pethstart)
