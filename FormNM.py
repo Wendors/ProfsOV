@@ -439,6 +439,7 @@ class Ui_FormN(object):
         font.setWeight(75)
         self.pushButton_9.setFont(font)
         self.pushButton_9.setStyleSheet("")
+        self.pushButton_9.setEnabled(False)
         self.pushButton_9.setObjectName("pushButton_9")
         self.gridLayout_10.addWidget(self.pushButton_9, 7, 3, 1, 1)
         self.comboBox_6 = QtWidgets.QComboBox(FormN)
@@ -449,6 +450,7 @@ class Ui_FormN(object):
         font.setWeight(75)
         self.comboBox_6.setFont(font)
         self.comboBox_6.setStyleSheet("")
+        self.comboBox_6.setEnabled(False)
         self.comboBox_6.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
         self.comboBox_6.setDuplicatesEnabled(False)
         self.comboBox_6.setFrame(True)
@@ -599,8 +601,10 @@ class Ui_FormN(object):
     def combo_chosens(self):
         self.profiless = self.comboBox_5.currentText()
         self.vid = ""
+        self.checkBox.stateChanged.connect(lambda: self.cengbut())
         self.pushButton_9.setEnabled(True)
         self.comboBox_6.setEnabled(True)
+
 
     def combo_fil(self):
         self.vid = self.comboBox_6.currentText()
