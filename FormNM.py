@@ -587,7 +587,6 @@ class Ui_FormN(object):
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
         else:
-
             self.imag = QtGui.QPixmap(self.filesph)
             self.imagp = self.imag.scaled(QtCore.QSize(135, 130))
             self.imagp.save(self.pathtemp + "/_zpn.png")
