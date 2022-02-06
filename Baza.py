@@ -13,8 +13,6 @@ import tempfile
 import time
 import zlib
 import operator
-from itertools import product
-
 import Profs_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
 import WrData
@@ -1386,46 +1384,15 @@ class Ui_Form(object):
 
 
 if __name__ == "__main__":
-    DEFAULT_STYLE = """
-                QProgressBar{
-                    border: 2px solid grey;
-                    border-radius: 5px;
-                    text-align: center
-                }
-                QProgressBar::chunk {
-                    background-color: lightblue;
-                    width: 10px;
-                    margin: 1px;
-                }
-                """
-
-    COMPLETED_STYLE = """
-                QProgressBar{
-                    border: 2px solid grey;
-                    border-radius: 5px;
-                    text-align: center
-                }
-                
-                QProgressBar::chunk {
-                    background-color: red;
-                }
-                """
     app = QtWidgets.QApplication(sys.argv)
     splash_pix = QtGui.QPixmap(":/image/Splash.png")
     splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
-    splash.setFixedSize(428,265)
-    progressBar = QtWidgets.QProgressBar(splash)
-    progressBar.setStyleSheet(DEFAULT_STYLE )
-    p_y = progressBar.geometry().height()
-    x = splash.geometry().x()
-    progressBar.setFixedSize(x-41, 20)
-    progressBar.move(0, 275-p_y)
     splash.setMask(splash_pix.mask())
     font = splash.font()
     font.setPixelSize(14)
     font.setWeight(QtGui.QFont.Bold)
     splash.setFont(font)
-    splash.showMessage("ЗАВАНТАЖЕННЯ", QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop, QtCore.Qt.red)
+    splash.showMessage("ЗАВАНТАЖЕННЯ", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red)
     splash.show()
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?')
@@ -1437,14 +1404,8 @@ if __name__ == "__main__":
             pethstart = os.environ['USERPROFILE'] + "\Профоблік.dbs"
         if sys.platform == 'linux':
             pethstart = os.environ['HOME'] + "/Профоблік.dbs"
-    for i in range(0, 101):
-        if  i == progressBar.maximum():
-            progressBar.setStyleSheet(COMPLETED_STYLE)
-        progressBar.setValue(i)
-        t = time.time()
-        while time.time() < t + 0.05:
-
-            app.processEvents()
+    app.processEvents()
+    time.sleep(2)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form, path=pethstart)
