@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-iltins
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.3.8.1.5"
+__versions__ = "v.3.8.1.1"
 
 import argparse
 import datetime
@@ -59,7 +59,7 @@ class Ui_Form(object):
         self.gridLayout.setObjectName("gridLayout")
         self.label_4 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
@@ -73,7 +73,7 @@ class Ui_Form(object):
         self.label_13 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_13.setFont(font)
@@ -83,35 +83,35 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_13, 9, 5, 1, 2)
         self.label_3 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 7, 3, 1, 1)
         self.label_6 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.gridLayout.addWidget(self.label_6, 11, 3, 1, 1)
         self.label_2 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 9, 3, 1, 1)
         self.label_5 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.gridLayout.addWidget(self.label_5, 10, 3, 1, 1)
         self.label_9 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
@@ -140,7 +140,7 @@ class Ui_Form(object):
         self.label_18 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_18.setFont(font)
@@ -181,12 +181,11 @@ class Ui_Form(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.gridLayout.addWidget(self.comboBox, 2, 0, 1, 6)
         self.label_14 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_14.setFont(font)
@@ -250,7 +249,7 @@ class Ui_Form(object):
         self.label_10.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_10.setFont(font)
@@ -286,7 +285,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.line_9, 6, 9, 9, 1)
         self.label_15 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -297,7 +296,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_15, 11, 5, 1, 2)
         self.label_11 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -317,7 +316,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.line_8, 6, 4, 9, 1)
         self.label_8 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
@@ -325,7 +324,7 @@ class Ui_Form(object):
         self.label_12 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_12.setFont(font)
@@ -335,7 +334,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_12, 8, 5, 1, 2)
         self.label_7 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
@@ -401,7 +400,7 @@ class Ui_Form(object):
         self.label_16 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_16.setFont(font)
@@ -411,7 +410,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_16, 12, 5, 1, 2)
         self.label = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setPointSize(10)
         self.label.setFont(font)
         self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -420,7 +419,7 @@ class Ui_Form(object):
         self.label_17 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
-        font.setFamily(self.fontp)
+        font.setFamily("Book Antiqua")
         font.setBold(False)
         font.setItalic(False)
         self.label_17.setFont(font)
@@ -527,7 +526,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         self.clearform()
-        Form.setWindowTitle(_translate("Form", "База профілактичного обліку"))
+        Form.setWindowTitle(_translate("Form", "База профілактичного обліку " + __versions__))
         self.label_4.setText(_translate("Form", "Підстава на облік"))
         self.pushButton.setText(_translate("Form", "Створити новий"))
         self.label_3.setText(_translate("Form", "Рік народження"))
@@ -558,11 +557,10 @@ class Ui_Form(object):
         self.comboBox.setItemText(20, _translate("Form", "Резонанс в ЗМІ"))
         self.comboBox.setItemText(21, _translate("Form", "Розв'язування війни"))# ст.437
         self.comboBox.setItemText(22, _translate("Form", "Службові злочини"))# ч.5 ст.191
-        self.comboBox.setItemText(23, _translate("Form", "Телефонні шахраї"))
-        self.comboBox.setItemText(24, _translate("Form", "Тероризм"))# ст.258-ст.258\5"Телефонні шахраї"
-        self.comboBox.setItemText(25, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
-        self.comboBox.setItemText(26, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
-        self.comboBox.setItemText(27, _translate("Form", "Шахрайство"))# ч.4 ст.190
+        self.comboBox.setItemText(23, _translate("Form", "Тероризм"))# ст.258-ст.258\5
+        self.comboBox.setItemText(24, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
+        self.comboBox.setItemText(25, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
+        self.comboBox.setItemText(26, _translate("Form", "Шахрайство"))# ч.4 ст.190
         self.label_8.setText(_translate("Form", "УДЗ"))
         self.label_12.setText(_translate("Form", "Зловживання владою або службовим становищем"))
         self.label_7.setText(_translate("Form", "ЗБМ"))
@@ -1321,7 +1319,7 @@ class Ui_Form(object):
                          "У сфері державної таємниці": "п. 16",
                          "Розв'язування війни": "п. 17",
                          "Злочинний вплив": "п. 18",
-                         "Напад":"п.19",
+                         #"Напад":"п.19",
                          "Дії що дезорганізують роботу установи": "п. 18",
                          "Вживання наркотичних речовин": "п. 21",
                          "Телефонні шахраї": "п.22"}
@@ -1345,27 +1343,24 @@ class Ui_Form(object):
             self.proerss = self.datas
             self.plist = []
             for i in self.listprof:
-                if i == "Напад":
-                    pass
-                else:
-                    for ip in self.proerss:
-                        self.i = self.proerss.get(i)
-                        if str(ip) == str(i):
-                            self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
-                            if self.i.__len__() > 0:
-                                self.list_keys = list(self.i.keys())
-                                self.list_keys.sort()
-                                self.xx = 0
-                                for ia in self.list_keys:
-                                    self.xx += 1
-                                    self.priis = self.i.setdefault(ia)
-                                    self._soname = str("{0}".format(self.priis['soname']))
-                                    self._name = str("{0}".format(self.priis['name']))
-                                    self._father = str("{0}".format(self.priis['father']))
-                                    self._brsd = str("{0}".format(self.priis['birsdey']))
-                                    self.sefi.write(
-                                        "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
-                                        "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
+                for ip in self.proerss:
+                    self.i = self.proerss.get(i)
+                    if str(ip) == str(i):
+                        self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
+                        if self.i.__len__() > 0:
+                            self.list_keys = list(self.i.keys())
+                            self.list_keys.sort()
+                            self.xx = 0
+                            for ia in self.list_keys:
+                                self.xx += 1
+                                self.priis = self.i.setdefault(ia)
+                                self._soname = str("{0}".format(self.priis['soname']))
+                                self._name = str("{0}".format(self.priis['name']))
+                                self._father = str("{0}".format(self.priis['father']))
+                                self._brsd = str("{0}".format(self.priis['birsdey']))
+                                self.sefi.write(
+                                    "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
+                                    "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
             self.sefi.write("<style>p {line-height: 3;} p {line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style><br><br><br>")
             self.sefi.write("\t<p align=\"left\"><b>Оперуповноважений оперативного відділу </b></font></p>")
             self.sefi.write("\t<p align=\"left\"><b>державної установи «Полицька </b></font></p>")
@@ -1392,8 +1387,9 @@ if __name__ == "__main__":
     font.setPixelSize(14)
     font.setWeight(QtGui.QFont.Bold)
     splash.setFont(font)
-    splash.showMessage("ЗАВАНТАЖЕННЯ", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red)
+    splash.showMessage("Завантаження...", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red)
     splash.show()
+    app.processEvents()
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?')
     args = parser.parse_args()
@@ -1404,8 +1400,7 @@ if __name__ == "__main__":
             pethstart = os.environ['USERPROFILE'] + "\Профоблік.dbs"
         if sys.platform == 'linux':
             pethstart = os.environ['HOME'] + "/Профоблік.dbs"
-    app.processEvents()
-    time.sleep(2)
+    time.sleep(3)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form, path=pethstart)
