@@ -597,14 +597,12 @@ class Ui_FormN(object):
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
 
-
     def combo_chosens(self):
         self.profiless = self.comboBox_5.currentText()
         self.vid = ""
         self.checkBox.stateChanged.connect(lambda: self.cengbut())
         self.pushButton_9.setEnabled(True)
         self.comboBox_6.setEnabled(True)
-
 
     def combo_fil(self):
         self.vid = self.comboBox_6.currentText()
