@@ -1319,7 +1319,7 @@ class Ui_Form(object):
                          "У сфері державної таємниці": "п. 16",
                          "Розв'язування війни": "п. 17",
                          "Злочинний вплив": "п. 18",
-                         #"Напад":"п.19",
+                         "Напад":"п.19",
                          "Дії що дезорганізують роботу установи": "п. 18",
                          "Вживання наркотичних речовин": "п. 21",
                          "Телефонні шахраї": "п.22"}
@@ -1343,24 +1343,27 @@ class Ui_Form(object):
             self.proerss = self.datas
             self.plist = []
             for i in self.listprof:
-                for ip in self.proerss:
-                    self.i = self.proerss.get(i)
-                    if str(ip) == str(i):
-                        self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
-                        if self.i.__len__() > 0:
-                            self.list_keys = list(self.i.keys())
-                            self.list_keys.sort()
-                            self.xx = 0
-                            for ia in self.list_keys:
-                                self.xx += 1
-                                self.priis = self.i.setdefault(ia)
-                                self._soname = str("{0}".format(self.priis['soname']))
-                                self._name = str("{0}".format(self.priis['name']))
-                                self._father = str("{0}".format(self.priis['father']))
-                                self._brsd = str("{0}".format(self.priis['birsdey']))
-                                self.sefi.write(
-                                    "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
-                                    "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
+                if i == "Напад":
+                    pass
+                else:
+                    for ip in self.proerss:
+                        self.i = self.proerss.get(i)
+                        if str(ip) == str(i):
+                            self.sefi.write("\t<p align=\"Center\"><b>{0}</b></font> </p>".format(str(self.listprof.get(ip))))
+                            if self.i.__len__() > 0:
+                                self.list_keys = list(self.i.keys())
+                                self.list_keys.sort()
+                                self.xx = 0
+                                for ia in self.list_keys:
+                                    self.xx += 1
+                                    self.priis = self.i.setdefault(ia)
+                                    self._soname = str("{0}".format(self.priis['soname']))
+                                    self._name = str("{0}".format(self.priis['name']))
+                                    self._father = str("{0}".format(self.priis['father']))
+                                    self._brsd = str("{0}".format(self.priis['birsdey']))
+                                    self.sefi.write(
+                                        "\t<p align=\"left\"> {0}. {1} {2} {3} {4} р.н."
+                                        "</font></p>".format(self.xx, self._soname, self._name, self._father, self._brsd))
             self.sefi.write("<style>p {line-height: 3;} p {line-height: 0.7; font-family: 'Times New Roman'; font-size: 14pt;}</style><br><br><br>")
             self.sefi.write("\t<p align=\"left\"><b>Оперуповноважений оперативного відділу </b></font></p>")
             self.sefi.write("\t<p align=\"left\"><b>державної установи «Полицька </b></font></p>")
