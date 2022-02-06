@@ -839,7 +839,7 @@ class Ui_Form(object):
                         self.wisitse = ""
                     self.sefi.write("<style>p {line-height: 1;} p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
                     self.sefi.write(
-                        "\t<pre><p align=\"left\">\t- {0} {1} {2}, {3} р. н.  {4} {5}</p></pre>".format(
+                        "\t<pre><p align=\"left\">\t- {0} {1} {2} {3} р. н.  {4} {5}</p></pre>".format(
                             self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
 
         for i in self.proers:
@@ -874,7 +874,7 @@ class Ui_Form(object):
                         self.wisitse = ""
 
                     self.sefi.write(
-                        "\t<pre><p align=\"left\">\t- {0} {1} {2}, {3} р. н.  {4} <font color=\"red\"><b>{5}</b></font></p></pre>".format(
+                        "\t<pre><p align=\"left\">\t- {0} {1} {2} {3} р. н.  {4} <font color=\"red\"><b>{5}</b></font></p></pre>".format(
                             self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
         self.sefi.write("<br>")
         self.sefi.close()
