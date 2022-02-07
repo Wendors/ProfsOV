@@ -1392,12 +1392,10 @@ class Ui_Form(object):
         #self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
         #self.sefi.write("\t<h1 align=\"center\">Державна установа<br>«Полицька виправна колонія (№76)»</font> </h1>")
         #self.sefi.write("<style>p {line-height: 1;} p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</b></style>")
-
         self.sefi.write("<center> <img  src=\"/home/wandors/PycharmProjects/ProfsOV/Gerb.png\" style=\"width:46px;height:60px;\"</center>")
         self.sefi.write("<style>h1 {line-height: 1;} h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
         self.sefi.write("\t<h1 align=\"center\">МІНІСТЕРСТВО ЮСТИЦІЇ УКРАЇНИ</font> </h1>")
         self.sefi.write("\t<h1 align=\"center\">ДЕРЖАВНА УСТАНОВА «ПОЛИЦЬКА ВИПРАВНА КОЛОНІЯ  (№76)»</font> </h1>")
-
         self.sefi.close()
         self.uiN = Window("Контроль що місячний")
         self.uiN.handleOpen()
