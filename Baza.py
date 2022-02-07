@@ -883,7 +883,7 @@ class Ui_Form(object):
         self.uiN.show()
 
     def Zvit(self):
-        self.numint = 0
+        self.numint, = 0
         self.oth = 0
         self.timuot = 0
         self.ablist = []
