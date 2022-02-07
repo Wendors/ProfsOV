@@ -509,6 +509,7 @@ class Ui_Form(object):
         self.pushButton_3.clicked.connect(self.SavProfs)
         self.pushButton_5.clicked.connect(self.Exports)
         self.pushButton_6.clicked.connect(self.Zvit)
+        #self.pushButton_6.clicked.connect(self.Blank)
         self.pushButton_7.clicked.connect(self.Exitss)
         self.pushButton_8.clicked.connect(self.Pilgi)
         self.comboBox.activated.connect(self.combo_chosen)
@@ -883,7 +884,7 @@ class Ui_Form(object):
         self.uiN.show()
 
     def Zvit(self):
-        self.numint, = 0
+        self.numint = 0
         self.oth = 0
         self.timuot = 0
         self.ablist = []
@@ -1379,6 +1380,30 @@ class Ui_Form(object):
         self.uiN = Window("Контроль що місячний")
         self.uiN.handleOpen()
         self.uiN.show()
+
+    def Blank(self):
+        self.temfil = self.pathtemp + "/_temp.html"
+        self.sefi = open(self.temfil, 'w')
+        self.sefi.write("<!DOCTYPE html>")
+        self.sefi.write("<html lang=\"en\">")
+        self.sefi.write("<head>")
+        self.sefi.write("\t<meta charset=\"windows-1251\">")
+        self.sefi.write("</head>")
+        #self.sefi.write("<style>h1 {line-height: 2;} h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
+        #self.sefi.write("\t<h1 align=\"center\">Державна установа<br>«Полицька виправна колонія (№76)»</font> </h1>")
+        #self.sefi.write("<style>p {line-height: 1;} p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</b></style>")
+
+        self.sefi.write("<center> <img  src=\"/home/wandors/PycharmProjects/ProfsOV/Gerb.png\" style=\"width:46px;height:60px;\"</center>")
+        self.sefi.write("<style>h1 {line-height: 1;} h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+        self.sefi.write("\t<h1 align=\"center\">МІНІСТЕРСТВО ЮСТИЦІЇ УКРАЇНИ</font> </h1>")
+        self.sefi.write("\t<h1 align=\"center\">ДЕРЖАВНА УСТАНОВА «ПОЛИЦЬКА ВИПРАВНА КОЛОНІЯ  (№76)»</font> </h1>")
+
+        self.sefi.close()
+        self.uiN = Window("Контроль що місячний")
+        self.uiN.handleOpen()
+        self.uiN.show()
+
+
 
 
 if __name__ == "__main__":
