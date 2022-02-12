@@ -596,7 +596,6 @@ class Ui_FormN(object):
     def combo_chosens(self):
         self.profiless = self.comboBox_5.currentText()
         self.vid = ""
-        self.checkBox.stateChanged.connect(lambda: self.cengbut())
         self.pushButton_9.setEnabled(True)
         self.comboBox_6.setEnabled(True)
 
