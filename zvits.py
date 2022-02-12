@@ -3,7 +3,11 @@
 import os
 import sys
 import tempfile
-from PyQt5 import QtCore, QtGui, QtWidgets, QtPrintSupport
+from PyQt5 import QtCore, QtGui, QtWidgets
+if 'ANDROID_BOOTLOGO' in os.environ:
+    pass
+else:
+    from PyQt5 import QtPrintSupport
 import Profs_rc
 
 class Window(QtWidgets.QWidget):
