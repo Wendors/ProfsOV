@@ -6,10 +6,7 @@ import pickle
 
 
 class Datas:
-    if sys.platform == 'win32':
-        pathtemp = tempfile.gettempdir() + "/Proftemp"
-    if sys.platform == 'linux':
-        pathtemp = os.environ['HOME'] + "/Proftemp"
+    pathtemp = tempfile.gettempdir() + "/Proftemp"
     def params(self, soname="", name="", father="", birsdey="", profov="", stt="", begin_dey="", DSR="", ZBM="", UDZ="", end_dey="", PHOT="", VID="", OUTS=""):
         self.soname = soname
         self.name = name

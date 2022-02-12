@@ -21,16 +21,9 @@ from zvits import Window
 
 
 class Ui_Form(object):
-    if sys.platform == 'win32':
-        fontp = 'MS Shell Dlg 2'
-        if not os.path.exists(tempfile.gettempdir() + "\Proftemp"):
-            os.mkdir(tempfile.gettempdir() + "\Proftemp")
-        pathtemp = tempfile.gettempdir() + "\Proftemp"
-    if sys.platform == 'linux':
-        fontp = 'Ubuntu'
-        if not os.path.exists(os.environ['HOME'] + "/Proftemp"):
-            os.mkdir(os.environ['HOME'] + "/Proftemp")
-        pathtemp = os.environ['HOME'] + "/Proftemp"
+    if not os.path.exists(tempfile.gettempdir()+ "/Proftemp"):
+        os.mkdir(tempfile.gettempdir() + "/Proftemp")
+    pathtemp = tempfile.gettempdir() + "/Proftemp"
 
     def setupUi(self, Form, path):
         self.files = path
@@ -526,7 +519,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         self.clearform()
-        Form.setWindowTitle(_translate("Form", "База профілактичного обліку " + __versions__))
+        Form.setWindowTitle(_translate("Form", "База профілактичного обліку "))
         self.label_4.setText(_translate("Form", "Підстава на облік"))
         self.pushButton.setText(_translate("Form", "Створити новий"))
         self.label_3.setText(_translate("Form", "Рік народження"))
@@ -1326,7 +1319,7 @@ class Ui_Form(object):
         self.temfil = self.pathtemp + "/_temp.html"
         self.sefi = open(self.temfil, 'w')
         self.sefi.write("<!DOCTYPE html>")
-        self.sefi.write("<html lang=\"en\">")
+        self.sefi.write("<html lang=\"ua\">")
         self.sefi.write("<head>")
         self.sefi.write("\t<meta charset=\"utf-8\">")
         self.sefi.write("</head>")

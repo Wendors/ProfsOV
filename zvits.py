@@ -11,10 +11,7 @@ else:
 import Profs_rc
 
 class Window(QtWidgets.QWidget):
-    if sys.platform == 'win32':
-        pathtemp = tempfile.gettempdir() + "/Proftemp"
-    if sys.platform == 'linux':
-        pathtemp = os.environ['HOME'] + "/Proftemp"
+    pathtemp = tempfile.gettempdir() + "/Proftemp"
     def __init__(self, titles):
         QtWidgets.QDialog.__init__(self)
         self.setFixedSize(960, 600)
