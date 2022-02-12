@@ -24,7 +24,6 @@ class Ui_Form(object):
     if not os.path.exists(tempfile.gettempdir()+ "/Proftemp"):
         os.mkdir(tempfile.gettempdir() + "/Proftemp")
     pathtemp = tempfile.gettempdir() + "/Proftemp"
-
     def setupUi(self, Form, path):
         self.files = path
         with open(self.pathtemp + "/Profs.dbsp", "w") as f:
