@@ -1451,7 +1451,6 @@ class Ui_Form(object):
         self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
         self.sefi.write("</body>")
         self.sefi.write("</html>")
-
         self.sefi.close()
         self.uiN = Window("Контроль що місячний")
         self.uiN.handleOpen(self.orient)
