@@ -3,6 +3,8 @@
 import os
 import sys
 import tempfile
+from builtins import print
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 if 'ANDROID_BOOTLOGO' in os.environ:
     pass
@@ -27,6 +29,7 @@ class Window(QtWidgets.QWidget):
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setWindowIcon(icon)
         self.editor = QtWidgets.QTextEdit(self)
+        self.editor.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
         self.editor.textChanged.connect(self.handleTextChanged)
         self.buttonOpen = QtWidgets.QPushButton('В pdf', self)
         self.buttonOpen.clicked.connect(self.topdf)
@@ -64,22 +67,24 @@ class Window(QtWidgets.QWidget):
         location = self.pathtemp + "/_temp.html"
         html = open(location).read()
         doc.setHtml(html)
-
         if 'ANDROID_BOOTLOGO' in os.environ:
             pass
         else:
             printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
+                printerd.setResolution(96)
+                sizes = QtCore.QSizeF(1123, 794)
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
-            printerd.setResolution(100)
+                printerd.setResolution(96)
+                sizes = QtCore.QSizeF(794, 1123)
             printerd.setPageSize(QtPrintSupport.QPrinter.A4)
-            printerd.setPageMargins(30,20,10,20, QtPrintSupport.QPrinter.Millimeter)
+            printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
             dialog = QtPrintSupport.QPrintDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
             dialog.setWindowIcon(icon)
-            doc.setPageSize(QtCore.QSizeF(printerd.pageRect().size()))
+            doc.setPageSize(sizes)
             if dialog.exec_() == QtWidgets.QDialog.Accepted:
                 doc.print_(dialog.printer())
 
@@ -97,18 +102,22 @@ class Window(QtWidgets.QWidget):
         if 'ANDROID_BOOTLOGO' in os.environ:
             pass
         else:
-            printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.ScreenResolution)
+            printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.PrinterResolution)
             printerd.setPageSize(QtPrintSupport.QPrinter.A4)
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
+                printerd.setResolution(96)
+                sizes = QtCore.QSizeF(1123, 794)
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
-            printerd.setResolution(100)
-            printerd.setPageMargins(30,20,10,20, QtPrintSupport.QPrinter.Millimeter)
+                printerd.setResolution(96)
+                sizes = QtCore.QSizeF(794, 1123)
+            printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+            printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
             dialog = QtPrintSupport.QPrintPreviewDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
             dialog.setWindowIcon(icon)
-            doc.setPageSize(QtCore.QSizeF(printerd.pageRect().size()))
+            doc.setPageSize(sizes)
             dialog.paintRequested.connect(doc.print_)
             dialog.exec_()
 
@@ -140,6 +149,6 @@ class Window(QtWidgets.QWidget):
                     printer.setOrientation(QtPrintSupport.QPrinter.Landscape)
                 else:
                     printer.setOrientation(QtPrintSupport.QPrinter.Portrait)
-                printer.setPageMargins(30, 20, 10, 20, QtPrintSupport.QPrinter.Millimeter)
+                printer.setPageMargins(30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter)
                 doc.setPageSize(QtCore.QSizeF(printer.pageRect().size()))
                 doc.print_(printer)
