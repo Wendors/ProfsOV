@@ -50,7 +50,6 @@ class Window(QtWidgets.QWidget):
         f.close()
         if info.completeSuffix() == 'html':
             self.editor.setHtml(text)
-
         else:
             self.editor.setPlainText(text)
 
