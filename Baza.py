@@ -1365,7 +1365,7 @@ class Ui_Form(object):
             self.sefi.write("\t<p align=\"left\"><b>Оперуповноважений оперативного відділу </b></font></p>")
             self.sefi.write("\t<p align=\"left\"><b>державної установи «Полицька </b></font></p>")
             self.sefi.write("\t<p align=\"left\"><b>виправна колонія (№76)»</b></font></p>")
-            self.sefi.write("\t<pre><p align=\"justify\"><b>капітан внутрішньої служби\t\t\tСергій ПОЛУНЕЦЬ</pre></font></p><br>")
+            self.sefi.write("\t<pre><p align=\"left\"><b>капітан внутрішньої служби\t\t\tСергій ПОЛУНЕЦЬ</pre></font></p><br>")
             self.sefi.write("</body>")
             self.sefi.write("</html>")
         except:

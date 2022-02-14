@@ -73,7 +73,7 @@ class Window(QtWidgets.QWidget):
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
-            printerd.setResolution(96)
+            printerd.setResolution(100)
             printerd.setPageSize(QtPrintSupport.QPrinter.A4)
             printerd.setPageMargins(30,20,10,20, QtPrintSupport.QPrinter.Millimeter)
             dialog = QtPrintSupport.QPrintDialog(printerd,self)
@@ -97,7 +97,7 @@ class Window(QtWidgets.QWidget):
         if 'ANDROID_BOOTLOGO' in os.environ:
             pass
         else:
-            printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
+            printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.ScreenResolution)
             printerd.setPageSize(QtPrintSupport.QPrinter.A4)
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
