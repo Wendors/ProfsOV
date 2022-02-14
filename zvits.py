@@ -12,6 +12,7 @@ import Profs_rc
 
 class Window(QtWidgets.QWidget):
     pathtemp = tempfile.gettempdir() + "/Proftemp"
+    orient = 0
     def __init__(self, titles):
         QtWidgets.QDialog.__init__(self)
         self.setFixedSize(960, 600)
@@ -40,7 +41,8 @@ class Window(QtWidgets.QWidget):
         layout.addWidget(self.buttonPreview, 1, 2)
         self.handleTextChanged()
 
-    def handleOpen(self):
+    def handleOpen(self, orent):
+        self.orient = orent
         path = self.pathtemp + "/_temp.html"
         info = QtCore.QFileInfo(path)
         f = open(path, "r")
@@ -48,31 +50,67 @@ class Window(QtWidgets.QWidget):
         f.close()
         if info.completeSuffix() == 'html':
             self.editor.setHtml(text)
+
         else:
             self.editor.setPlainText(text)
 
     def handlePrint(self):
+        location = self.pathtemp + "/_temp.html"
+        with open(location,"w") as f:
+            f.write(self.editor.document().toHtml())
+            f.close()
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        doc = QtGui.QTextDocument()
+        location = self.pathtemp + "/_temp.html"
+        html = open(location).read()
+        doc.setHtml(html)
+
         if 'ANDROID_BOOTLOGO' in os.environ:
             pass
         else:
-            dialog = QtPrintSupport.QPrintDialog()
+            printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
+            if self.orient == 1:
+                printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
+            else:
+                printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
+            printerd.setResolution(96)
+            printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+            printerd.setPageMargins(30,20,10,20, QtPrintSupport.QPrinter.Millimeter)
+            dialog = QtPrintSupport.QPrintDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
             dialog.setWindowIcon(icon)
+            doc.setPageSize(QtCore.QSizeF(printerd.pageRect().size()))
             if dialog.exec_() == QtWidgets.QDialog.Accepted:
-                self.editor.document().print_(dialog.printer())
+                doc.print_(dialog.printer())
 
     def handlePreview(self):
+        location = self.pathtemp + "/_temp.html"
+        with open(location,"w") as f:
+            f.write(self.editor.document().toHtml())
+            f.close()
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        doc = QtGui.QTextDocument()
+        location = self.pathtemp + "/_temp.html"
+        html = open(location).read()
+        doc.setHtml(html)
         if 'ANDROID_BOOTLOGO' in os.environ:
             pass
         else:
-            dialog = QtPrintSupport.QPrintPreviewDialog()
+            printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
+            printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+            if self.orient == 1:
+                printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
+            else:
+                printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
+            printerd.setResolution(100)
+            printerd.setPageMargins(30,20,10,20, QtPrintSupport.QPrinter.Millimeter)
+            dialog = QtPrintSupport.QPrintPreviewDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
             dialog.setWindowIcon(icon)
-            dialog.paintRequested.connect(self.editor.print_)
+            doc.setPageSize(QtCore.QSizeF(printerd.pageRect().size()))
+            dialog.paintRequested.connect(doc.print_)
             dialog.exec_()
 
     def handleTextChanged(self):
@@ -99,5 +137,10 @@ class Window(QtWidgets.QWidget):
                 printer.setOutputFileName(self.files)
                 printer.setOutputFormat(QtPrintSupport.QPrinter.PdfFormat)
                 printer.setPageSize(QtPrintSupport.QPrinter.A4)
-                printer.setPageMargins(0, 0, 0, 0, QtPrintSupport.QPrinter.Millimeter)
+                if self.orient == 1:
+                    printer.setOrientation(QtPrintSupport.QPrinter.Landscape)
+                else:
+                    printer.setOrientation(QtPrintSupport.QPrinter.Portrait)
+                printer.setPageMargins(30, 20, 10, 20, QtPrintSupport.QPrinter.Millimeter)
+                doc.setPageSize(QtCore.QSizeF(printer.pageRect().size()))
                 doc.print_(printer)
