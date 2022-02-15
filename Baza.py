@@ -804,6 +804,7 @@ class Ui_Form(object):
         self.sefi.write(
             "\t<h1 align=\"center\"><b>Список підоблікових осіб станом {0}р.<b> </h1>".format(
                 time.strftime("%d.%m.%Y")))
+        self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>")
         self.proers = self.dats
         for ai in self.proers:
             self.i = self.lispr.get(ai)
@@ -843,7 +844,7 @@ class Ui_Form(object):
             if self.texts == "Всі підоблікові":
                 self.i = self.proers.get(i)
                 if self.i.__len__() > 0:
-                    self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</b></style>")
+                    self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>")
                     self.sefi.write("\t<p align=\"left\"><b><br>* {0}</b> </p>".format(str(i)))
                 self.list_keys = list(self.i.keys())
                 self.list_keys.sort()

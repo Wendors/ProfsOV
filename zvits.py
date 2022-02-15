@@ -74,13 +74,15 @@ class Window(QtWidgets.QWidget):
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
                 printerd.setResolution(96)
-                sizes = QtCore.QSizeF(1123, 794)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
+                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                sizes = QtCore.QSizeF(794, 1123)
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
                 printerd.setResolution(96)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
+                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
                 sizes = QtCore.QSizeF(794, 1123)
-            printerd.setPageSize(QtPrintSupport.QPrinter.A4)
-            printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
             dialog = QtPrintSupport.QPrintDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
             dialog.setWindowIcon(icon)
@@ -103,17 +105,19 @@ class Window(QtWidgets.QWidget):
             pass
         else:
             printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.PrinterResolution)
-            printerd.setPageSize(QtPrintSupport.QPrinter.A4)
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
                 printerd.setResolution(96)
+                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(1123, 794)
+
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
                 printerd.setResolution(96)
+                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(794, 1123)
-            printerd.setPageSize(QtPrintSupport.QPrinter.A4)
-            printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
             dialog = QtPrintSupport.QPrintPreviewDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
             dialog.setWindowIcon(icon)
