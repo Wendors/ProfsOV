@@ -29,6 +29,7 @@ class Window(QtWidgets.QWidget):
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setWindowIcon(icon)
         self.editor = QtWidgets.QTextEdit(self)
+        self.textT = self.editor.textCursor()
         self.editor.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
         self.editor.textChanged.connect(self.handleTextChanged)
         self.buttonOpen = QtWidgets.QPushButton('В pdf', self)
@@ -53,6 +54,15 @@ class Window(QtWidgets.QWidget):
         f.close()
         if info.completeSuffix() == 'html':
             self.editor.setHtml(text)
+            #Dcnfdrf ntrcne
+            self.textT.setPosition(500)
+            self.textT.insertHtml("<style> p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+            self.textT.insertText("<p align=\"justify\"><pre><font face='Times New Roman'>\tНа виконання вказiвки Захiдного мiжрегiонального управлiння з питань"
+                                  "виконання кримiнальних покарань Мiнiстерства юстицiї №5к/вих.//7709 вiд 25.10.2021р., "
+                                  "та з метою забезпечення безпосереднього контролю за поведiнкою осiб, якi мають стiйку "
+                                  "антисоцiальну орiентацiю, вчинили тяжкi резонанснi злочини або схильнi до їx вчинення, "
+                                  "а також своечасного проведения стосовно них вiдповiдних заходiв щодо профiлактики кримiнальних "
+                                  "правопорушень, надсилаю Вам списки зазначеної категорiї осiб за {0} мiсяць {1} року \n</font></pre></p>")#.format(self.mun,str(self.years)))
         else:
             self.editor.setPlainText(text)
 

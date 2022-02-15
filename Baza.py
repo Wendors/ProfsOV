@@ -1435,13 +1435,15 @@ class Ui_Form(object):
                         "кримінальних\n\t\t\t\t\tпокарань Міністерства юстиції\n\t\t\t\t\tпідполковнику внутрішньої служби\n\t\t\t\t\tЯрославу БОЙКУ</b></font></pre></p><br>")
         self.sefi.write("<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
         self.sefi.write("\t<p align=\"center\"><pre><font face='Times New Roman'><b>Шановний Ярославе Володимировичу!</b></font></pre></p>")
-        self.sefi.write("<style> p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+        #self.sefi.write("<style> p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+        """
         self.sefi.write("<p align=\"justify\"><pre><font face='Times New Roman'>\tНа виконання вказiвки Захiдного мiжрегiонального управлiння з питань"
                         "виконання кримiнальних покарань Мiнiстерства юстицiї №5к/вих.//7709 вiд 25.10.2021р., "
                         "та з метою забезпечення безпосереднього контролю за поведiнкою осiб, якi мають стiйку "
                         "антисоцiальну орiентацiю, вчинили тяжкi резонанснi злочини або схильнi до їx вчинення, "
                         "а також своечасного проведения стосовно них вiдповiдних заходiв щодо профiлактики кримiнальних "
                         "правопорушень, надсилаю Вам списки зазначеної категорiї осiб за {0} мiсяць {1} року </font></pre></p>".format(self.mun,str(self.years)))
+        """
         self.sefi.write("<style> p{padding-top: 0em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
         self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'>\n    Додаток: на одному аркуші</font></pre></p><br>")
         self.sefi.write("<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
