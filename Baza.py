@@ -1369,27 +1369,26 @@ class Ui_Form(object):
                         "<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 2em; margin-buttom: 2em; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
                         "<p align=\"justify\"><pre><font face='Times New Roman'><b>\t\t\t\t\tНачальнику Західного\n\t\t\t\t\tміжрегіонального управління з\n\t\t\t\t\tпитань виконання "
                         "кримінальних\n\t\t\t\t\tпокарань Міністерства юстиції\n\t\t\t\t\tпідполковнику внутрішньої служби\n\t\t\t\t\tЯрославу БОЙКУ</b></font></pre></p><br><style>"
-                        "p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
+                        "p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
                         "<p align=\"center\"><pre><font face='Times New Roman'><b>Шановний Ярославе Володимировичу!</b></font></pre></p><style> "
-                        "p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style><p align=\"justify\"><pre><font face='Times New Roman'>\tНа виконання вказiвки Захiдного мiжрегiонального управлiння з питань"
+                        "p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                        "<p align=\"justify\"><pre><font face='Times New Roman'>   На виконання вказiвки Захiдного мiжрегiонального управлiння з питань "
                         "виконання кримiнальних покарань Мiнiстерства юстицiї №5к/вих.//7709 вiд 25.10.2021р., "
                         "та з метою забезпечення безпосереднього контролю за поведiнкою осiб, якi мають стiйку "
                         "антисоцiальну орiентацiю, вчинили тяжкi резонанснi злочини або схильнi до їx вчинення, "
                         "а також своечасного проведения стосовно них вiдповiдних заходiв щодо профiлактики кримiнальних "
                         "правопорушень, надсилаю Вам списки зазначеної категорiї осiб за " + str(self.mun) + " мiсяць " + str(self.years) + "року </font></pre></p>"
-                                                                                                                                            "<style> p{padding-top: 0em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
-                                                                                                                                            "<p align=\"left\"><pre><font face='Times New Roman'>\n    Додаток: на одному аркуші</font></pre></p><br>"
-                                                                                                                                            "<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
-                                                                                                                                            "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
-                                                                                                                                            "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
-                                                                                                                                            "<p align=\"left\"><pre><font face='Times New Roman'><b>Нначальник установи\nпідполковник внутрішньої служби\t\t\t\tВіталій ХИРЛЮК</b></font></pre></p>"
-                                                                                                                                            "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 8pt;}</style>"
-                                                                                                                                            "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
-
-
-        self.sefi.write("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>")
+                        "<style> p{padding-top: 0em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'>\n    Додаток: на одному аркуші</font></pre></p><br>"
+                        "<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
+                        "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'><b>Нначальник установи\nпідполковник внутрішньої служби\t\t\t\tВіталій ХИРЛЮК</b></font></pre></p>"
+                        "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 8pt;}</style>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
+        self.sefi.write("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>")
         self.sefi.write("<style> h1{line-height: 1; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
-        self.sefi.write("\t<h1 align=\"center\"><pre><font face='Times New Roman'><b>Державна установа<br>«Полицька виправна колонія (№76)»</b></font></pre></h1>")
+        self.sefi.write("<h1 align=\"center\"><pre><font face='Times New Roman'><b>Державна установа<br>«Полицька виправна колонія (№76)»</b></font></pre></h1>")
         self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
         self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
         self.filess = self.ffs.read()
@@ -1407,7 +1406,7 @@ class Ui_Form(object):
                     for ip in self.proerss:
                         self.i = self.proerss.get(i)
                         if str(ip) == str(i):
-                            self.sefi.write("\t<p align=\"center\"><pre><font face='Times New Roman'><b>{0}</b></font></pre></p>".format(str(self.listprof.get(ip))))
+                            self.sefi.write("<p align=\"center\"><pre><font face='Times New Roman'><b>{0}</b></font></pre></p>".format(str(self.listprof.get(ip))))
                             if self.i.__len__() > 0:
                                 self.list_keys = list(self.i.keys())
                                 self.list_keys.sort()
@@ -1419,7 +1418,7 @@ class Ui_Form(object):
                                     self._name = str("{0}".format(self.priis['name']))
                                     self._father = str("{0}".format(self.priis['father']))
                                     self._brsd = str("{0}".format(self.priis['birsdey']))
-                                    self.sefi.write("\t<p align=\"left\">{0}. {1} {2} {3} {4} р.н.</p>"
+                                    self.sefi.write("\t<p align=\"left\"><font face='Times New Roman'>{0}. {1} {2} {3} {4} р.н.</font></p>"
                                         .format(self.xx, self._soname, self._name, self._father, self._brsd))
             self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style><br><br><br>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>")
