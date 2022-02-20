@@ -564,7 +564,7 @@ class Ui_Form(object):
         self.label_19.setText(_translate("Form", "Профілактичний облік"))
         self.pushButton_3.setText(_translate("Form", "Зберегти як"))
         self.pushButton_5.setText(_translate("Form", "Список"))
-        self.pushButton_6.setText(_translate("Form", "Документ"))
+        self.pushButton_6.setText(_translate("Form", "Звіт"))
         self.pushButton_7.setText(_translate("Form", "Контроль"))
         self.label_26.setText(_translate("Form", "Тимчасово вибув з кстанови"))
         if len(self.files) > 45:
@@ -1424,7 +1424,7 @@ class Ui_Form(object):
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>державної установи «Полицька </b></font></pre></p>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>виправна колонія (№76)»</b></font></pre></p>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
+            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
         except:
             self.sefi.close()
             self.uiN = Window("Контроль що місячний")
