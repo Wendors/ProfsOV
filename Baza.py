@@ -1434,7 +1434,6 @@ class Ui_Form(object):
         self.uiN.handleOpen(self.orient)
         self.uiN.show()
 
-
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     splash_pix = QtGui.QPixmap(":/image/Splash.png")

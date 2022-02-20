@@ -4,6 +4,7 @@ import os
 import sys
 import tempfile
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 if 'ANDROID_BOOTLOGO' in os.environ:
     pass
 else:
