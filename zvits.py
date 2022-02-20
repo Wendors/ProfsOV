@@ -3,8 +3,6 @@
 import os
 import sys
 import tempfile
-from builtins import print
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 if 'ANDROID_BOOTLOGO' in os.environ:
     pass
@@ -76,9 +74,9 @@ class Window(QtWidgets.QWidget):
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
                 printerd.setResolution(96)
-                printerd.setPageMargins(10,10,10,30, QtPrintSupport.QPrinter.Millimeter)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
-                sizes = QtCore.QSizeF(1123, 794)
+                sizes = QtCore.QSizeF(794, 1123)
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
                 printerd.setResolution(96)
@@ -111,7 +109,7 @@ class Window(QtWidgets.QWidget):
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
                 printerd.setResolution(96)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
-                printerd.setPageMargins(20,20,20,20, QtPrintSupport.QPrinter.Millimeter)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(1123, 794)
 
             else:

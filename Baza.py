@@ -573,7 +573,6 @@ class Ui_Form(object):
         self.pushButton_8.setText(_translate("Form", "Пільги"))
         self.clearform()
 
-
     def Loadeds(self):
         if sys.platform == 'win32':
             self.loads = os.environ['USERPROFILE']
@@ -1424,7 +1423,7 @@ class Ui_Form(object):
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>державної установи «Полицька </b></font></pre></p>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>виправна колонія (№76)»</b></font></pre></p>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
+            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
         except:
             self.sefi.close()
             self.uiN = Window("Контроль що місячний")
