@@ -17,8 +17,11 @@ class Ui_FormN(object):
         FormN.setObjectName("FormN")
         FormN.resize(599, 449)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
-        FormN.move((self.resolution.width() / 2) - (FormN.frameSize().width() / 2),
-                   (self.resolution.height() / 2) - (FormN.frameSize().height() / 2))
+        if 'ANDROID_BOOTLOGO' in os.environ:
+            FormN.move((self.resolution.width() / 2) - (FormN.frameSize().width() / 2),0)
+        else:
+            FormN.move((self.resolution.width() / 2) - (FormN.frameSize().width() / 2),
+                       (self.resolution.height() / 2) - (FormN.frameSize().height() / 2))
         FormN.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint)
         FormN.activateWindow()
         font = QtGui.QFont()
