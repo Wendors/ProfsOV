@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-iltins
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.3.8.1.1"
 
+import sys
+import os
 import argparse
 import datetime
-import os
 import pickle
 import shutil
-import sys
 import tempfile
 import time
 import zlib
@@ -18,7 +17,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import WrData
 from FormNM import Ui_FormN
 from zvits import Window
-
 
 class Ui_Form(object):
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
