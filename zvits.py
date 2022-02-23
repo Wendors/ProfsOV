@@ -18,8 +18,11 @@ class Window(QtWidgets.QWidget):
         QtWidgets.QDialog.__init__(self)
         self.setFixedSize(960, 600)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
-        self.move(int((self.resolution.width() / 2) - (self.frameSize().width() / 2)),
-                  int((self.resolution.height() / 2) - (self.frameSize().height() / 2)))
+        if 'ANDROID_BOOTLOGO' in os.environ:
+            self.move(int((self.resolution.width() / 2) - (self.frameSize().width() / 2)), int(0))
+        else:
+                self.move(int((self.resolution.width() / 2) - (self.frameSize().width() / 2)),
+                          int((self.resolution.height() / 2) - (self.frameSize().height() / 2)))
         self.activateWindow()
         self.setWindowTitle(self.tr(titles))
         icon = QtGui.QIcon()
