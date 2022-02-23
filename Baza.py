@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-iltins
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.3.8.1.1"
-
 
 import sys
 import os
