@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-iltins
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.3.8.1.1"
+__versions__ = "v.3.8"
 
 import argparse
 import datetime
@@ -1417,7 +1417,8 @@ class Ui_Form(object):
                                     self._name = str("{0}".format(self.priis['name']))
                                     self._father = str("{0}".format(self.priis['father']))
                                     self._brsd = str("{0}".format(self.priis['birsdey']))
-                                    self.sefi.write("\t<p align=\"left\"><font face='Times New Roman'>{0}. {1} {2} {3} {4} р.н.</font></p>"
+                                    self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+                                    self.sefi.write("<p align=\"left\"><font face='Times New Roman'>{0}. {1} {2} {3} {4} р.н.</font></p>"
                                         .format(self.xx, self._soname, self._name, self._father, self._brsd))
             self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style><br><br><br>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>")
