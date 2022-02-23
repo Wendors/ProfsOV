@@ -19,6 +19,7 @@ import WrData
 from FormNM import Ui_FormN
 from zvits import Window
 
+
 class Ui_Form(object):
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
         os.mkdir(tempfile.gettempdir() + "/Proftemp")
