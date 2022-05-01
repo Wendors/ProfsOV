@@ -76,13 +76,13 @@ class Window(QtWidgets.QWidget):
             printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
-                printerd.setResolution(96)
+                printerd.setResolution(100)
                 printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
                 sizes = QtCore.QSizeF(794, 1123)
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
-                printerd.setResolution(96)
+                printerd.setResolution(100)
                 printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
                 sizes = QtCore.QSizeF(794, 1123)
@@ -110,14 +110,14 @@ class Window(QtWidgets.QWidget):
             printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.PrinterResolution)
             if self.orient == 1:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
-                printerd.setResolution(96)
+                printerd.setResolution(100)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
                 printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(1123, 794)
 
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
-                printerd.setResolution(96)
+                printerd.setResolution(100)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
                 printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(794, 1123)
