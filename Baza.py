@@ -1356,7 +1356,7 @@ class Ui_Form(object):
                          "Телефонні шахраї": "п.22"}
         self.temfil = self.pathtemp + "/_temp.html"
         self.sefi = open(self.temfil, 'w')
-        self.sefi.write("<p style=\"text-align: center; cursor: pointer;\"><img src=\"{0}\" width=\"45.35\" height=\"64.25\"></p>".format(self.pathtemp + self.gnam))
+        self.sefi.write("<p style=\"text-align: center; cursor: pointer;\"><img src=\"{0}\" width=\"55.35\" height=\"74.25\"></p>".format(self.pathtemp + self.gnam))
         self.sefi.write("<style> p{line-height: 0.5; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 20pt;}</style>"
                         "<p align=\"center\"><b>МІНІСТЕРСТВО ЮСТИЦІЇ УКРАЇНИ</b></font></p>"
                         "<style> p{line-height: 0.5; adding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
