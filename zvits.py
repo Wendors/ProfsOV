@@ -152,6 +152,7 @@ class Window(QtWidgets.QWidget):
                 printer.setOutputFileName(self.files)
                 printer.setOutputFormat(QtPrintSupport.QPrinter.PdfFormat)
                 printer.setPageSize(QtPrintSupport.QPrinter.A4)
+                printer.setResolution(120)
                 if self.orient == 1:
                     printer.setOrientation(QtPrintSupport.QPrinter.Landscape)
                 else:
