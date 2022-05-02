@@ -1378,11 +1378,11 @@ class Ui_Form(object):
                         "а також своечасного проведения стосовно них вiдповiдних заходiв щодо профiлактики кримiнальних "
                         "правопорушень, надсилаю Вам списки зазначеної категорiї осiб за " + str(self.mun) + " мiсяць " + str(self.years) + "року </font></pre></p>"
                         "<style> p{padding-top: 0em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'><b>\nДодаток:</b> на одному аркуші</font></pre></p><br><br>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'><b>\nДодаток:</b> на одному аркуші</font></pre></p><br>"
                         "<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
                         "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
                         "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'><b>Нначальник установи\nпідполковник внутрішньої служби\t\t\tВіталій ХИРЛЮК</b></font></pre></p>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'><b>Нначальник установи\nпідполковник внутрішньої служби\t\t\t  Віталій ХИРЛЮК</b></font></pre></p>"
                         "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 12pt;}</style>"
                         "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
         self.sefi.write("<br><br><br><br><br><br><br><br><br><br><br><br><br><br>")
@@ -1419,12 +1419,12 @@ class Ui_Form(object):
                                     self._brsd = str("{0}".format(self.priis['birsdey']))
                                     self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style>")
                                     self.sefi.write("<p align=\"left\"><font face='Times New Roman'>{0}. {1} {2} {3} {4} р.н.</font></p>"
-                                        .format(self.xx, self._soname, self._name, self._father, self._brsd))
+                                        .format(self.xx, self._soname, self._name, self._father, self._brsd[6:]))
             self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style><br><br><br>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>державної установи «Полицька </b></font></pre></p>")
             self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>виправна колонія (№76)»</b></font></pre></p>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
+            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
         except:
             self.sefi.close()
             self.uiN = Window("Контроль що місячний")
