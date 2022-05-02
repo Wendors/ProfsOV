@@ -143,6 +143,9 @@ class Window(QtWidgets.QWidget):
         if self.files != "":
             doc = QtGui.QTextDocument()
             location = self.pathtemp + "/_temp.html"
+            with open(location, "w") as f:
+                f.write(self.editor.document().toHtml())
+                f.close()
             html = open(location).read()
             doc.setHtml(html)
             if 'ANDROID_BOOTLOGO' in os.environ:
