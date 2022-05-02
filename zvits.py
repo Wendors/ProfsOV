@@ -114,7 +114,6 @@ class Window(QtWidgets.QWidget):
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
                 printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(1123, 794)
-
             else:
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
                 printerd.setResolution(100)
