@@ -1383,7 +1383,7 @@ class Ui_Form(object):
                         "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
                         "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
                         "<p align=\"left\"><pre><font face='Times New Roman'><b>Нначальник установи\nпідполковник внутрішньої служби\t\t\t  Віталій ХИРЛЮК</b></font></pre></p>"
-                        "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 12pt;}</style>"
+                        "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 10pt;}</style>"
                         "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
         self.sefi.write("<br><br><br><br><br><br><br><br><br><br>")
         self.sefi.write("<style> h1{line-height: 1; font-family: 'Times New Roman'; font-size: 20pt;}</style>")
