@@ -15,7 +15,7 @@ class Ui_FormN(object):
     def setupUi(self, FormN):
         self.mains = WrData.Datas()
         FormN.setObjectName("FormN")
-        FormN.resize(599, 449)
+        FormN.setFixedSize(599, 449)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
         if 'ANDROID_BOOTLOGO' in os.environ:
             FormN.move((self.resolution.width() / 2) - (FormN.frameSize().width() / 2),0)
