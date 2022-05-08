@@ -598,12 +598,14 @@ class Ui_FormN(object):
 
     def combo_chosens(self):
         self.profiless = self.comboBox_5.currentText()
+        self.comboBox_5.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
         self.vid = ""
         self.pushButton_9.setEnabled(True)
         self.comboBox_6.setEnabled(True)
 
     def combo_fil(self):
         self.vid = self.comboBox_6.currentText()
+        self.comboBox_6.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
         self.cengbut()
 
     def _saves(self):
@@ -669,6 +671,8 @@ class Ui_FormN(object):
         self.lineEdit_44.setText(self.datalists[2])
         self.lineEdit_45.setText(self.datalists[5])
         self.comboBox_5.setCurrentText(self.datalists[4])
+        self.comboBox_5.setStyleSheet("QComboBox:editable{ color:  rgb(255, 0, 0)}")
+        self.comboBox_6.setStyleSheet("QComboBox:editable{ color:  rgb(255, 0, 0)}")
         self.comboBox_6.setCurrentText(self.datalists[11])
         self.fzp = zlib.decompress(self.datalists[12])
         self.WrData = WrData.Datas()
