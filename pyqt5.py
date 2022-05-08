@@ -1,3 +1,3 @@
 import os
 
-os.system("pyuic5 Baza.ui -o Baza.py -x")
+os.system("pyuic5 Baza.ui -o Bazass.py -x")
