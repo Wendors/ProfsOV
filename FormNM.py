@@ -726,6 +726,8 @@ class Ui_FormN(object):
         self.dateEdit_5.setDate(self.year)
         self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
         self.dateEdit_6.setDate(self.year)
+        self.comboBox_5.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
+        self.comboBox_6.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
         self.pushButton_11.setEnabled(False)
 
     def cengbut(self):

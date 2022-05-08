@@ -617,7 +617,7 @@ class Ui_Form(object):
     def combo_chosen(self):
         self.listWidget.itemClicked.connect(self.showItem)
         self.listsp = []
-        self.listWidget.clear()
+        self.listWidget.update()
         self.clearform()
         try:
             self.texts = self.comboBox.currentText()
@@ -741,6 +741,7 @@ class Ui_Form(object):
         self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN.setupUi(self.FormNN)
         self.FormNN.show()
+        self.listWidget.clear()
 
     def EditProf(self):
         self.WrData = WrData.Datas()
