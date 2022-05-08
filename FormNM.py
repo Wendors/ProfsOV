@@ -634,7 +634,6 @@ class Ui_FormN(object):
                           birsdey=self.dateEdit.text(), profov=self.pr, stt=self.lineEdit_45.text(),
                           begin_dey=self.dateEdit_2.text(), DSR=self.dateEdit_3.text(), ZBM=self.dateEdit_4.text(),
                           UDZ=self.dateEdit_5.text(), end_dey=self.dateEdit_6.text(), PHOT=self.filez, VID=self.vid, OUTS=self.out)
-
         self.save_as()
 
     def save_as(self):
