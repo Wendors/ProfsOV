@@ -173,6 +173,7 @@ class Ui_Form(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.gridLayout.addWidget(self.comboBox, 2, 0, 1, 6)
         self.label_14 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
@@ -552,7 +553,8 @@ class Ui_Form(object):
         self.comboBox.setItemText(23, _translate("Form", "Тероризм"))# ст.258-ст.258\5
         self.comboBox.setItemText(24, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
         self.comboBox.setItemText(25, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
-        self.comboBox.setItemText(26, _translate("Form", "Шахрайство"))# ч.4 ст.190
+        self.comboBox.setItemText(26, _translate("Form", "Хабар"))
+        self.comboBox.setItemText(27, _translate("Form", "Шахрайство"))# ч.4 ст.190
         self.label_8.setText(_translate("Form", "УДЗ"))
         self.label_12.setText(_translate("Form", "Зловживання владою або службовим становищем"))
         self.label_7.setText(_translate("Form", "ЗБМ"))
@@ -617,7 +619,7 @@ class Ui_Form(object):
     def combo_chosen(self):
         self.listWidget.itemClicked.connect(self.showItem)
         self.listsp = []
-        self.listWidget.update()
+        self.listWidget.clear()
         self.clearform()
         try:
             self.texts = self.comboBox.currentText()
@@ -741,7 +743,6 @@ class Ui_Form(object):
         self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN.setupUi(self.FormNN)
         self.FormNN.show()
-        self.listWidget.clear()
 
     def EditProf(self):
         self.WrData = WrData.Datas()
