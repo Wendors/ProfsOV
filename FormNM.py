@@ -473,7 +473,7 @@ class Ui_FormN(object):
         _translate = QtCore.QCoreApplication.translate
         FormN.setWindowTitle(_translate("FormN", "Редактор профелю"))
         self.label_39.setText(_translate("FormN", "ЗБМ"))
-        self.label_32.setText(_translate("FormN", "Іи\'я"))
+        self.label_32.setText(_translate("FormN", "Ім\'я"))
         self.pushButton_10.setText(_translate("FormN", "Видалити"))
         self.label_37.setText(_translate("FormN", "Початок строку"))
         self.label_38.setText(_translate("FormN", "ДСР"))
@@ -488,12 +488,12 @@ class Ui_FormN(object):
         self.label_40.setText(_translate("FormN", "УДЗ"))
         self.label_35.setText(_translate("FormN", "Підстава на облік"))
         self.label_2.setText(_translate("FormN", "Відділення"))
+        self.checkBox.setText(_translate("FormN", "Тимчасово\nвибув"))
         for ip in range(self.list_prff.__len__()):
             self.comboBox_5.setItemText(ip, _translate("FormN", f"{self.list_prff[ip]}"))
         self.pushButton_9.setText(_translate("FormN", "Вибрати фото"))
         for iv in range(self.list_vid.__len__()):
             self.comboBox_6.setItemText(iv, _translate("FormN", f"{self.list_vid[iv]}"))
-        self.checkBox.setText(_translate("FormN", "Тимчасово\nвибув"))
 
     def btnstate(self, b):
         if b.isChecked():

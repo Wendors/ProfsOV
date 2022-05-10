@@ -503,8 +503,6 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "Стаття КК України"))
         self.label_5.setText(_translate("Form", "Початок строку"))
         self.label_9.setText(_translate("Form", "Кінець строку"))
-        for lpb in range(self.list_prof.__len__()):
-            self.comboBox.setItemText(lpb, _translate("Form", f"{self.list_prof[lpb]}"))
         self.label_8.setText(_translate("Form", "УДЗ"))
         self.label_12.setText(_translate("Form", "Зловживання владою або службовим становищем"))
         self.label_7.setText(_translate("Form", "ЗБМ"))
@@ -519,9 +517,11 @@ class Ui_Form(object):
         self.pushButton_6.setText(_translate("Form", "Звіт"))
         self.pushButton_7.setText(_translate("Form", "Контроль"))
         self.label_26.setText(_translate("Form", "Тимчасово вибув з кстанови"))
+        for lpb in range(self.list_prof.__len__()):
+            self.comboBox.setItemText(lpb, _translate("Form", f"{self.list_prof[lpb]}"))
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
-        self.label_21.setText("{0}".format(self.files))
+        self.label_21.setText(f"{self.files}")
         self.pushButton_8.setText(_translate("Form", "Пільги"))
         self.clearform()
 
@@ -545,7 +545,7 @@ class Ui_Form(object):
         self.pushButton_2.setEnabled(False)
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
-        self.label_21.setText("{0}".format(self.files))
+        self.label_21.setText(f"{self.files}")
 
     def SavProfs(self):
         if sys.platform == 'win32':
