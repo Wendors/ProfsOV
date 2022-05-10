@@ -490,10 +490,14 @@ class Ui_FormN(object):
         self.label_2.setText(_translate("FormN", "Відділення"))
         self.checkBox.setText(_translate("FormN", "Тимчасово\nвибув"))
         for ip in range(self.list_prff.__len__()):
-            self.comboBox_5.setItemText(ip, _translate("FormN", f"{self.list_prff[ip]}"))
+            pr_ff = self.list_prff[ip]
+            pr_fbf = pr_ff.decode('utf-8')
+            self.comboBox_5.setItemText(ip, _translate("FormN", f"{pr_fbf}"))
         self.pushButton_9.setText(_translate("FormN", "Вибрати фото"))
         for iv in range(self.list_vid.__len__()):
-            self.comboBox_6.setItemText(iv, _translate("FormN", f"{self.list_vid[iv]}"))
+            vids = self.list_vid[iv]
+            uvids = vids.decode("utf-8")
+            self.comboBox_6.setItemText(iv, _translate("FormN", f"{uvids}"))
 
     def btnstate(self, b):
         if b.isChecked():

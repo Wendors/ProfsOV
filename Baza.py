@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-iltins
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.3.9.5"
+__versions__ = "v.3.9.6"
 
 import argparse
 import datetime
@@ -518,7 +518,9 @@ class Ui_Form(object):
         self.pushButton_7.setText(_translate("Form", "Контроль"))
         self.label_26.setText(_translate("Form", "Тимчасово вибув з кстанови"))
         for lpb in range(self.list_prof.__len__()):
-            self.comboBox.setItemText(lpb, _translate("Form", f"{self.list_prof[lpb]}"))
+            pr_fb = self.list_prof[lpb]
+            pr_fbd = pr_fb.decode('utf-8')
+            self.comboBox.setItemText(lpb, _translate("Form", f"{pr_fbd}"))
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
         self.label_21.setText(f"{self.files}")
