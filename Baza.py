@@ -18,14 +18,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import WrData
 from FormNM import Ui_FormN
 from zvits import Window
-from Setprofs import Sets
 
 
 class Ui_Form(object):
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
         os.mkdir(tempfile.gettempdir() + "/Proftemp")
     pathtemp = tempfile.gettempdir() + "/Proftemp"
-    list_prof = Sets.list_profsb
     def setupUi(self, Form, path):
         self.files = path
         with open(self.pathtemp + "/Profs.dbsp", "w") as f:
@@ -148,8 +146,33 @@ class Ui_Form(object):
         self.comboBox.setFont(font)
         self.comboBox.setEditable(False)
         self.comboBox.setObjectName("comboBox")
-        for L_i in range(self.list_prof.__len__()):
-            self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.gridLayout.addWidget(self.comboBox, 2, 0, 1, 6)
         self.label_14 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
@@ -503,8 +526,33 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "Стаття КК України"))
         self.label_5.setText(_translate("Form", "Початок строку"))
         self.label_9.setText(_translate("Form", "Кінець строку"))
-        for lpb in range(self.list_prof.__len__()):
-            self.comboBox.setItemText(lpb, _translate("Form", f"{self.list_prof[lpb]}"))
+        self.comboBox.setItemText(0, _translate("Form", "Всі підоблікові"))
+        self.comboBox.setItemText(1, _translate("Form", "Авторитет"))
+        self.comboBox.setItemText(2, _translate("Form", "Бандетизм"))
+        self.comboBox.setItemText(3, _translate("Form", "Вбивство на замовлення")) # ч2 cn 115
+        self.comboBox.setItemText(4, _translate("Form", "Вживання наркотичних речовин"))
+        self.comboBox.setItemText(5, _translate("Form", "Виготовлення зброї, вибухових пристроїв"))
+        self.comboBox.setItemText(6, _translate("Form", "Вступили в незаконні бандитські угрупування")) # ст.260
+        self.comboBox.setItemText(7, _translate("Form", "Втеча"))
+        self.comboBox.setItemText(8, _translate("Form", "Дії що дезорганізують роботу установи"))
+        self.comboBox.setItemText(9, _translate("Form", "Захоплення заручників"))
+        self.comboBox.setItemText(10, _translate("Form", "Зловживання владою або службовим становищем")) #ч.2 ст. 364
+        self.comboBox.setItemText(11, _translate("Form", "Злодіїв в законі"))
+        self.comboBox.setItemText(12, _translate("Form", "Злочинний вплив")) #ст.255
+        self.comboBox.setItemText(13, _translate("Form", "Лідер ОЗГ"))
+        self.comboBox.setItemText(14, _translate("Form", "Масові заворушення")) #ст.330
+        self.comboBox.setItemText(15, _translate("Form", "Напад"))
+        self.comboBox.setItemText(16, _translate("Form", "Наркоділки з міжрегіональними звязками")) #ст.305
+        self.comboBox.setItemText(17, _translate("Form", "Нецільове використання бюджетних коштів"))  # ч.2 ст.210
+        self.comboBox.setItemText(18, _translate("Form", "Організація азартних ігор під матеріалну зацікавленість"))
+        self.comboBox.setItemText(19, _translate("Form", "Проти основ національної безпеки"))
+        self.comboBox.setItemText(20, _translate("Form", "Резонанс в ЗМІ"))
+        self.comboBox.setItemText(21, _translate("Form", "Розв'язування війни"))# ст.437
+        self.comboBox.setItemText(22, _translate("Form", "Службові злочини"))# ч.5 ст.191
+        self.comboBox.setItemText(23, _translate("Form", "Тероризм"))# ст.258-ст.258\5
+        self.comboBox.setItemText(24, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
+        self.comboBox.setItemText(25, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
+        self.comboBox.setItemText(26, _translate("Form", "Шахрайство"))# ч.4 ст.190
         self.label_8.setText(_translate("Form", "УДЗ"))
         self.label_12.setText(_translate("Form", "Зловживання владою або службовим становищем"))
         self.label_7.setText(_translate("Form", "ЗБМ"))
