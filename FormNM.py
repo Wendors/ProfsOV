@@ -416,6 +416,7 @@ class Ui_FormN(object):
         self.comboBox_5.addItem("")
         self.comboBox_5.addItem("")
         self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
         self.gridLayout_10.addWidget(self.comboBox_5, 7, 1, 1, 2)
         self.label = QtWidgets.QLabel(FormN)
         font = QtGui.QFont()
@@ -548,7 +549,8 @@ class Ui_FormN(object):
         self.comboBox_5.setItemText(22, _translate("FormN", "Тероризм"))
         self.comboBox_5.setItemText(23, _translate("FormN", "У сфері державної таємниці"))
         self.comboBox_5.setItemText(24, _translate("FormN", "Ухилення від сплати податків"))
-        self.comboBox_5.setItemText(25, _translate("FormN", "Шахрайство"))
+        self.comboBox_5.setItemText(25, _translate("FormN", "Хабар"))
+        self.comboBox_5.setItemText(26, _translate("FormN", "Шахрайство"))
         self.pushButton_9.setText(_translate("FormN", "Вибрати фото"))
         self.comboBox_6.setItemText(0, _translate("FormN", "1"))
         self.comboBox_6.setItemText(1, _translate("FormN", "2"))
@@ -726,8 +728,6 @@ class Ui_FormN(object):
         self.dateEdit_5.setDate(self.year)
         self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
         self.dateEdit_6.setDate(self.year)
-        self.comboBox_5.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
-        self.comboBox_6.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
         self.pushButton_11.setEnabled(False)
 
     def cengbut(self):
