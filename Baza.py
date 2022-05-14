@@ -736,7 +736,7 @@ class Ui_Form(object):
         self.fp = open(self.pathtemp + "/_zpn.png", "wb")
         self.fp.write(self.imageData)
         self.fp.close()
-        self.FormNN = QtWidgets.QDialog()
+        self.FormNN = QtWidgets.QWidget()
         self.uiN = Ui_FormN()
         self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN.setupUi(self.FormNN)
