@@ -617,7 +617,7 @@ class Ui_Form(object):
     def combo_chosen(self):
         self.listWidget.itemClicked.connect(self.showItem)
         self.listsp = []
-        self.listWidget.update()
+        self.listWidget.clear()
         self.clearform()
         try:
             self.texts = self.comboBox.currentText()
