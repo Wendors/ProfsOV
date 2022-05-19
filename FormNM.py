@@ -22,7 +22,7 @@ class Ui_FormN(object):
         else:
             FormN.move(int((self.resolution.width() / 2)) - int((FormN.frameSize().width() / 2)),
                        int((self.resolution.height()) / 2) - int((FormN.frameSize().height() / 2)))
-        FormN.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint)
+        FormN.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         FormN.activateWindow()
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

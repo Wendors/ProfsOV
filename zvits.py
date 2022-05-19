@@ -33,7 +33,7 @@ class Window(QtWidgets.QWidget):
         self.setWindowIcon(icon)
         self.editor = QtWidgets.QTextEdit(self)
         self.editor.setReadOnly(True)
-        self.editor.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
+        self.editor.setLineWrapMode(self.editor.WidgetWidth)
         self.editor.textChanged.connect(self.handleTextChanged)
         self.buttonOpen = QtWidgets.QPushButton('В pdf', self)
         self.buttonOpen.setAutoDefault(True)
@@ -153,6 +153,7 @@ class Window(QtWidgets.QWidget):
         enable = not self.editor.document().isEmpty()
         self.buttonPrint.setEnabled(enable)
         self.buttonPreview.setEnabled(enable)
+        self.buttonOpen.setEnabled(enable)
 
     def topdf(self):
         if sys.platform == 'win32':
