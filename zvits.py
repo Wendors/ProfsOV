@@ -33,7 +33,6 @@ class Window(QtWidgets.QWidget):
         self.setWindowIcon(icon)
         self.editor = QtWidgets.QTextEdit(self)
         self.editor.setReadOnly(True)
-        self.textT = self.editor.textCursor()
         self.editor.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
         self.editor.textChanged.connect(self.handleTextChanged)
         self.buttonOpen = QtWidgets.QPushButton('В pdf', self)
