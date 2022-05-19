@@ -14,6 +14,7 @@ import Profs_rc
 class Window(QtWidgets.QWidget):
     pathtemp = tempfile.gettempdir() + "/Proftemp"
     orient = 0
+    cur = 0
     def __init__(self, titles):
         QtWidgets.QDialog.__init__(self)
         self.setFixedSize(960, 600)
@@ -21,7 +22,7 @@ class Window(QtWidgets.QWidget):
         if 'ANDROID_BOOTLOGO' in os.environ:
             self.move(int((self.resolution.width() / 2) - (self.frameSize().width() / 2)), int(0))
         else:
-                self.move(int((self.resolution.width() / 2) - (self.frameSize().width() / 2)),
+            self.move(int((self.resolution.width() / 2) - (self.frameSize().width() / 2)),
                           int((self.resolution.height() / 2) - (self.frameSize().height() / 2)))
         self.activateWindow()
         self.setWindowTitle(self.tr(titles))
@@ -31,21 +32,43 @@ class Window(QtWidgets.QWidget):
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setWindowIcon(icon)
         self.editor = QtWidgets.QTextEdit(self)
+        self.editor.setReadOnly(True)
         self.textT = self.editor.textCursor()
         self.editor.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
         self.editor.textChanged.connect(self.handleTextChanged)
         self.buttonOpen = QtWidgets.QPushButton('В pdf', self)
+        self.buttonOpen.setAutoDefault(True)
         self.buttonOpen.clicked.connect(self.topdf)
         self.buttonPrint = QtWidgets.QPushButton('Друкувати', self)
+        self.buttonPrint.setAutoDefault(True)
         self.buttonPrint.clicked.connect(self.handlePrint)
         self.buttonPreview = QtWidgets.QPushButton('Переглянути', self)
+        self.buttonPreview.setAutoDefault(True)
         self.buttonPreview.clicked.connect(self.handlePreview)
+        self.buttonCurs = QtWidgets.QPushButton('Включити курсор', self)
+        self.buttonCurs.setAutoDefault(True)
+        self.buttonCurs.clicked.connect(self.hirCurs)
         layout = QtWidgets.QGridLayout(self)
-        layout.addWidget(self.editor, 0, 0, 1, 3)
-        layout.addWidget(self.buttonOpen, 1, 0)
-        layout.addWidget(self.buttonPrint, 1, 1)
-        layout.addWidget(self.buttonPreview, 1, 2)
+        layout.addWidget(self.editor, 0, 0, 1, 4)
+        layout.addWidget(self.buttonCurs,1, 0)
+        layout.addWidget(self.buttonOpen, 1, 1)
+        layout.addWidget(self.buttonPrint, 1, 2)
+        layout.addWidget(self.buttonPreview, 1, 3)
         self.handleTextChanged()
+        self.setTabOrder(self.buttonCurs,self.buttonPreview)
+        self.setTabOrder(self.buttonPreview, self.buttonPrint)
+        self.setTabOrder(self.buttonPrint, self.buttonOpen)
+        self.setTabOrder(self.buttonOpen, self.editor)
+
+    def hirCurs(self):
+        if self.cur == 0:
+            self.buttonCurs.setText("Виключити курсор")
+            self.editor.setReadOnly(False)
+            self.cur = 1
+        else:
+            self.buttonCurs.setText("Включити курсор")
+            self.editor.setReadOnly(True)
+            self.cur = 0
 
     def handleOpen(self, orent):
         self.orient = orent
@@ -118,7 +141,7 @@ class Window(QtWidgets.QWidget):
                 printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
                 printerd.setResolution(300)
                 printerd.setPageSize(QtPrintSupport.QPrinter.A4)
-                printerd.setPageMargins(30,20,10,20, QtPrintSupport.QPrinter.Millimeter)
+                printerd.setPageMargins(30,10,10,20, QtPrintSupport.QPrinter.Millimeter)
                 sizes = QtCore.QSizeF(794, 1123)
             dialog = QtPrintSupport.QPrintPreviewDialog(printerd,self)
             dialog.setWindowFlags(QtCore.Qt.Dialog | QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowCloseButtonHint)
