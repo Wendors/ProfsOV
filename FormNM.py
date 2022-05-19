@@ -18,7 +18,7 @@ class Ui_FormN(object):
         FormN.setFixedSize(599, 449)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
         if 'ANDROID_BOOTLOGO' in os.environ:
-            FormN.move((self.resolution.width() / 2) - (FormN.frameSize().width() / 2),0)
+            FormN.move(int((self.resolution.width() / 2)) - int((FormN.frameSize().width() / 2),0))
         else:
             FormN.move(int((self.resolution.width() / 2)) - int((FormN.frameSize().width() / 2)),
                        int((self.resolution.height()) / 2) - int((FormN.frameSize().height() / 2)))
