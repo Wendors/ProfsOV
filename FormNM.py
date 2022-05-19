@@ -82,6 +82,7 @@ class Ui_FormN(object):
         self.gridLayout_10.addWidget(self.label_32, 3, 0, 1, 1)
         self.pushButton_10 = QtWidgets.QPushButton(FormN)
         self.pushButton_10.setEnabled(False)
+        self.pushButton_10.setAutoDefault(True)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(14)
@@ -90,8 +91,6 @@ class Ui_FormN(object):
         self.pushButton_10.setFont(font)
         self.pushButton_10.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_10.setStyleSheet("")
-        self.pushButton_10.setAutoDefault(False)
-        self.pushButton_10.setDefault(False)
         self.pushButton_10.setFlat(False)
         self.pushButton_10.setObjectName("pushButton_10")
         self.gridLayout_10.addWidget(self.pushButton_10, 20, 0, 1, 1)
@@ -204,7 +203,7 @@ class Ui_FormN(object):
         self.pushButton_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_12.setStyleSheet("")
         self.pushButton_12.setAutoDefault(False)
-        self.pushButton_12.setDefault(False)
+        self.pushButton_12.setAutoDefault(True)
         self.pushButton_12.setFlat(False)
         self.pushButton_12.setObjectName("pushButton_12")
         self.gridLayout_10.addWidget(self.pushButton_12, 20, 3, 1, 1)
@@ -258,8 +257,7 @@ class Ui_FormN(object):
         self.pushButton_11.setFont(font)
         self.pushButton_11.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_11.setStyleSheet("")
-        self.pushButton_11.setAutoDefault(False)
-        self.pushButton_11.setDefault(False)
+        self.pushButton_11.setAutoDefault(True)
         self.pushButton_11.setFlat(False)
         self.pushButton_11.setObjectName("pushButton_11")
         self.gridLayout_10.addWidget(self.pushButton_11, 20, 1, 1, 2)
@@ -440,6 +438,7 @@ class Ui_FormN(object):
         self.pushButton_9.setFont(font)
         self.pushButton_9.setStyleSheet("")
         self.pushButton_9.setEnabled(False)
+        self.pushButton_9.setAutoDefault(True)
         self.pushButton_9.setObjectName("pushButton_9")
         self.gridLayout_10.addWidget(self.pushButton_9, 7, 3, 1, 1)
         self.comboBox_6 = QtWidgets.QComboBox(FormN)
@@ -500,9 +499,9 @@ class Ui_FormN(object):
         FormN.setTabOrder(self.dateEdit_6, self.pushButton_9)
         FormN.setTabOrder(self.pushButton_9, self.comboBox_6)
         FormN.setTabOrder(self.comboBox_6, self.checkBox)
-        FormN.setTabOrder(self.checkBox, self.pushButton_10)
-        FormN.setTabOrder(self.pushButton_10, self.pushButton_11)
+        FormN.setTabOrder(self.checkBox, self.pushButton_11)
         FormN.setTabOrder(self.pushButton_11, self.pushButton_12)
+        FormN.setTabOrder(self.pushButton_12, self.pushButton_10)
 
     def retranslateUi(self, FormN):
         _translate = QtCore.QCoreApplication.translate
@@ -731,7 +730,7 @@ class Ui_FormN(object):
         self.pushButton_11.setEnabled(False)
 
     def cengbut(self):
-        if self.lineEdit_42.text() == "" or self.lineEdit_43.text() == "" or self.lineEdit_44.text() == "" or self.checkBox.isChecked() == True:
+        if self.lineEdit_42.text() == "" or self.lineEdit_43.text() == "" or self.lineEdit_44.text() == "":
             self.pushButton_11.setEnabled(False)
             self.checkBox.setChecked(True)
         else:
