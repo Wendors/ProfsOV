@@ -89,7 +89,13 @@
       </widget>
      </item>
      <item row="8" column="1" colspan="3">
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="comboBox">
+       <item>
+        <property name="text">
+         <string>Бандитизм</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_Image">

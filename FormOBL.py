@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
 # Форма для створення списку обліку
-
+import sys
+import os
+import tempfile
+import pickle
+import Profs_rc
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -9,7 +13,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FormO(object):
     def setupUi(self, FormO):
         FormO.setObjectName("FormO")
-        FormO.resize(554, 196)
+        FormO.setFixedSize(554, 196)
+        self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        FormO.move(int((self.resolution.width() / 2)) - int((FormO.frameSize().width() / 2)),
+                   int((self.resolution.height()) / 2) - int((FormO.frameSize().height() / 2)))
+        FormO.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
@@ -53,6 +61,7 @@ class Ui_FormO(object):
         self.gridLayout_10.addWidget(self.pushButton_4, 10, 3, 1, 1)
         self.comboBox = QtWidgets.QComboBox(FormO)
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
         self.gridLayout_10.addWidget(self.comboBox, 8, 1, 1, 3)
         self.label_Image = QtWidgets.QLabel(FormO)
         self.label_Image.setStyleSheet("")
@@ -178,16 +187,16 @@ class Ui_FormO(object):
         FormO.setWindowTitle(_translate("FormO", "Редактор профелю"))
         self.pushButton_2.setText(_translate("FormO", "Видалити"))
         self.pushButton_4.setText(_translate("FormO", "Закрити"))
+        self.comboBox.setItemText(0, _translate("FormO", "Бандитизм"))
         self.label_1.setText(_translate("FormO", "Облік"))
         self.label_title.setText(_translate("FormO", "ПРОФІЛЬ"))
         self.label_2.setText(_translate("FormO", "Перегляд "))
         self.pushButton.setText(_translate("FormO", "ДОДАТИ"))
         self.pushButton_3.setText(_translate("FormO", "Зберегти"))
-import Profs_rc
+
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     FormO = QtWidgets.QWidget()
     ui = Ui_FormO()
