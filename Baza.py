@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-iltins
 
-__author__ = "Сергій Полунець"
-__versions__ = "v.3.9.8"
+__author__ = "Wandors"
+__versions__ = "v.4.0.1"
 
 import argparse
 import datetime
@@ -32,6 +32,8 @@ class Ui_Form(object):
         if not os.path.exists(self.files):
             self.f = open(self.files, "wb")
             self.f.close()
+        self.baza = WrData.Datas().Roblik(files=self.files)
+        self.list_ov = self.baza["prof_ov"]
         Form.setObjectName("Form")
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
         Form.setFixedSize(1120, 650)
@@ -147,33 +149,8 @@ class Ui_Form(object):
         self.comboBox.setFont(font)
         self.comboBox.setEditable(False)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        for i in range(len(self.list_ov)):
+            self.comboBox.addItem("")
         self.gridLayout.addWidget(self.comboBox, 2, 0, 1, 6)
         self.label_14 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
@@ -530,39 +507,13 @@ class Ui_Form(object):
         self.label_4.setText(_translate("Form", "Підстава на облік"))
         self.pushButton.setText(_translate("Form", "Створити новий"))
         self.label_3.setText(_translate("Form", "Рік народження"))
-        self.label_6.setText(_translate("Form", "ДСР"))
         self.label_2.setText(_translate("Form", "Стаття КК України"))
         self.label_5.setText(_translate("Form", "Початок строку"))
         self.label_9.setText(_translate("Form", "Кінець строку"))
-        self.comboBox.setItemText(0, _translate("Form", "Всі підоблікові"))
-        self.comboBox.setItemText(1, _translate("Form", "Авторитет"))
-        self.comboBox.setItemText(2, _translate("Form", "Бандетизм"))
-        self.comboBox.setItemText(3, _translate("Form", "Вбивство на замовлення")) # ч2 cn 115
-        self.comboBox.setItemText(4, _translate("Form", "Вживання наркотичних речовин"))
-        self.comboBox.setItemText(5, _translate("Form", "Виготовлення зброї, вибухових пристроїв"))
-        self.comboBox.setItemText(6, _translate("Form", "Вступили в незаконні бандитські угрупування")) # ст.260
-        self.comboBox.setItemText(7, _translate("Form", "Втеча"))
-        self.comboBox.setItemText(8, _translate("Form", "Дії що дезорганізують роботу установи"))
-        self.comboBox.setItemText(9, _translate("Form", "Захоплення заручників"))
-        self.comboBox.setItemText(10, _translate("Form", "Зловживання владою або службовим становищем")) #ч.2 ст. 364
-        self.comboBox.setItemText(11, _translate("Form", "Злодіїв в законі"))
-        self.comboBox.setItemText(12, _translate("Form", "Злочинний вплив")) #ст.255
-        self.comboBox.setItemText(13, _translate("Form", "Лідер ОЗГ"))
-        self.comboBox.setItemText(14, _translate("Form", "Масові заворушення")) #ст.330
-        self.comboBox.setItemText(15, _translate("Form", "Напад"))
-        self.comboBox.setItemText(16, _translate("Form", "Наркоділки з міжрегіональними звязками")) #ст.305
-        self.comboBox.setItemText(17, _translate("Form", "Нецільове використання бюджетних коштів"))  # ч.2 ст.210
-        self.comboBox.setItemText(18, _translate("Form", "Організація азартних ігор під матеріалну зацікавленість"))
-        self.comboBox.setItemText(19, _translate("Form", "Проти основ національної безпеки"))
-        self.comboBox.setItemText(20, _translate("Form", "Резонанс в ЗМІ"))
-        self.comboBox.setItemText(21, _translate("Form", "Розв'язування війни"))# ст.437
-        self.comboBox.setItemText(22, _translate("Form", "Службові злочини"))# ч.5 ст.191
-        self.comboBox.setItemText(23, _translate("Form", "Тероризм"))# ст.258-ст.258\5
-        self.comboBox.setItemText(24, _translate("Form", "У сфері державної таємниці"))# ч.2 ч.3 ст.368
-        self.comboBox.setItemText(25, _translate("Form", "Ухилення від сплати податків")) # ч.2 ч.3 ст.212
-        self.comboBox.setItemText(26, _translate("Form", "Шахрайство"))# ч.4 ст.190
+        for i in range(len(self.list_ov)):
+            self.comboBox.setItemText(i, _translate("Form", "{0}".format(self.list_ov[i])))
+        self.label_6.setText(_translate("Form", "ДСР"))
         self.label_8.setText(_translate("Form", "УДЗ"))
-        self.label_12.setText(_translate("Form", "Зловживання владою або службовим становищем"))
         self.label_7.setText(_translate("Form", "ЗБМ"))
         self.pushButton_2.setText(_translate("Form", "Редагувати"))
         self.pushButton_4.setText(_translate("Form", "Завантажити"))
@@ -574,11 +525,11 @@ class Ui_Form(object):
         self.pushButton_5.setText(_translate("Form", "Список"))
         self.pushButton_6.setText(_translate("Form", "Звіт"))
         self.pushButton_7.setText(_translate("Form", "Контроль"))
+        self.pushButton_8.setText(_translate("Form", "Пільги"))
         self.label_26.setText(_translate("Form", "Тимчасово вибув з кстанови"))
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
         self.label_21.setText("{0}".format(self.files))
-        self.pushButton_8.setText(_translate("Form", "Пільги"))
         self.clearform()
 
     def Loadeds(self):
@@ -639,7 +590,7 @@ class Ui_Form(object):
             self.lispr = self.dats
             self.pushButton_2.setEnabled(False)
             self.pushButton_5.setEnabled(True)
-            self.pushButton_6.setEnabled(True)
+            #self.pushButton_6.setEnabled(True)
             self.pushButton_8.setEnabled(True)
             self.pushButton_7.setEnabled(True)
             try:
@@ -663,14 +614,16 @@ class Ui_Form(object):
                     self.proers = self.dats
                     self.lise = []
                     for i in self.proers.values():
-                        for ig in i.items():
-                            self.lise.append(ig)
+                        if type(i) != list:
+                            for ig in i.items():
+                                self.lise.append(ig)
                     map(operator.itemgetter(0), self.lise)
                     self.xlis = sorted(self.lise, key=operator.itemgetter(0))
                     for i in self.proers:
-                        self.i = self.proers.get(i)
-                        for ii in self.i:
-                            self.listsp.append(ii)
+                        if i != "prof_ov":
+                            self.i = self.proers.get(i)
+                            for ii in self.i:
+                                self.listsp.append(ii)
                     self.listsp.sort()
                     for i in range(len(self.listsp)):
                         item = QtWidgets.QListWidgetItem()
@@ -815,39 +768,41 @@ class Ui_Form(object):
         self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>")
         self.proers = self.dats
         for ai in self.proers:
-            self.i = self.lispr.get(ai)
-            if ai == self.texts:
-                self.sefi.write("\t<p align=\"left\"><b><br>* {0} </p>".format(str(self.texts)))
-                self.sefi.write("<style>p {line-height: 0.7;}</style>")
-                self.list_keys = list(self.i.keys())
-                self.list_keys.sort()
-                for ip in self.list_keys:
-                    self.priis = self.i.setdefault(ip)
-                    self._soname = str("{0}".format(self.priis['soname']))
-                    self._name = str("{0}".format(self.priis['name']))
-                    self._father = str("{0}".format(self.priis['father']))
-                    self._endstr = str("{0}".format(self.priis['end_dey']))
-                    self._brsd = str("{0}".format(self.priis['birsdey']))
-                    try:
-                        self._vids = str("{0}".format(self.priis['VID']))
+            if ai != "prof_ov":
+                self.i = self.lispr.get(ai)
+                if ai == self.texts:
+                    self.sefi.write("\t<p align=\"left\"><b><br>* {0} </p>".format(str(self.texts)))
+                    self.sefi.write("<style>p {line-height: 0.7;}</style>")
+                    self.list_keys = list(self.i.keys())
+                    self.list_keys.sort()
+                    for ip in self.list_keys:
+                        self.priis = self.i.setdefault(ip)
+                        self._soname = str("{0}".format(self.priis['soname']))
+                        self._name = str("{0}".format(self.priis['name']))
+                        self._father = str("{0}".format(self.priis['father']))
+                        self._endstr = str("{0}".format(self.priis['end_dey']))
+                        self._brsd = str("{0}".format(self.priis['birsdey']))
                         try:
-                            self._vides = "Відділення № " + str(int(self._vids))
+                            self._vids = str("{0}".format(self.priis['VID']))
+                            try:
+                                self._vides = "Відділення № " + str(int(self._vids))
+                            except:
+                                self._vides = self._vids
                         except:
-                            self._vides = self._vids
-                    except:
-                        self._vids = ""
-                    if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                        self.wisitse = "ТИМЧАСОВО ВИБУВ З УСТАНОВИ"
-                    else:
-                        self.wisitse = ""
-                    self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-                    self.sefi.write(
-                        "\t<pre><p align=\"left\">\t- {0} {1} {2} {3} р. н.  {4} {5}</p></pre>".format(
-                            self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
+                            self._vids = ""
+                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self.wisitse = "ТИМЧАСОВО ВИБУВ З УСТАНОВИ"
+                        else:
+                            self.wisitse = ""
+                        self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
+                        self.sefi.write(
+                            "\t<pre><p align=\"left\">\t- {0} {1} {2} {3} р. н.  {4} {5}</p></pre>".format(
+                                self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
 
         for i in self.proers:
-            self.prof_list.append(i)
-            self.prof_list.sort()
+            if i != "prof_ov":
+                self.prof_list.append(i)
+                self.prof_list.sort()
         for i in self.prof_list:
             if self.texts == "Всі підоблікові":
                 self.i = self.proers.get(i)
@@ -885,7 +840,7 @@ class Ui_Form(object):
         self.uiN.handleOpen(self.orient)
         self.uiN.show()
 
-    def Zvit(self):
+    def Zvit(self): # Потрібно виправити по новому відносно "if self.i != "prof_ov":"
         self.orient = 0
         self.numint = 0
         self.oth = 0
@@ -927,83 +882,91 @@ class Ui_Form(object):
             self.proerss = self.datas
             for i in self.proerss:
                 self.i = self.proerss.get(i)
-                for ii in self.i:
-                    self.ablist.append(ii)
+                if self.i != "prof_ov":
+                    for ii in self.i:
+                        self.ablist.append(ii)
             self.all = len(self.ablist)
             self.allss = len(list(set(self.ablist)))
             for i in self.proerss:
                 self.i = self.proerss.get(i)
-                for ip in self.i:
-                    self.priis = self.i.setdefault(ip)
-                    if str("{0}".format(self.priis['profov'])) == "Втеча" \
-                        or str("{0}".format(self.priis['profov'])) == "Напад" \
-                        or str("{0}".format(self.priis['profov'])) == "Вживання наркотичних речовин" \
-                        or str("{0}".format(self.priis['profov'])) == "Дії що дезорганізують роботу установи" \
-                        or str("{0}".format(self.priis['profov'])) == "Виготовлення зброї, вибухових пристроїв" \
-                        or str("{0}".format(
-                        self.priis['profov'])) == "Організація азартних ігор під матеріалну зацікавленість":
-                        self.numint += 1
+                if self.i != "prof_ov":
+                    for ip in self.i:
+                        self.priis = self.i.setdefault(ip)
+                        if str("{0}".format(self.priis['profov'])) == "Втеча" \
+                            or str("{0}".format(self.priis['profov'])) == "Напад" \
+                            or str("{0}".format(self.priis['profov'])) == "Вживання наркотичних речовин" \
+                            or str("{0}".format(self.priis['profov'])) == "Дії що дезорганізують роботу установи" \
+                            or str("{0}".format(self.priis['profov'])) == "Виготовлення зброї, вибухових пристроїв" \
+                            or str("{0}".format(
+                            self.priis['profov'])) == "Організація азартних ігор під матеріалну зацікавленість":
+                            self.numint += 1
             for i in self.proerss:
                 self.i = self.proerss.get(i)
-                for ip in self.i:
-                    self.priis = self.i.setdefault(ip)
-                    self._soname = str("{0}".format(self.priis['soname']))
-                    if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                        self.oth += 1
+                if self.i != "prof_ov":
+                    for ip in self.i:
+                        self.priis = self.i.setdefault(ip)
+                        self._soname = str("{0}".format(self.priis['soname']))
+                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self.oth += 1
             for i in self.proerss:
                 if i == "Авторитет":
                     self.i = self.proerss.get(i)
-                    for ip in self.i:
-                        self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                            self.timuot += 1
-                        else:
-                            self.avtoritet.append(self._soname)
-                    if len(self.i) == 0:
-                        pass
+                    if self.i != "prof_ov":
+                        for ip in self.i:
+                            self.priis = self.i.setdefault(ip)
+                            self._soname = str("{0}".format(self.priis['soname']))
+                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                                self.timuot += 1
+                            else:
+                                self.avtoritet.append(self._soname)
+                        if len(self.i) == 0:
+                            pass
                 if i == "Бандетизм":
                     self.i = self.proerss.get(i)
-                    for ip in self.i:
-                        self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                            self.timuot += 1
-                        else:
-                            self.band.append(self._soname)
-                    if len(self.i) == 0:
-                        pass
+                    if self.i != "prof_ov":
+                        for ip in self.i:
+                            self.priis = self.i.setdefault(ip)
+                            self._soname = str("{0}".format(self.priis['soname']))
+                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                                self.timuot += 1
+                            else:
+                                self.band.append(self._soname)
+                        if len(self.i) == 0:
+                            pass
                 if i == "Вбивство на замовлення":
                     self.i = self.proerss.get(i)
-                    for ip in self.i:
-                        self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                            self.timuot += 1
-                        else:
-                            self.kiler.append(self._soname)
-                    if len(self.i) == 0:
-                        pass
+                    if self.i != "prof_ov":
+                        for ip in self.i:
+                            self.priis = self.i.setdefault(ip)
+                            self._soname = str("{0}".format(self.priis['soname']))
+                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                                self.timuot += 1
+                            else:
+                                self.kiler.append(self._soname)
+                        if len(self.i) == 0:
+                            pass
                 if i == "Службові злочини":
                     self.i = self.proerss.get(i)
-                    for ip in self.i:
-                        self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                            self.timuot += 1
-                        else:
-                            self.slugba.append(self._soname)
-                    if len(self.i) == 0:
-                        pass
+                    if self.i != "prof_ov":
+                        for ip in self.i:
+                            self.priis = self.i.setdefault(ip)
+                            self._soname = str("{0}".format(self.priis['soname']))
+                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                                self.timuot += 1
+                            else:
+                                self.slugba.append(self._soname)
+                        if len(self.i) == 0:
+                            pass
                 if i == "Вступили в незаконні бандитські угрупування":
                     self.i = self.proerss.get(i)
-                    for ip in self.i:
-                        self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                            self.timuot += 1
-                        else:
-                            self.separ.append(self._soname)
+                    if self.i != "prof_ov":
+                        for ip in self.i:
+                            self.priis = self.i.setdefault(ip)
+                            self._soname = str("{0}".format(self.priis['soname']))
+                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                                self.timuot += 1
+                            else:
+                                self.separ.append(self._soname)
                     if len(self.i) == 0:
                         pass
                 if i == "Лідер ОЗГ":

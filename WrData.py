@@ -142,3 +142,9 @@ class Datas:
         self.dbms = self.data
         pickle.dump(self.dbms, self.dbfile)
         self.dbfile.close()
+
+    def Roblik(self, files):# Створення файлу з обліком та читання його та створеня списку обліку
+        with open(files, "rb") as f:
+            self.oblik = pickle.load(f)
+            f.close()
+        return self.oblik
