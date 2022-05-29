@@ -16,11 +16,13 @@ import operator
 import Profs_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
 import WrData
+from FormOBL import Ui_FormO
 from FormNM import Ui_FormN
 from zvits import Window
 
 
 class Ui_Form(object):
+    _translate = QtCore.QCoreApplication.translate
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
         os.mkdir(tempfile.gettempdir() + "/Proftemp")
     pathtemp = tempfile.gettempdir() + "/Proftemp"
@@ -370,7 +372,7 @@ class Ui_Form(object):
         self.pushButton_4.setFont(font)
         self.pushButton_4.setAutoDefault(True)
         self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout.addWidget(self.pushButton_4, 2, 6, 1, 4)
+        self.gridLayout.addWidget(self.pushButton_4, 2, 6, 1, 2)
         self.label_16 = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -437,14 +439,14 @@ class Ui_Form(object):
         self.pushButton_9.setFont(font)
         self.pushButton_9.setAutoDefault(True)
         self.pushButton_9.setObjectName("pushButton_9")
-        self.gridLayout.addWidget(self.label_19, 0, 1, 1, 9)
+        self.gridLayout.addWidget(self.pushButton_9,  4, 8, 1, 2)
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setAutoDefault(True)
         self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout.addWidget(self.pushButton_3, 4, 6, 1, 4)
+        self.gridLayout.addWidget(self.pushButton_3, 2, 8, 1, 2)
         self.pushButton_5 = QtWidgets.QPushButton(Form)
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_5.setAutoDefault(True)
@@ -488,6 +490,8 @@ class Ui_Form(object):
         self.label_26.setObjectName("label_26")
         self.gridLayout.addWidget(self.label_26, 13, 8, 2, 1)
         self.horizontalLayout.addLayout(self.gridLayout)
+        self.timer = QtCore.QTimer(Form)
+        self.timer.timeout.connect(lambda: self.Upcombo())
         self.retranslateUi(Form)
         self.pushButton_4.clicked.connect(self.Loadeds)
         self.pushButton.clicked.connect(self.RewProf)
@@ -497,6 +501,7 @@ class Ui_Form(object):
         self.pushButton_6.clicked.connect(self.Zvit)
         self.pushButton_7.clicked.connect(self.Exitss)
         self.pushButton_8.clicked.connect(self.Pilgi)
+        self.pushButton_9.clicked.connect(self.CreatOBL)
         self.comboBox.activated.connect(self.combo_chosen)
         QtCore.QMetaObject.connectSlotsByName(Form)
         Form.setTabOrder(self.comboBox, self.listWidget)
@@ -510,38 +515,61 @@ class Ui_Form(object):
         Form.setTabOrder(self.pushButton_6, self.pushButton_7)
 
     def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
+        self._translate = QtCore.QCoreApplication.translate
         self.clearform()
-        Form.setWindowTitle(_translate("Form", "База профілактичного обліку "))
-        self.label_4.setText(_translate("Form", "Підстава на облік"))
-        self.pushButton.setText(_translate("Form", "Створити новий"))
-        self.label_3.setText(_translate("Form", "Рік народження"))
-        self.label_2.setText(_translate("Form", "Стаття КК України"))
-        self.label_5.setText(_translate("Form", "Початок строку"))
-        self.label_9.setText(_translate("Form", "Кінець строку"))
+        Form.setWindowTitle(self._translate("Form", "База профілактичного обліку "))
+        self.label_4.setText(self._translate("Form", "Підстава на облік"))
+        self.pushButton.setText(self._translate("Form", "Створити новий"))
+        self.label_3.setText(self._translate("Form", "Рік народження"))
+        self.label_2.setText(self._translate("Form", "Стаття КК України"))
+        self.label_5.setText(self._translate("Form", "Початок строку"))
+        self.label_9.setText(self._translate("Form", "Кінець строку"))
         for i in range(len(self.list_ov)):
-            self.comboBox.setItemText(i, _translate("Form", "{0}".format(self.list_ov[i])))
-        self.label_6.setText(_translate("Form", "ДСР"))
-        self.label_8.setText(_translate("Form", "УДЗ"))
-        self.label_7.setText(_translate("Form", "ЗБМ"))
-        self.pushButton_2.setText(_translate("Form", "Редагувати"))
-        self.pushButton_4.setText(_translate("Form", "Завантажити"))
-        self.label.setText(_translate("Form", "П.І.Б."))
-        self.label_25.setText(_translate("Form", "ФОТО"))
-        self.label_23.setText(_translate("Form", "Відділення"))
-        self.label_19.setText(_translate("Form", "Профілактичний облік"))
-        self.pushButton_3.setText(_translate("Form", "Зберегти як"))
-        self.pushButton_5.setText(_translate("Form", "Список"))
-        self.pushButton_6.setText(_translate("Form", "Звіт"))
-        self.pushButton_7.setText(_translate("Form", "Контроль"))
-        self.pushButton_8.setText(_translate("Form", "Пільги"))
-        self.label_26.setText(_translate("Form", "Тимчасово вибув з кстанови"))
+            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+        self.label_6.setText(self._translate("Form", "ДСР"))
+        self.label_8.setText(self._translate("Form", "УДЗ"))
+        self.label_7.setText(self._translate("Form", "ЗБМ"))
+        self.pushButton_2.setText(self._translate("Form", "Редагувати"))
+        self.pushButton_4.setText(self._translate("Form", "Завантажити"))
+        self.label.setText(self._translate("Form", "П.І.Б."))
+        self.label_25.setText(self._translate("Form", "ФОТО"))
+        self.label_23.setText(self._translate("Form", "Відділення"))
+        self.label_19.setText(self._translate("Form", "Профілактичний облік"))
+        self.pushButton_3.setText(self._translate("Form", "Зберегти як"))
+        self.pushButton_5.setText(self._translate("Form", "Список"))
+        self.pushButton_6.setText(self._translate("Form", "Звіт"))
+        self.pushButton_7.setText(self._translate("Form", "Контроль"))
+        self.pushButton_8.setText(self._translate("Form", "Пільги"))
+        self.pushButton_9.setText(self._translate("Form", "Налаштування"))
+        self.label_26.setText(self._translate("Form", "Тимчасово вибув з кстанови"))
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
         self.label_21.setText("{0}".format(self.files))
         self.clearform()
 
+
+    def CreatOBL(self):
+        self.FormOB = QtWidgets.QWidget()
+        self.uiO = Ui_FormO()
+        self.FormOB.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.uiO.setupUi(self.FormOB)
+        self.FormOB.show()
+        self.timer.start(1000)
+
+    def Upcombo(self):
+        self.comboBox.clear()
+        self.baza = WrData.Datas().Roblik(files=self.files)
+        self.list_ov = self.baza["prof_ov"]
+        for i in range(len(self.list_ov)):
+            self.comboBox.addItem("")
+        for i in range(len(self.list_ov)):
+            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+        self.comboBox.update()
+
+
+
     def Loadeds(self):
+        self.comboBox.clear()
         if sys.platform == 'win32':
             self.loads = os.environ['USERPROFILE']
         if sys.platform == 'linux':
@@ -562,6 +590,12 @@ class Ui_Form(object):
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
         self.label_21.setText("{0}".format(self.files))
+        self.baza = WrData.Datas().Roblik(files=self.files)
+        self.list_ov = self.baza["prof_ov"]
+        for i in range(len(self.list_ov)):
+            self.comboBox.addItem("")
+        for i in range(len(self.list_ov)):
+            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
 
     def SavProfs(self):
         if sys.platform == 'win32':
@@ -583,6 +617,7 @@ class Ui_Form(object):
         self.pushButton_2.setEnabled(False)
 
     def combo_chosen(self):
+        self.timer.stop()
         self.listWidget.itemClicked.connect(self.showItem)
         self.listWidget.itemActivated.connect(self.showItem)
         self.listsp = []
@@ -709,7 +744,7 @@ class Ui_Form(object):
         self.fp.close()
         self.FormNN = QtWidgets.QWidget()
         self.uiN = Ui_FormN()
-        #self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN.setupUi(self.FormNN)
         self.FormNN.show()
         self.listWidget.clear()
@@ -733,7 +768,7 @@ class Ui_Form(object):
                             _ZBM=self._zbm, _UDZ=self._udz, _end_dey=self._endstr, _VID=self._vids, _PHOT=self.filez,
                             _OUTS=self._out)
         self.FormNN = QtWidgets.QWidget()
-        #self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN = Ui_FormN()
         self.uiN.setupUi(self.FormNN)
         self.uiN.Deletes()

@@ -7,7 +7,6 @@ import tempfile
 import pickle
 from WrData import Datas
 import Profs_rc
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -179,7 +178,7 @@ class Ui_FormO(object):
         self.pushButton_2.clicked.connect(self.pushButton_2.click) # type: ignore
         self.pushButton_3.clicked.connect(self.pushButton_3.click) # type: ignore
         self.pushButton_4.clicked.connect(lambda: self.Close(FormO))
-        self.pushButton.clicked.connect(self.CreateOB)
+        self.pushButton.clicked.connect(lambda: self.CreateOB())
         QtCore.QMetaObject.connectSlotsByName(FormO)
         FormO.setTabOrder(self.lineEdit, self.pushButton)
         FormO.setTabOrder(self.pushButton, self.comboBox)
@@ -214,14 +213,6 @@ class Ui_FormO(object):
             with open(self.files, "wb") as f:
                 pickle.dump(self.dbs, f)
                 f.close()
+        self.lineEdit.clear()
 
 
-
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    FormO = QtWidgets.QWidget()
-    ui = Ui_FormO()
-    ui.setupUi(FormO)
-    FormO.show()
-    sys.exit(app.exec_())
