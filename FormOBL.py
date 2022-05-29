@@ -145,20 +145,6 @@ class Ui_FormO(object):
         self.line_11.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_11.setObjectName("line_11")
         self.gridLayout_10.addWidget(self.line_11, 1, 0, 1, 4)
-        self.pushButton_3 = QtWidgets.QPushButton(FormO)
-        self.pushButton_3.setEnabled(False)
-        font = QtGui.QFont()
-        font.setFamily("Times New Roman")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_3.setAutoDefault(False)
-        self.pushButton_3.setDefault(False)
-        self.pushButton_3.setFlat(False)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout_10.addWidget(self.pushButton_3, 10, 1, 1, 2)
         self.line_12 = QtWidgets.QFrame(FormO)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
@@ -181,8 +167,7 @@ class Ui_FormO(object):
         self.verticalLayout.addLayout(self.gridLayout_10)
 
         self.retranslateUi(FormO)
-        self.pushButton_2.clicked.connect(self.DelO) # type: ignore
-        self.pushButton_3.clicked.connect(self.pushButton_3.click) # type: ignore
+        self.pushButton_2.clicked.connect(self.DelO)
         self.pushButton_4.clicked.connect(lambda: self.Close(FormO))
         self.pushButton.clicked.connect(lambda: self.CreateOB())
         self.comboBox.activated.connect(self.combo_chosen)
@@ -190,8 +175,7 @@ class Ui_FormO(object):
         FormO.setTabOrder(self.lineEdit, self.pushButton)
         FormO.setTabOrder(self.pushButton, self.comboBox)
         FormO.setTabOrder(self.comboBox, self.pushButton_2)
-        FormO.setTabOrder(self.pushButton_2, self.pushButton_3)
-        FormO.setTabOrder(self.pushButton_3, self.pushButton_4)
+        FormO.setTabOrder(self.pushButton_2, self.pushButton_4)
 
     def retranslateUi(self, FormO):
         self._translate = QtCore.QCoreApplication.translate
@@ -204,7 +188,6 @@ class Ui_FormO(object):
         self.label_title.setText(self._translate("FormO", "ПРОФІЛЬ"))
         self.label_2.setText(self._translate("FormO", "Перегляд "))
         self.pushButton.setText(self._translate("FormO", "ДОДАТИ"))
-        self.pushButton_3.setText(self._translate("FormO", "Зберегти"))
 
     def Close(self, forms):
         forms.close()
