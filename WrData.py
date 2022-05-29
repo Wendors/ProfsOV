@@ -148,5 +148,6 @@ class Datas:
             self.oblik = pickle.load(f)
             f.close()
         return self.oblik
+
     def Creatobl(self, files):
         pass

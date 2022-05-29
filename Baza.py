@@ -31,6 +31,8 @@ class Ui_Form(object):
             f.close()
         if not os.path.exists(self.files):
             self.f = open(self.files, "wb")
+            self.dics = {"prof_ov": ["Всі підоблікові"]}
+            pickle.dump(self.dics,self.f)
             self.f.close()
         self.baza = WrData.Datas().Roblik(files=self.files)
         self.list_ov = self.baza["prof_ov"]
@@ -429,6 +431,13 @@ class Ui_Form(object):
         self.label_19.setWordWrap(True)
         self.label_19.setObjectName("label_19")
         self.gridLayout.addWidget(self.label_19, 0, 1, 1, 9)
+        self.pushButton_9 = QtWidgets.QPushButton(Form)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButton_9.setFont(font)
+        self.pushButton_9.setAutoDefault(True)
+        self.pushButton_9.setObjectName("pushButton_9")
+        self.gridLayout.addWidget(self.label_19, 0, 1, 1, 9)
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -700,7 +709,7 @@ class Ui_Form(object):
         self.fp.close()
         self.FormNN = QtWidgets.QWidget()
         self.uiN = Ui_FormN()
-        self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
+        #self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN.setupUi(self.FormNN)
         self.FormNN.show()
         self.listWidget.clear()
@@ -724,7 +733,7 @@ class Ui_Form(object):
                             _ZBM=self._zbm, _UDZ=self._udz, _end_dey=self._endstr, _VID=self._vids, _PHOT=self.filez,
                             _OUTS=self._out)
         self.FormNN = QtWidgets.QWidget()
-        self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
+        #self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN = Ui_FormN()
         self.uiN.setupUi(self.FormNN)
         self.uiN.Deletes()

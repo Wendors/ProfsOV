@@ -5,13 +5,18 @@ import sys
 import os
 import tempfile
 import pickle
+from WrData import Datas
 import Profs_rc
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_FormO(object):
+    pathtemp = tempfile.gettempdir() + "/Proftemp"
     def setupUi(self, FormO):
+        with open(self.pathtemp + "/Profs.dbsp", "r")as f:
+            self.files = f.read()
+            f.close()
         FormO.setObjectName("FormO")
         FormO.setFixedSize(554, 196)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
@@ -173,8 +178,8 @@ class Ui_FormO(object):
         self.retranslateUi(FormO)
         self.pushButton_2.clicked.connect(self.pushButton_2.click) # type: ignore
         self.pushButton_3.clicked.connect(self.pushButton_3.click) # type: ignore
-        self.pushButton_4.clicked.connect(self.pushButton_4.click) # type: ignore
-        self.pushButton.clicked.connect(self.pushButton.click) # type: ignore
+        self.pushButton_4.clicked.connect(lambda: self.Close(FormO))
+        self.pushButton.clicked.connect(self.CreateOB)
         QtCore.QMetaObject.connectSlotsByName(FormO)
         FormO.setTabOrder(self.lineEdit, self.pushButton)
         FormO.setTabOrder(self.pushButton, self.comboBox)
@@ -184,7 +189,7 @@ class Ui_FormO(object):
 
     def retranslateUi(self, FormO):
         _translate = QtCore.QCoreApplication.translate
-        FormO.setWindowTitle(_translate("FormO", "Редактор профелю"))
+        FormO.setWindowTitle(_translate("FormO", "Створення бази обліку"))
         self.pushButton_2.setText(_translate("FormO", "Видалити"))
         self.pushButton_4.setText(_translate("FormO", "Закрити"))
         self.comboBox.setItemText(0, _translate("FormO", "Бандитизм"))
@@ -193,6 +198,23 @@ class Ui_FormO(object):
         self.label_2.setText(_translate("FormO", "Перегляд "))
         self.pushButton.setText(_translate("FormO", "ДОДАТИ"))
         self.pushButton_3.setText(_translate("FormO", "Зберегти"))
+
+    def Close(self, forms):
+        forms.close()
+
+    def CreateOB(self):
+        self.prf = self.lineEdit.text()
+        if self.prf != "" or self.prf != " ":
+            with open(self.files, "rb") as f:
+                self.dbs = pickle.load(f)
+                f.close()
+            self.list_ov = self.dbs["prof_ov"]
+            self.list_ov.append(self.prf)
+            self.dbs["prof_ov"] = self.list_ov
+            with open(self.files, "wb") as f:
+                pickle.dump(self.dbs, f)
+                f.close()
+
 
 
 

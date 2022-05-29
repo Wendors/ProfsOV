@@ -9,6 +9,7 @@ import pickle
 from datetime import datetime
 import Profs_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
+from FormOBL import Ui_FormO
 
 class Ui_FormN(object):
     pathtemp = tempfile.gettempdir() + "/Proftemp"

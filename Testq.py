@@ -1,11 +1,9 @@
-from docx import Document
-from docx.shared import Mm
+import os
+import pickle
+path = "/home/wandors/Профоблік.dbs"
+db ={}
 
-class Test():
-    def Word(self):
-        self.documents = Document()
-        self.documents.add_heading("Goods", 5)
-        self.documents.add_paragraph("Hello world!!!")
-        self.documents.save("demo.docx")
+with open(path, "rb") as f:
+    text = pickle.load(f)
+    f.close()
 
-Test().Word()
