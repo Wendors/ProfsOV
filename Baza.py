@@ -490,8 +490,6 @@ class Ui_Form(object):
         self.label_26.setObjectName("label_26")
         self.gridLayout.addWidget(self.label_26, 13, 8, 2, 1)
         self.horizontalLayout.addLayout(self.gridLayout)
-        self.timer = QtCore.QTimer(Form)
-        self.timer.timeout.connect(lambda: self.Upcombo())
         self.retranslateUi(Form)
         self.pushButton_4.clicked.connect(self.Loadeds)
         self.pushButton.clicked.connect(self.RewProf)
@@ -548,15 +546,15 @@ class Ui_Form(object):
         self.clearform()
 
 
-    def CreatOBL(self):
-        self.comboBox.clear()
+    def CreatOBL(self): #Подумати як онвити бызу автоматичною в self.combobox
         self.listWidget.clear()
         self.FormOB = QtWidgets.QWidget()
         self.uiO = Ui_FormO()
         self.FormOB.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiO.setupUi(self.FormOB)
         self.FormOB.show()
-        self.timer.start(6000)
+        self.Upcombo()
+        self.comboBox.update()
 
     def Upcombo(self):
         self.comboBox.clear()
@@ -619,7 +617,6 @@ class Ui_Form(object):
         self.pushButton_2.setEnabled(False)
 
     def combo_chosen(self):
-        self.timer.stop()
         self.listWidget.itemClicked.connect(self.showItem)
         self.listWidget.itemActivated.connect(self.showItem)
         self.listsp = []
