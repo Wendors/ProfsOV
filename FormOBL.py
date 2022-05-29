@@ -7,15 +7,20 @@ import tempfile
 import pickle
 from WrData import Datas
 import Profs_rc
+import WrData
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_FormO(object):
     pathtemp = tempfile.gettempdir() + "/Proftemp"
+    _translate = QtCore.QCoreApplication.translate
     def setupUi(self, FormO):
         with open(self.pathtemp + "/Profs.dbsp", "r")as f:
             self.files = f.read()
             f.close()
+        self.baza = self.LoadsDB()
+        self.list_ov = self.baza["prof_ov"]
+        del self.list_ov[0]
         FormO.setObjectName("FormO")
         FormO.setFixedSize(554, 196)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
@@ -65,7 +70,8 @@ class Ui_FormO(object):
         self.gridLayout_10.addWidget(self.pushButton_4, 10, 3, 1, 1)
         self.comboBox = QtWidgets.QComboBox(FormO)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
+        for i in range(len(self.list_ov)):
+            self.comboBox.addItem("")
         self.gridLayout_10.addWidget(self.comboBox, 8, 1, 1, 3)
         self.label_Image = QtWidgets.QLabel(FormO)
         self.label_Image.setStyleSheet("")
@@ -175,10 +181,11 @@ class Ui_FormO(object):
         self.verticalLayout.addLayout(self.gridLayout_10)
 
         self.retranslateUi(FormO)
-        self.pushButton_2.clicked.connect(self.pushButton_2.click) # type: ignore
+        self.pushButton_2.clicked.connect(self.DelO) # type: ignore
         self.pushButton_3.clicked.connect(self.pushButton_3.click) # type: ignore
         self.pushButton_4.clicked.connect(lambda: self.Close(FormO))
         self.pushButton.clicked.connect(lambda: self.CreateOB())
+        self.comboBox.activated.connect(self.combo_chosen)
         QtCore.QMetaObject.connectSlotsByName(FormO)
         FormO.setTabOrder(self.lineEdit, self.pushButton)
         FormO.setTabOrder(self.pushButton, self.comboBox)
@@ -187,16 +194,17 @@ class Ui_FormO(object):
         FormO.setTabOrder(self.pushButton_3, self.pushButton_4)
 
     def retranslateUi(self, FormO):
-        _translate = QtCore.QCoreApplication.translate
-        FormO.setWindowTitle(_translate("FormO", "Створення бази обліку"))
-        self.pushButton_2.setText(_translate("FormO", "Видалити"))
-        self.pushButton_4.setText(_translate("FormO", "Закрити"))
-        self.comboBox.setItemText(0, _translate("FormO", "Бандитизм"))
-        self.label_1.setText(_translate("FormO", "Облік"))
-        self.label_title.setText(_translate("FormO", "ПРОФІЛЬ"))
-        self.label_2.setText(_translate("FormO", "Перегляд "))
-        self.pushButton.setText(_translate("FormO", "ДОДАТИ"))
-        self.pushButton_3.setText(_translate("FormO", "Зберегти"))
+        self._translate = QtCore.QCoreApplication.translate
+        FormO.setWindowTitle(self._translate("FormO", "Створення бази обліку"))
+        self.pushButton_2.setText(self._translate("FormO", "Видалити"))
+        self.pushButton_4.setText(self._translate("FormO", "Закрити"))
+        for i in range(len(self.list_ov)):
+            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+        self.label_1.setText(self._translate("FormO", "Облік"))
+        self.label_title.setText(self._translate("FormO", "ПРОФІЛЬ"))
+        self.label_2.setText(self._translate("FormO", "Перегляд "))
+        self.pushButton.setText(self._translate("FormO", "ДОДАТИ"))
+        self.pushButton_3.setText(self._translate("FormO", "Зберегти"))
 
     def Close(self, forms):
         forms.close()
@@ -214,5 +222,39 @@ class Ui_FormO(object):
                 pickle.dump(self.dbs, f)
                 f.close()
         self.lineEdit.clear()
+        self.Upcombo()
+
+    def LoadsDB(self):
+        with open(self.files, "rb") as f:
+            self.dbs = pickle.load(f)
+            f.close()
+        return self.dbs
+
+    def Writedb(self, db):
+        with open(self.files, "wb") as f:
+            pickle.dump(db, f)
+            f.close()
 
 
+    def combo_chosen(self):
+        self.texts = self.comboBox.currentText()
+        self.pushButton_2.setEnabled(True)
+
+    def DelO(self):
+        self.baza = self.LoadsDB()
+        self.list_ov = self.baza["prof_ov"]
+        self.list_ov.remove(self.texts)
+        self.baza["prof_ov"] = self.list_ov
+        self.Writedb(db=self.baza)
+        self.Upcombo()
+
+    def Upcombo(self):
+        self.comboBox.clear()
+        self.baza = WrData.Datas().Roblik(files=self.files)
+        self.list_ov = self.baza["prof_ov"]
+        del self.list_ov[0]
+        for i in range(len(self.list_ov)):
+            self.comboBox.addItem("")
+        for i in range(len(self.list_ov)):
+            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+        self.comboBox.update()
