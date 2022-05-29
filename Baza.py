@@ -549,12 +549,14 @@ class Ui_Form(object):
 
 
     def CreatOBL(self):
+        self.comboBox.clear()
+        self.listWidget.clear()
         self.FormOB = QtWidgets.QWidget()
         self.uiO = Ui_FormO()
         self.FormOB.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiO.setupUi(self.FormOB)
         self.FormOB.show()
-        self.timer.start(1000)
+        self.timer.start(6000)
 
     def Upcombo(self):
         self.comboBox.clear()
