@@ -491,7 +491,7 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_26, 13, 8, 2, 1)
         self.horizontalLayout.addLayout(self.gridLayout)
         self.timers = QtCore.QTimer(Form)
-        self.timers.timeout.connect(self.Upcombo())
+        self.timers.timeout.connect(self.Uplodfi)
         self.retranslateUi(Form)
         self.pushButton_4.clicked.connect(self.Loadeds)
         self.pushButton.clicked.connect(self.RewProf)
@@ -548,7 +548,7 @@ class Ui_Form(object):
         self.clearform()
 
 
-    def CreatOBL(self): #Подумати як онвити бызу автоматичною в self.combobox
+    def CreatOBL(self):
         self.listWidget.clear()
         self.FormOB = QtWidgets.QWidget()
         self.uiO = Ui_FormO()
@@ -556,6 +556,14 @@ class Ui_Form(object):
         self.uiO.setupUi(self.FormOB)
         self.FormOB.show()
         self.comboBox.update()
+        open(self.pathtemp + "/1","wb").close()
+        self.timers.start(1000)
+
+    def Uplodfi(self):
+        if os.path.exists(self.pathtemp + "/1") == True:
+            self.Upcombo()
+        else:
+            self.timers.stop()
 
     def Upcombo(self):
         self.comboBox.clear()
@@ -566,15 +574,6 @@ class Ui_Form(object):
         for i in range(len(self.list_ov)):
             self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
         self.comboBox.update()
-
-    def Uplodfi(self):
-        if not self.pathtemp + "/1":
-            with open(self.pathtemp + "/1", "wb") as f:
-                f.close()
-        else:
-            self.Upcombo()
-
-
 
     def Loadeds(self):
         self.comboBox.clear()

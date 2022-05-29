@@ -191,6 +191,7 @@ class Ui_FormO(object):
 
     def Close(self, forms):
         forms.close()
+        os.remove(self.pathtemp + "/1")
 
     def CreateOB(self):
         self.prf = self.lineEdit.text()
