@@ -547,7 +547,6 @@ class Ui_Form(object):
         self.label_21.setText("{0}".format(self.files))
         self.clearform()
 
-
     def CreatOBL(self):
         self.listWidget.clear()
         self.FormOB = QtWidgets.QWidget()
