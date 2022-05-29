@@ -490,6 +490,8 @@ class Ui_Form(object):
         self.label_26.setObjectName("label_26")
         self.gridLayout.addWidget(self.label_26, 13, 8, 2, 1)
         self.horizontalLayout.addLayout(self.gridLayout)
+        self.timers = QtCore.QTimer(Form)
+        self.timers.timeout.connect(self.Upcombo())
         self.retranslateUi(Form)
         self.pushButton_4.clicked.connect(self.Loadeds)
         self.pushButton.clicked.connect(self.RewProf)
@@ -553,7 +555,6 @@ class Ui_Form(object):
         self.FormOB.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiO.setupUi(self.FormOB)
         self.FormOB.show()
-        self.Upcombo()
         self.comboBox.update()
 
     def Upcombo(self):
@@ -565,6 +566,13 @@ class Ui_Form(object):
         for i in range(len(self.list_ov)):
             self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
         self.comboBox.update()
+
+    def Uplodfi(self):
+        if not self.pathtemp + "/1":
+            with open(self.pathtemp + "/1", "wb") as f:
+                f.close()
+        else:
+            self.Upcombo()
 
 
 
