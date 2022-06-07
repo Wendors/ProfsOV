@@ -639,7 +639,7 @@ class Ui_Form(object):
             self.lispr = self.dats
             self.pushButton_2.setEnabled(False)
             self.pushButton_5.setEnabled(True)
-            #self.pushButton_6.setEnabled(True)
+            self.pushButton_6.setEnabled(True)
             self.pushButton_8.setEnabled(True)
             self.pushButton_7.setEnabled(True)
             try:
@@ -904,7 +904,6 @@ class Ui_Form(object):
         self.avtoritet = []
         self.narcdil = []
         self.teror = []
-        self.zaruch = []
         self.zlod = []
         self.vlada = []
         self.mzavor = []
@@ -929,6 +928,7 @@ class Ui_Form(object):
             self.datas = pickle.load(self.opfils)
             self.opfils.close()
             self.proerss = self.datas
+            del self.proerss['prof_ov']
             for i in self.proerss:
                 self.i = self.proerss.get(i)
                 if self.i != "prof_ov":
@@ -1062,17 +1062,6 @@ class Ui_Form(object):
                             self.teror.append(self._soname)
                     if len(self.i) == 0:
                         pass
-                if i == "Захоплення заручників":
-                    self.i = self.proerss.get(i)
-                    for ip in self.i:
-                        self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
-                            self.timuot += 1
-                        else:
-                            self.zaruch.append(self._soname)
-                    if len(self.i) == 0:
-                        pass
                 if i == "Зловживання владою або службовим становищем":
                     self.i = self.proerss.get(i)
                     for ip in self.i:
@@ -1117,7 +1106,7 @@ class Ui_Form(object):
                             self.kosht.append(self._soname)
                     if len(self.i) == 0:
                         pass
-                if i == "Резонанс в ЗМІ":
+                if i == "Широкий резонанс":
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
@@ -1172,7 +1161,6 @@ class Ui_Form(object):
             self.narc = len(self.narcdil)
             self.slu = len(self.slugba)
             self.ter = len(self.teror)
-            self.zar = len(self.zaruch)
             self.vlad = len(self.vlada)
             self.zlo = len(self.zlod)
             self.mzav = len(self.mzavor)
@@ -1182,7 +1170,7 @@ class Ui_Form(object):
             self.pod = len(self.podat)
             self.vin = len(self.viag)
             self.OSK = (self.avt + self.ban + self.kil + self.sep + self.lid + self.prot +
-                        self.narc + self.ter + self.zar + self.vlad + self.zlo + self.mzav +
+                        self.narc + self.ter + self.vlad + self.zlo + self.mzav +
                         self.kosh + self.zmii + self.war + self.pod + self.vin + self.slu)
             self.sefi.write("<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
             self.sefi.write("\t<h1 align=\"center\">Звіт ствном на {0}р. </h1>".format(time.strftime("%d.%m.%Y")))
@@ -1250,6 +1238,7 @@ class Ui_Form(object):
         self.ff.close()
         self.dats = WrData.Datas().reddata(files=self.files)
         self.lispr = self.dats
+        del self.lispr['prof_ov']
         for ai in self.lispr:
             self.i = self.lispr.get(ai)
             for ip in self.i:
@@ -1355,7 +1344,7 @@ class Ui_Form(object):
         self.listprof = {"Злодіїв в законі": "п. 1 <З>",
                          "Авторитет": "п. 1 <А>",
                          "Лідер ОЗГ": "п. 1  <Л>",
-                         "Резонанс в ЗМІ": "п. 2",
+                         "Широкий резонанс": "п. 2",
                          "Проти основ національної безпеки": "п. 3",
                          "Вбивство на замовлення": "п. 4",
                          "Бандитизм": "п. 5",
@@ -1372,7 +1361,7 @@ class Ui_Form(object):
                          "У сфері державної таємниці": "п. 16",
                          "Розв'язування війни": "п. 17",
                          "Злочинний вплив": "п. 18",
-                         "Напад":"п.19",
+                         "Напад, захоплення заручників":"п.19",
                          "Дії що дезорганізують роботу установи": "п. 18",
                          "Вживання наркотичних речовин": "п. 21",
                          "Телефонні шахраї": "п.22"}
@@ -1421,7 +1410,7 @@ class Ui_Form(object):
             self.proerss = self.datas
             self.plist = []
             for i in self.listprof:
-                if i == "Напад":
+                if i == "Напад, захоплення заручників":
                     pass
                 else:
                     for ip in self.proerss:
