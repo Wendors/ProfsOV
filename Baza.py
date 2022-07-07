@@ -1250,6 +1250,7 @@ class Ui_Form(object):
         self.ff.close()
         self.dats = WrData.Datas().reddata(files=self.files)
         self.lispr = self.dats
+        del self.lispr["prof_ov"]
         for ai in self.lispr:
             self.i = self.lispr.get(ai)
             for ip in self.i:
