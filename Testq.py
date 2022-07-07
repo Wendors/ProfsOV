@@ -1,6 +1,6 @@
 from docx import Document
 from docx.shared import Inches
-
+#Створити вордовський файл для завантаженя контролю Який збережиний шаблон docx в ресурсі программи
 document = Document(docx="E://default.docx")
 
 document.add_heading('Document Title', 0)
