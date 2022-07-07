@@ -1250,6 +1250,7 @@ class Ui_Form(object):
         self.ff.close()
         self.dats = WrData.Datas().reddata(files=self.files)
         self.lispr = self.dats
+        del self.lispr["prof_ov"]
         for ai in self.lispr:
             self.i = self.lispr.get(ai)
             for ip in self.i:
@@ -1404,7 +1405,7 @@ class Ui_Form(object):
                         "<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
                         "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
                         "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'><b>Нначальник установи\nпідполковник внутрішньої служби\t\t\t  Віталій ХИРЛЮК</b></font></pre></p>"
+                        "<p align=\"left\"><pre><font face='Times New Roman'><b>В. о. начальника установи\nпідполковник внутрішньої служби\t\t\tРуслан БОГДАШЕНКО</b></font></pre></p>"
                         "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 10pt;}</style>"
                         "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
         self.sefi.write("<br><br><br><br><br><br><br><br><br><br>")
