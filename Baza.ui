@@ -33,6 +33,8 @@
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -45,6 +47,8 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -81,6 +85,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -94,6 +100,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -107,6 +115,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -120,6 +130,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -133,6 +145,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -145,6 +159,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -163,6 +179,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShape">
@@ -213,6 +231,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="editable">
@@ -366,6 +386,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -569,6 +591,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -633,6 +657,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -652,6 +678,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -688,6 +716,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -700,6 +730,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -718,6 +750,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -736,6 +770,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -754,6 +790,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -766,6 +804,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -784,6 +824,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShadow">
@@ -802,6 +844,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -838,6 +882,8 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <family>Book Antiqua</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShape">
@@ -889,6 +935,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
          <underline>true</underline>
         </font>
        </property>
@@ -927,6 +975,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>35</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -945,6 +995,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -1002,6 +1054,8 @@ background-color: rgb(255, 255, 255);</string>
        <property name="font">
         <font>
          <pointsize>15</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="frameShape">

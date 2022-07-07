@@ -1,17 +1,43 @@
-import subprocess
-import time
-# Создаем запрос в командной строке netsh wlan show profiles, декодируя его по кодировке в самом ядре
-data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('cp866').split('\n')
-# Создаем список всех названий всех профилей сети (имена сетей)
-Wi_Fis = [line.split(':')[1][1:-1] for line in data if "Все профили пользователей" in line]
-# Для каждого имени...
-for Wi__Fi in Wi_Fis:
-    # ...вводим запрос netsh wlan show profile [ИМЯ_Сети] key=clear
-    results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', Wi__Fi, 'key=clear']).decode('cp866').split('\n')
-    # Забираем ключ
-    results = [line.split(':')[1][1:-1] for line in results if "Содержимое ключа" in line]
-    # Пытаемся его вывести в командной строке, отсекая все ошибки
-    try:
-        print(f'Имя сети: {Wi__Fi}, Пароль: {results[0]}')
-    except IndexError:
-        print(f'Имя сети: {Wi__Fi}, Пароль не найден!')
+from docx import Document
+from docx.shared import Inches
+
+document = Document(docx="E://default.docx")
+
+document.add_heading('Document Title', 0)
+
+p = document.add_paragraph('A plain paragraph having some ')
+p.add_run('bold').bold = True
+p.add_run(' and some ')
+p.add_run('italic.').italic = True
+
+document.add_heading('Heading, level 1', level=1)
+document.add_paragraph('Intense quote', style='Intense Quote')
+
+document.add_paragraph(
+    'first item in unordered list', style='List Bullet'
+)
+document.add_paragraph(
+    'first item in ordered list', style='List Number'
+)
+
+
+records = (
+    (3, '101', 'Spam'),
+    (7, '422', 'Eggs'),
+    (4, '631', 'Spam, spam, eggs, and spam')
+)
+
+table = document.add_table(rows=1, cols=3)
+hdr_cells = table.rows[0].cells
+hdr_cells[0].text = 'Qty'
+hdr_cells[1].text = 'Id'
+hdr_cells[2].text = 'Desc'
+for qty, id, desc in records:
+    row_cells = table.add_row().cells
+    row_cells[0].text = str(qty)
+    row_cells[1].text = id
+    row_cells[2].text = desc
+
+document.add_page_break()
+
+document.save('demo.docx')
