@@ -123,8 +123,5 @@ class Docxs():
         self.rauts.add_break(break_type=WD_BREAK.LINE)
         self.rauts.add_text("тел. 09837334329")
 
-
-
-
         self.document.save('demo.docx')
 Docxs()
