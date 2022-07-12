@@ -2,7 +2,7 @@ from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_BREAK, WD_LINE_SPACING
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt,Inches
-import tempfile
+import tempfile, os
 #Створити вордовський файл для завантаженя контролю Який збережиний шаблон docx в ресурсі программи
 class Docxs():
     gnam = "/gerb.png"
@@ -124,6 +124,7 @@ class Docxs():
         self.rauts.add_text("Сергій ПОЛУНЕЦЬ")
         self.rauts.add_break(break_type=WD_BREAK.LINE)
         self.rauts.add_text("тел. 09837334329")
-
         self.document.save('demo.docx')
+
+        os.startfile('demo.docx')
 Docxs()
