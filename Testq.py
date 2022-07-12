@@ -26,7 +26,8 @@ class Docxs():
         self.run2.bold = True
         self.run2.add_break(break_type=WD_BREAK.LINE)
         self.run3 = self.p2.add_run()
-        self.run3.add_text(' с. Іванчі Вараського району Рівненської  області, 34375тел. 2-53-24; 5-31-49,тел./факс 5-35-46')
+        self.run3.add_text(' с. Іванчі Вараського району Рівненської  області, 34375тел. 2-53-24; 5-31-49,'
+                           'тел./факс 5-35-46')
         self.run3.font.name = 'Times New Roman'
         self.run3.add_break(break_type=WD_BREAK.LINE)
         self.run3.add_text('E-mail: pvk76@ukr.net Код ЄДРПОЧ 08564370')
@@ -50,7 +51,8 @@ class Docxs():
         self.rpa1 = self.pa1.add_run()
         self.rpa1.font.size = Pt(14)
         self.rpa1.bold = True
-        self.rpa1.add_text("Начальнику Західного міжрегіонального управління з питань виконання кримінальних покарань Міністерства юстиції  ")
+        self.rpa1.add_text("Начальнику Західного міжрегіонального управління з"
+                           " питань виконання кримінальних покарань Міністерства юстиції")
         self.rpa1.add_break(break_type=WD_BREAK.LINE)
         self.rpa1.add_text("полковнику внутрішньої служби")
         self.rpa1.add_break(break_type=WD_BREAK.LINE)
@@ -66,7 +68,7 @@ class Docxs():
         self.pa2.paragraph_format.space_after = Cm(0.5)
         self.psh = self.document.add_paragraph()
         self.rsh = self.psh.add_run()
-        self.rsh.add_text('Шановний  Ярославе Володимировичу')
+        self.rsh.add_text('Шановний  Ярославе Володимировичу!')
         self.rsh.font.name = 'Times New Roman'
         self.rsh.font.size = Pt(14)
         self.rsh.bold = True
