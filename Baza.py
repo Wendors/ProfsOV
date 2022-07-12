@@ -1390,7 +1390,7 @@ class Ui_Form(object):
                         "<p align=\"left\"><pre><font face='Times New Roman'>___________№___________ \t\tНа №5к/вих.//7709 вiд 25.10.2021р\n</font></pre></p>"
                         "<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 2em; margin-buttom: 2em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
                         "<p align=\"justify\"><pre><font face='Times New Roman'><b>\t\t\t\t\tНачальнику Західного\n\t\t\t\t\tміжрегіонального управління з\n\t\t\t\t\tпитань виконання "
-                        "кримінальних\n\t\t\t\t\tпокарань Міністерства юстиції\n\t\t\t\t\tпідполковнику внутрішньої служби\n\t\t\t\t\tЯрославу БОЙКУ</b></font></pre></p><br><style>"
+                        "кримінальних\n\t\t\t\t\tпокарань Міністерства юстиції\n\t\t\t\t\tполковнику внутрішньої служби\n\t\t\t\t\tЯрославу БОЙКУ</b></font></pre></p><br><style>"
                         "p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
                         "<p align=\"center\"><pre><font face='Times New Roman'><b>Шановний Ярославе Володимировичу!</b></font></pre></p><style> "
                         "p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
