@@ -21,7 +21,6 @@ from FormOBL import Ui_FormO
 from FormNM import Ui_FormN
 from zvits import Window
 
-
 class Ui_Form(object):
     _translate = QtCore.QCoreApplication.translate
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
