@@ -12,13 +12,8 @@ import sys
 import tempfile
 import time
 import zlib
-import stat
 import operator
 from Datas import Dat
-from docx import Document
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT, WD_BREAK, WD_LINE_SPACING
-from docx.oxml.ns import qn
-from docx.shared import Cm, Pt,Inches
 import Profs_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
 import WrData
