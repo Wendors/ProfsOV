@@ -195,7 +195,7 @@ class Window(QtWidgets.QWidget):
                 doc.print_(printer)
     def Wordtext(self):
         self.gnam = "/gerb.png"
-        self.word = "/default.docx"
+        self.word = "/.default.docx"
         self.images = QtGui.QImage(":gerb/Gerb.png")
         self.images.save(self.pathtemp + self.gnam)
         QtCore.QFile.copy(":/Docx/default.docx",self.pathtemp + self.word)
