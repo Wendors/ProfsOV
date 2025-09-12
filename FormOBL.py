@@ -9,7 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import Profs_rc
+
 
 class Ui_FormO(object):
     def setupUi(self, FormO):
@@ -22,7 +24,9 @@ class Ui_FormO(object):
         font.setWeight(75)
         FormO.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off
+        )
         FormO.setWindowIcon(icon)
         FormO.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(FormO)
@@ -78,7 +82,9 @@ class Ui_FormO(object):
         self.label_1.setObjectName("label_1")
         self.gridLayout_10.addWidget(self.label_1, 2, 0, 1, 1)
         self.label_title = QtWidgets.QLabel(FormO)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_title.sizePolicy().hasHeightForWidth())
@@ -106,7 +112,9 @@ class Ui_FormO(object):
         self.pushButton.setObjectName("pushButton")
         self.gridLayout_10.addWidget(self.pushButton, 2, 3, 1, 1)
         self.lineEdit = QtWidgets.QLineEdit(FormO)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
@@ -168,10 +176,10 @@ class Ui_FormO(object):
         self.verticalLayout.addLayout(self.gridLayout_10)
 
         self.retranslateUi(FormO)
-        self.pushButton_2.clicked.connect(self.pushButton_2.click) # type: ignore
-        self.pushButton_3.clicked.connect(self.pushButton_3.click) # type: ignore
-        self.pushButton_4.clicked.connect(self.pushButton_4.click) # type: ignore
-        self.pushButton.clicked.connect(self.pushButton.click) # type: ignore
+        self.pushButton_2.clicked.connect(self.pushButton_2.click)  # type: ignore
+        self.pushButton_3.clicked.connect(self.pushButton_3.click)  # type: ignore
+        self.pushButton_4.clicked.connect(self.pushButton_4.click)  # type: ignore
+        self.pushButton.clicked.connect(self.pushButton.click)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(FormO)
         FormO.setTabOrder(self.lineEdit, self.pushButton)
         FormO.setTabOrder(self.pushButton, self.comboBox)
@@ -190,6 +198,3 @@ class Ui_FormO(object):
         self.label_2.setText(_translate("FormO", "Перегляд "))
         self.pushButton.setText(_translate("FormO", "ДОДАТИ"))
         self.pushButton_3.setText(_translate("FormO", "Зберегти"))
-
-
-
