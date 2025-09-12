@@ -5,6 +5,7 @@ __versions__ = "v.4.0.2(beta)"
 
 import argparse
 import datetime
+import operator
 import os
 import pickle
 import shutil
@@ -12,20 +13,23 @@ import sys
 import tempfile
 import time
 import zlib
-import operator
-from Datas import Dat
-import Profs_rc
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import Profs_rc
 import WrData
-from FormOBL import Ui_FormO
+from Datas import Dat
 from FormNM import Ui_FormN
+from FormOBL import Ui_FormO
 from zvits import Window
+
 
 class Ui_Form(object):
     _translate = QtCore.QCoreApplication.translate
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
         os.mkdir(tempfile.gettempdir() + "/Proftemp")
     pathtemp = tempfile.gettempdir() + "/Proftemp"
+
     def setupUi(self, Form, path):
         self.files = path
         with open(self.pathtemp + "/Profs.dbsp", "w") as f:
@@ -34,22 +38,26 @@ class Ui_Form(object):
         if not os.path.exists(self.files):
             self.f = open(self.files, "wb")
             self.dics = {"prof_ov": ["Всі підоблікові"]}
-            pickle.dump(self.dics,self.f)
+            pickle.dump(self.dics, self.f)
             self.f.close()
         self.baza = WrData.Datas().Roblik(files=self.files)
         self.list_ov = self.baza["prof_ov"]
         Form.setObjectName("Form")
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
         Form.setFixedSize(1120, 650)
-        Form.move(int((self.resolution.width() / 2) - (Form.frameSize().width() / 2)),
-                  int((self.resolution.height() / 2) - (Form.frameSize().height() / 2)))
+        Form.move(
+            int((self.resolution.width() / 2) - (Form.frameSize().width() / 2)),
+            int((self.resolution.height() / 2) - (Form.frameSize().height() / 2)),
+        )
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         Form.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off
+        )
         Form.setWindowIcon(icon)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Form)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -133,7 +141,9 @@ class Ui_Form(object):
         self.label_20.setText("")
         self.label_20.setPixmap(QtGui.QPixmap(":/image/Books.png"))
         self.label_20.setScaledContents(False)
-        self.label_20.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_20.setAlignment(
+            QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter
+        )
         self.label_20.setObjectName("label_20")
         self.gridLayout.addWidget(self.label_20, 0, 0, 1, 1)
         self.label_18 = QtWidgets.QLabel(Form)
@@ -439,7 +449,7 @@ class Ui_Form(object):
         self.pushButton_9.setFont(font)
         self.pushButton_9.setAutoDefault(True)
         self.pushButton_9.setObjectName("pushButton_9")
-        self.gridLayout.addWidget(self.pushButton_9,  4, 8, 1, 2)
+        self.gridLayout.addWidget(self.pushButton_9, 4, 8, 1, 2)
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -517,7 +527,11 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         self._translate = QtCore.QCoreApplication.translate
         self.clearform()
-        Form.setWindowTitle(self._translate("Form", "База профілактичного обліку {0}".format(__versions__)))
+        Form.setWindowTitle(
+            self._translate(
+                "Form", "База профілактичного обліку {0}".format(__versions__)
+            )
+        )
         self.label_4.setText(self._translate("Form", "Підстава на облік"))
         self.pushButton.setText(self._translate("Form", "Створити новий"))
         self.label_3.setText(self._translate("Form", "Рік народження"))
@@ -525,7 +539,9 @@ class Ui_Form(object):
         self.label_5.setText(self._translate("Form", "Початок строку"))
         self.label_9.setText(self._translate("Form", "Кінець строку"))
         for i in range(len(self.list_ov)):
-            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+            self.comboBox.setItemText(
+                i, self._translate("Form", "{0}".format(self.list_ov[i]))
+            )
         self.label_6.setText(self._translate("Form", "ДСР"))
         self.label_8.setText(self._translate("Form", "УДЗ"))
         self.label_7.setText(self._translate("Form", "ЗБМ"))
@@ -543,7 +559,9 @@ class Ui_Form(object):
         self.pushButton_9.setText(self._translate("Form", "Налаштування"))
         self.label_26.setText(self._translate("Form", "Тимчасово вибув з кстанови"))
         if len(self.files) > 45:
-            self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
+            self.files = "{0}...{1}".format(
+                self.files[:25], self.files[len(self.files) - 20 :]
+            )
         self.label_21.setText("{0}".format(self.files))
         self.clearform()
 
@@ -555,7 +573,7 @@ class Ui_Form(object):
         self.uiO.setupUi(self.FormOB)
         self.FormOB.show()
         self.comboBox.update()
-        open(self.pathtemp + "/1","wb").close()
+        open(self.pathtemp + "/1", "wb").close()
         self.timers.start(1000)
 
     def Uplodfi(self):
@@ -571,16 +589,20 @@ class Ui_Form(object):
         for i in range(len(self.list_ov)):
             self.comboBox.addItem("")
         for i in range(len(self.list_ov)):
-            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+            self.comboBox.setItemText(
+                i, self._translate("Form", "{0}".format(self.list_ov[i]))
+            )
         self.comboBox.update()
 
     def Loadeds(self):
         self.comboBox.clear()
-        if sys.platform == 'win32':
-            self.loads = os.environ['USERPROFILE']
-        if sys.platform == 'linux':
-            self.loads = os.environ['HOME']
-        self.files = QtWidgets.QFileDialog.getOpenFileName(Form, "Завантажити базу ...", self.loads, "dbs (*dbs)")
+        if sys.platform == "win32":
+            self.loads = os.environ["USERPROFILE"]
+        if sys.platform == "linux":
+            self.loads = os.environ["HOME"]
+        self.files = QtWidgets.QFileDialog.getOpenFileName(
+            Form, "Завантажити базу ...", self.loads, "dbs (*dbs)"
+        )
         self.files = self.files[0]
         if self.files == "":
             self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
@@ -594,21 +616,27 @@ class Ui_Form(object):
             self.clearform()
         self.pushButton_2.setEnabled(False)
         if len(self.files) > 45:
-            self.files = "{0}...{1}".format(self.files[:25], self.files[len(self.files) - 20:])
+            self.files = "{0}...{1}".format(
+                self.files[:25], self.files[len(self.files) - 20 :]
+            )
         self.label_21.setText("{0}".format(self.files))
         self.baza = WrData.Datas().Roblik(files=self.files)
         self.list_ov = self.baza["prof_ov"]
         for i in range(len(self.list_ov)):
             self.comboBox.addItem("")
         for i in range(len(self.list_ov)):
-            self.comboBox.setItemText(i, self._translate("Form", "{0}".format(self.list_ov[i])))
+            self.comboBox.setItemText(
+                i, self._translate("Form", "{0}".format(self.list_ov[i]))
+            )
 
     def SavProfs(self):
-        if sys.platform == 'win32':
-            self.sevs = os.environ['USERPROFILE']
-        if sys.platform == 'linux':
-            self.sevs = os.environ['HOME']
-        self.files = QtWidgets.QFileDialog.getSaveFileName(Form, "Зберегти дані", self.sevs, "dbs files (*.dbs)")
+        if sys.platform == "win32":
+            self.sevs = os.environ["USERPROFILE"]
+        if sys.platform == "linux":
+            self.sevs = os.environ["HOME"]
+        self.files = QtWidgets.QFileDialog.getSaveFileName(
+            Form, "Зберегти дані", self.sevs, "dbs files (*.dbs)"
+        )
 
         self.files = self.files[0]
         if self.files == "":
@@ -690,44 +718,46 @@ class Ui_Form(object):
         self.item = item.text()
         self.itemin = self.item.find(" ")
         if self.xPro == True:
-            self.item = self.item[self.itemin + 1:]
+            self.item = self.item[self.itemin + 1 :]
             for ai in self.lispr:
                 self.i = self.lispr.get(ai)
                 for ip in self.i:
                     if ip == self.item:
                         self.priis = self.i.setdefault(ip)
         if self.xPro == False:
-            self.item = self.item[0:self.itemin]
+            self.item = self.item[0 : self.itemin]
             self.priis = self.xlis[int(self.item) - 1][1]
-            self.textsp = str("{0}".format(self.priis['profov']))
-        self._soname = str("{0}".format(self.priis['soname']))
-        self._name = str("{0}".format(self.priis['name']))
-        self._father = str("{0}".format(self.priis['father']))
-        self._brsd = str("{0}".format(self.priis['birsdey']))
+            self.textsp = str("{0}".format(self.priis["profov"]))
+        self._soname = str("{0}".format(self.priis["soname"]))
+        self._name = str("{0}".format(self.priis["name"]))
+        self._father = str("{0}".format(self.priis["father"]))
+        self._brsd = str("{0}".format(self.priis["birsdey"]))
         self._profer = str(self.textsp)
-        self._sttu = str("{0}".format(self.priis['stt']))
-        self._begistr = str("{0}".format(self.priis['begin_dey']))
-        self._dsr = str("{0}".format(self.priis['DSR']))
-        self._zbm = str("{0}".format(self.priis['ZBM']))
-        self._udz = str("{0}".format(self.priis['UDZ']))
-        self._endstr = str("{0}".format(self.priis['end_dey']))
+        self._sttu = str("{0}".format(self.priis["stt"]))
+        self._begistr = str("{0}".format(self.priis["begin_dey"]))
+        self._dsr = str("{0}".format(self.priis["DSR"]))
+        self._zbm = str("{0}".format(self.priis["ZBM"]))
+        self._udz = str("{0}".format(self.priis["UDZ"]))
+        self._endstr = str("{0}".format(self.priis["end_dey"]))
         try:
-            self._outs = str("{0}".format(self.priis['OUTS']))
+            self._outs = str("{0}".format(self.priis["OUTS"]))
             if self._outs == "present":
                 self.label_26.setText("")
             else:
                 self.label_26.setText("Тимчасово вибув з установи")
         except:
             self.label_26.setText("")
-        self._vids = str("{0}".format(self.priis['VID']))
+        self._vids = str("{0}".format(self.priis["VID"]))
         self.label_24.setText(self._vids)
-        self.photozl = self.priis['PHOT']
+        self.photozl = self.priis["PHOT"]
         self._photof = zlib.decompress(self.photozl)
         self.df = open(self.pathtemp + "/_zpn.png", "wb")
         self.df.write(self._photof)
         self.df.close()
         self.fpho = self.pathtemp + "/_zpn.png"
-        self.label_10.setText("{0} {1} {2}".format(self._soname, self._name, self._father))
+        self.label_10.setText(
+            "{0} {1} {2}".format(self._soname, self._name, self._father)
+        )
         self.pushButton_2.setEnabled(True)
         self.label_11.setText(self._brsd)
         self.label_12.setText(self._profer)
@@ -768,10 +798,22 @@ class Ui_Form(object):
             self._out = "withdrawn"
         else:
             self._out = "present"
-        self.WrData.Editers(_soname=self._soname, _name=self._name, _father=self._father, _birsdey=self._brsd,
-                            _profov=self._profer, _stt=self._sttu, _begin_dey=self._begistr, _DSR=self._dsr,
-                            _ZBM=self._zbm, _UDZ=self._udz, _end_dey=self._endstr, _VID=self._vids, _PHOT=self.filez,
-                            _OUTS=self._out)
+        self.WrData.Editers(
+            _soname=self._soname,
+            _name=self._name,
+            _father=self._father,
+            _birsdey=self._brsd,
+            _profov=self._profer,
+            _stt=self._sttu,
+            _begin_dey=self._begistr,
+            _DSR=self._dsr,
+            _ZBM=self._zbm,
+            _UDZ=self._udz,
+            _end_dey=self._endstr,
+            _VID=self._vids,
+            _PHOT=self.filez,
+            _OUTS=self._out,
+        )
         self.FormNN = QtWidgets.QWidget()
         self.FormNN.setWindowModality(QtCore.Qt.ApplicationModal)
         self.uiN = Ui_FormN()
@@ -804,50 +846,67 @@ class Ui_Form(object):
         self.wor = 1
         self.temfil = self.pathtemp + "/_temp.html"
         self.prof_list = []
-        self.sefi = open(self.temfil, 'w')
+        self.sefi = open(self.temfil, "w")
         self.sefi.write("<!DOCTYPE html>")
-        self.sefi.write("<html lang=\"en\">")
+        self.sefi.write('<html lang="en">')
         self.sefi.write("<head>")
-        self.sefi.write("\t<meta charset=\"windows-1251\">")
+        self.sefi.write('\t<meta charset="windows-1251">')
         self.sefi.write("</head>")
         self.sefi.write("<body>")
-        self.sefi.write("<style> h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
         self.sefi.write(
-            "\t<h1 align=\"center\"><b>Список підоблікових осіб станом {0}р.<b> </h1>".format(
-                time.strftime("%d.%m.%Y")))
-        self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>")
+            "<style> h1{line-height: 0.7; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
+        )
+        self.sefi.write(
+            '\t<h1 align="center"><b>Список підоблікових осіб станом {0}р.<b> </h1>'.format(
+                time.strftime("%d.%m.%Y")
+            )
+        )
+        self.sefi.write(
+            "<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>"
+        )
         self.proers = self.dats
         for ai in self.proers:
             if ai != "prof_ov":
                 self.i = self.lispr.get(ai)
                 if ai == self.texts:
-                    self.sefi.write("\t<p align=\"left\"><b><br>* {0} </p>".format(str(self.texts)))
+                    self.sefi.write(
+                        '\t<p align="left"><b><br>* {0} </p>'.format(str(self.texts))
+                    )
                     self.sefi.write("<style>p {line-height: 0.7;}</style>")
                     self.list_keys = list(self.i.keys())
                     self.list_keys.sort()
                     for ip in self.list_keys:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        self._name = str("{0}".format(self.priis['name']))
-                        self._father = str("{0}".format(self.priis['father']))
-                        self._endstr = str("{0}".format(self.priis['end_dey']))
-                        self._brsd = str("{0}".format(self.priis['birsdey']))
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        self._name = str("{0}".format(self.priis["name"]))
+                        self._father = str("{0}".format(self.priis["father"]))
+                        self._endstr = str("{0}".format(self.priis["end_dey"]))
+                        self._brsd = str("{0}".format(self.priis["birsdey"]))
                         try:
-                            self._vids = str("{0}".format(self.priis['VID']))
+                            self._vids = str("{0}".format(self.priis["VID"]))
                             try:
                                 self._vides = "Відділення № " + str(int(self._vids))
                             except:
                                 self._vides = self._vids
                         except:
                             self._vids = ""
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.wisitse = "ТИМЧАСОВО ВИБУВ З УСТАНОВИ"
                         else:
                             self.wisitse = ""
-                        self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</style>")
                         self.sefi.write(
-                            "\t<pre><p align=\"left\">\t- {0} {1} {2} {3} р. н.  {4} {5}</p></pre>".format(
-                                self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
+                            "<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                        )
+                        self.sefi.write(
+                            '\t<pre><p align="left">\t- {0} {1} {2} {3} р. н.  {4} {5}</p></pre>'.format(
+                                self._soname,
+                                self._name,
+                                self._father,
+                                self._brsd,
+                                self._vides,
+                                self.wisitse,
+                            )
+                        )
 
         for i in self.proers:
             if i != "prof_ov":
@@ -857,33 +916,44 @@ class Ui_Form(object):
             if self.texts == "Всі підоблікові":
                 self.i = self.proers.get(i)
                 if self.i.__len__() > 0:
-                    self.sefi.write("<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>")
-                    self.sefi.write("\t<p align=\"left\"><b><br>* {0}</b> </p>".format(str(i)))
+                    self.sefi.write(
+                        "<style>p {line-height: 0.7;  font-family: 'Times New Roman'; font-size: 15pt;}</b></style>"
+                    )
+                    self.sefi.write(
+                        '\t<p align="left"><b><br>* {0}</b> </p>'.format(str(i))
+                    )
                 self.list_keys = list(self.i.keys())
                 self.list_keys.sort()
                 for ia in self.list_keys:
                     self.priis = self.i.setdefault(ia)
-                    self._soname = str("{0}".format(self.priis['soname']))
-                    self._name = str("{0}".format(self.priis['name']))
-                    self._father = str("{0}".format(self.priis['father']))
-                    self._endstr = str("{0}".format(self.priis['end_dey']))
-                    self._brsd = str("{0}".format(self.priis['birsdey']))
+                    self._soname = str("{0}".format(self.priis["soname"]))
+                    self._name = str("{0}".format(self.priis["name"]))
+                    self._father = str("{0}".format(self.priis["father"]))
+                    self._endstr = str("{0}".format(self.priis["end_dey"]))
+                    self._brsd = str("{0}".format(self.priis["birsdey"]))
                     try:
-                        self._vids = str("{0}".format(self.priis['VID']))
+                        self._vids = str("{0}".format(self.priis["VID"]))
                         try:
                             self._vides = "Відділення № " + str(int(self._vids))
                         except:
                             self._vides = self._vids
                     except:
                         self._vids = ""
-                    if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                    if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                         self.wisitse = "ТИМЧАСОВО ВИБУВ З УСТАНОВИ"
                     else:
                         self.wisitse = ""
 
                     self.sefi.write(
-                        "\t<pre><p align=\"left\">\t- {0} {1} {2} {3} р. н.  {4} <font color=\"red\"><b>{5}</b></font></p></pre>".format(
-                            self._soname, self._name, self._father, self._brsd, self._vides, self.wisitse))
+                        '\t<pre><p align="left">\t- {0} {1} {2} {3} р. н.  {4} <font color="red"><b>{5}</b></font></p></pre>'.format(
+                            self._soname,
+                            self._name,
+                            self._father,
+                            self._brsd,
+                            self._vides,
+                            self.wisitse,
+                        )
+                    )
         self.sefi.write("<br>")
         self.sefi.close()
         self.uiN = Window("Список підоблікових")
@@ -916,11 +986,11 @@ class Ui_Form(object):
         self.podat = []
         self.viag = []
         self.temfil = self.pathtemp + "/_temp.html"
-        self.sefi = open(self.temfil, 'w')
+        self.sefi = open(self.temfil, "w")
         self.sefi.write("<!DOCTYPE html>")
-        self.sefi.write("<html lang=\"en\">")
+        self.sefi.write('<html lang="en">')
         self.sefi.write("<head>")
-        self.sefi.write("\t<meta charset=\"windows-1251\">")
+        self.sefi.write('\t<meta charset="windows-1251">')
         self.sefi.write("</head>")
         self.sefi.write("<body>")
         self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
@@ -943,21 +1013,26 @@ class Ui_Form(object):
                 if self.i != "prof_ov":
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        if str("{0}".format(self.priis['profov'])) == "Втеча" \
-                            or str("{0}".format(self.priis['profov'])) == "Напад" \
-                            or str("{0}".format(self.priis['profov'])) == "Вживання наркотичних речовин" \
-                            or str("{0}".format(self.priis['profov'])) == "Дії що дезорганізують роботу установи" \
-                            or str("{0}".format(self.priis['profov'])) == "Виготовлення зброї, вибухових пристроїв" \
-                            or str("{0}".format(
-                            self.priis['profov'])) == "Організація азартних ігор під матеріалну зацікавленість":
+                        if (
+                            str("{0}".format(self.priis["profov"])) == "Втеча"
+                            or str("{0}".format(self.priis["profov"])) == "Напад"
+                            or str("{0}".format(self.priis["profov"]))
+                            == "Вживання наркотичних речовин"
+                            or str("{0}".format(self.priis["profov"]))
+                            == "Дії що дезорганізують роботу установи"
+                            or str("{0}".format(self.priis["profov"]))
+                            == "Виготовлення зброї, вибухових пристроїв"
+                            or str("{0}".format(self.priis["profov"]))
+                            == "Організація азартних ігор під матеріалну зацікавленість"
+                        ):
                             self.numint += 1
             for i in self.proerss:
                 self.i = self.proerss.get(i)
                 if self.i != "prof_ov":
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.oth += 1
             for i in self.proerss:
                 if i == "Авторитет":
@@ -965,8 +1040,8 @@ class Ui_Form(object):
                     if self.i != "prof_ov":
                         for ip in self.i:
                             self.priis = self.i.setdefault(ip)
-                            self._soname = str("{0}".format(self.priis['soname']))
-                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self._soname = str("{0}".format(self.priis["soname"]))
+                            if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                                 self.timuot += 1
                             else:
                                 self.avtoritet.append(self._soname)
@@ -977,8 +1052,8 @@ class Ui_Form(object):
                     if self.i != "prof_ov":
                         for ip in self.i:
                             self.priis = self.i.setdefault(ip)
-                            self._soname = str("{0}".format(self.priis['soname']))
-                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self._soname = str("{0}".format(self.priis["soname"]))
+                            if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                                 self.timuot += 1
                             else:
                                 self.band.append(self._soname)
@@ -989,8 +1064,8 @@ class Ui_Form(object):
                     if self.i != "prof_ov":
                         for ip in self.i:
                             self.priis = self.i.setdefault(ip)
-                            self._soname = str("{0}".format(self.priis['soname']))
-                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self._soname = str("{0}".format(self.priis["soname"]))
+                            if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                                 self.timuot += 1
                             else:
                                 self.kiler.append(self._soname)
@@ -1001,8 +1076,8 @@ class Ui_Form(object):
                     if self.i != "prof_ov":
                         for ip in self.i:
                             self.priis = self.i.setdefault(ip)
-                            self._soname = str("{0}".format(self.priis['soname']))
-                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self._soname = str("{0}".format(self.priis["soname"]))
+                            if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                                 self.timuot += 1
                             else:
                                 self.slugba.append(self._soname)
@@ -1013,8 +1088,8 @@ class Ui_Form(object):
                     if self.i != "prof_ov":
                         for ip in self.i:
                             self.priis = self.i.setdefault(ip)
-                            self._soname = str("{0}".format(self.priis['soname']))
-                            if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                            self._soname = str("{0}".format(self.priis["soname"]))
+                            if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                                 self.timuot += 1
                             else:
                                 self.separ.append(self._soname)
@@ -1024,8 +1099,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.lider.append(self._soname)
@@ -1035,8 +1110,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.protiv.append(self._soname)
@@ -1046,8 +1121,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.narcdil.append(self._soname)
@@ -1057,8 +1132,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.teror.append(self._soname)
@@ -1068,8 +1143,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.zaruch.append(self._soname)
@@ -1079,8 +1154,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.vlada.append(self._soname)
@@ -1090,8 +1165,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.zlod.append(self._soname)
@@ -1101,8 +1176,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.mzavor.append(self._soname)
@@ -1112,8 +1187,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.kosht.append(self._soname)
@@ -1123,8 +1198,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.zmi.append(self._soname)
@@ -1134,8 +1209,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.wars.append(self._soname)
@@ -1145,8 +1220,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.podat.append(self._soname)
@@ -1156,8 +1231,8 @@ class Ui_Form(object):
                     self.i = self.proerss.get(i)
                     for ip in self.i:
                         self.priis = self.i.setdefault(ip)
-                        self._soname = str("{0}".format(self.priis['soname']))
-                        if str("{0}".format(self.priis['OUTS'])) == "withdrawn":
+                        self._soname = str("{0}".format(self.priis["soname"]))
+                        if str("{0}".format(self.priis["OUTS"])) == "withdrawn":
                             self.timuot += 1
                         else:
                             self.viag.append(self._soname)
@@ -1183,24 +1258,69 @@ class Ui_Form(object):
             self.war = len(self.wars)
             self.pod = len(self.podat)
             self.vin = len(self.viag)
-            self.OSK = (self.avt + self.ban + self.kil + self.sep + self.lid + self.prot +
-                        self.narc + self.ter + self.zar + self.vlad + self.zlo + self.mzav +
-                        self.kosh + self.zmii + self.war + self.pod + self.vin + self.slu)
-            self.sefi.write("<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
-            self.sefi.write("\t<h1 align=\"center\">Звіт ствном на {0}р. </h1>".format(time.strftime("%d.%m.%Y")))
-            self.sefi.write("<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-            self.sefi.write("\t<p align=\"left\">* Всіх на обліку: {0} </p>".format(str(self.allss - self.oth)))
-            self.sefi.write("<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-            self.sefi.write("\t<p align=\"left\">* На обліку ОСК: {0} </p>".format(str(self.OSK)))
-            self.sefi.write("<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-            self.sefi.write("\t<p align=\"left\">* Інші підоблікові: {0}</p>".format(((self.allss - self.oth) - self.OSK)))
+            self.OSK = (
+                self.avt
+                + self.ban
+                + self.kil
+                + self.sep
+                + self.lid
+                + self.prot
+                + self.narc
+                + self.ter
+                + self.zar
+                + self.vlad
+                + self.zlo
+                + self.mzav
+                + self.kosh
+                + self.zmii
+                + self.war
+                + self.pod
+                + self.vin
+                + self.slu
+            )
+            self.sefi.write(
+                "<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
+            )
+            self.sefi.write(
+                '\t<h1 align="center">Звіт ствном на {0}р. </h1>'.format(
+                    time.strftime("%d.%m.%Y")
+                )
+            )
+            self.sefi.write(
+                "<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+            )
+            self.sefi.write(
+                '\t<p align="left">* Всіх на обліку: {0} </p>'.format(
+                    str(self.allss - self.oth)
+                )
+            )
+            self.sefi.write(
+                "<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+            )
+            self.sefi.write(
+                '\t<p align="left">* На обліку ОСК: {0} </p>'.format(str(self.OSK))
+            )
+            self.sefi.write(
+                "<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+            )
+            self.sefi.write(
+                '\t<p align="left">* Інші підоблікові: {0}</p>'.format(
+                    ((self.allss - self.oth) - self.OSK)
+                )
+            )
             self.sefi.close()
             self.uiN = Window("Звіт по підобліовим")
             self.uiN.handleOpen(self.orient)
             self.uiN.show()
         except:
-            self.sefi.write("<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
-            self.sefi.write("\t<h1 align=\"center\">Звіт ствном на {0}р.</h1>".format(time.strftime("%d.%m.%Y")))
+            self.sefi.write(
+                "<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
+            )
+            self.sefi.write(
+                '\t<h1 align="center">Звіт ствном на {0}р.</h1>'.format(
+                    time.strftime("%d.%m.%Y")
+                )
+            )
             self.sefi.close()
             self.uiN = Window("Звіт по підобліовим")
             self.uiN.handleOpen(self.orient, self.wor)
@@ -1210,44 +1330,61 @@ class Ui_Form(object):
         self.orient = 0
         self.wor = 1
         self.temfil = self.pathtemp + "/_temp.html"
-        self.sefi = open(self.temfil, 'w')
+        self.sefi = open(self.temfil, "w")
         self.sefi.write("<!DOCTYPE html>")
-        self.sefi.write("<html lang=\"en\">")
+        self.sefi.write('<html lang="en">')
         self.sefi.write("<head>")
-        self.sefi.write("\t<meta charset=\"windows-1251\">")
+        self.sefi.write('\t<meta charset="windows-1251">')
         self.sefi.write("</head>")
         self.sefi.write("<body>")
-        self.monslist = ["січень", "лютий", "березень", "квітень",
-                         "травень", "червень", "липень", "серпень",
-                         "вересень", "жовтень", "листопад", "грудень"]
-        self.chemon = int(time.strftime('%m')) % 2
+        self.monslist = [
+            "січень",
+            "лютий",
+            "березень",
+            "квітень",
+            "травень",
+            "червень",
+            "липень",
+            "серпень",
+            "вересень",
+            "жовтень",
+            "листопад",
+            "грудень",
+        ]
+        self.chemon = int(time.strftime("%m")) % 2
         if self.chemon == 0:
             self.inmon = 31
-            if int(time.strftime('%m')) > 9:
+            if int(time.strftime("%m")) > 9:
                 self.inmon = 30
         else:
             self.inmon = 30
-            if int(time.strftime('%m')) == 1:
+            if int(time.strftime("%m")) == 1:
                 self.inmon = 28
-            if int(time.strftime('%m')) == 7:
+            if int(time.strftime("%m")) == 7:
                 self.inmon = 31
-        if 12 == int(time.strftime('%m')):
-            self.neztm = int(time.strftime('%m')) + 1
+        if 12 == int(time.strftime("%m")):
+            self.neztm = int(time.strftime("%m")) + 1
             if self.neztm == 13:
                 self.neztm = 1
                 self.mone = self.monslist[self.neztm - 1]
-                self.years = int(time.strftime('%Y'))
+                self.years = int(time.strftime("%Y"))
             for self.i in range(0, len(self.monslist)):
                 if self.i + 1 == int(time.strftime("%m")):
                     self.mun = self.monslist[self.i]
         else:
-            self.mone = int(time.strftime('%m')) + 1
-            self.years = int(time.strftime('%Y'))
+            self.mone = int(time.strftime("%m")) + 1
+            self.years = int(time.strftime("%Y"))
             for self.i in range(0, len(self.monslist)):
                 if self.i + 1 == int(time.strftime("%m")):
                     self.mun = self.monslist[self.i]
-        self.sefi.write("<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>")
-        self.sefi.write("\t<h1 align=\"center\"> Матеріали на {0} {1}p. </h1>".format(self.mun,str(self.years)))
+        self.sefi.write(
+            "<style>h1{line-height: 0.5; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
+        )
+        self.sefi.write(
+            '\t<h1 align="center"> Матеріали на {0} {1}p. </h1>'.format(
+                self.mun, str(self.years)
+            )
+        )
         self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
         self.files = self.ff.read()
         self.ff.close()
@@ -1258,62 +1395,91 @@ class Ui_Form(object):
             self.i = self.lispr.get(ai)
             for ip in self.i:
                 self.priis = self.i.setdefault(ip)
-                self._dsr = str("{0}".format(self.priis['DSR']))
+                self._dsr = str("{0}".format(self.priis["DSR"]))
                 if self._dsr == "":
                     self._dsr = "03.01.2016"
-                self._zbm = str("{0}".format(self.priis['ZBM']))
+                self._zbm = str("{0}".format(self.priis["ZBM"]))
                 if self._zbm == "":
                     self._zbm = "01.01.2017"
-                self._udz = str("{0}".format(self.priis['UDZ']))
+                self._udz = str("{0}".format(self.priis["UDZ"]))
                 if self._udz == "":
                     self._udz = "01.01.2017"
-                self.tdsr = datetime.datetime(int(self._dsr[6:]), int(self._dsr[3:5]), int(self._dsr[:2]), 0, 0)
+                self.tdsr = datetime.datetime(
+                    int(self._dsr[6:]), int(self._dsr[3:5]), int(self._dsr[:2]), 0, 0
+                )
                 self.timuot_dsr = time.mktime(self.tdsr.timetuple())
-                self.tzbm = datetime.datetime(int(self._zbm[6:]), int(self._zbm[3:5]), int(self._zbm[:2]), 0, 0)
+                self.tzbm = datetime.datetime(
+                    int(self._zbm[6:]), int(self._zbm[3:5]), int(self._zbm[:2]), 0, 0
+                )
                 self.timuot_zbm = time.mktime(self.tzbm.timetuple())
-                self.tudz = datetime.datetime(int(self._udz[6:]), int(self._udz[3:5]), int(self._udz[:2]), 0, 0)
+                self.tudz = datetime.datetime(
+                    int(self._udz[6:]), int(self._udz[3:5]), int(self._udz[:2]), 0, 0
+                )
                 self.timuot_udz = time.mktime(self.tudz.timetuple())
-                if 12 == int(time.strftime('%m')):
-                    self.neztm = int(time.strftime('%m')) + 1
+                if 12 == int(time.strftime("%m")):
+                    self.neztm = int(time.strftime("%m")) + 1
                     if self.neztm == 13:
                         self.neztm = 1
-                        self.years = int(time.strftime('%Y')) + 1
+                        self.years = int(time.strftime("%Y")) + 1
                         self.dt = datetime.datetime(self.years, self.neztm, 1, 0, 0)
                         self.seconds = self.dt.timestamp()
-                        self.dt = datetime.datetime(self.years, self.neztm, self.inmon, 0, 0)
+                        self.dt = datetime.datetime(
+                            self.years, self.neztm, self.inmon, 0, 0
+                        )
                         self.seconds_next = self.dt.timestamp()
-                elif 8 == int(time.strftime('%m')):
+                elif 8 == int(time.strftime("%m")):
                     self.neztm = 9
                     self.inmon = 30
                     self.dt = datetime.datetime(self.years, self.neztm, 1, 0, 0)
                     self.seconds = self.dt.timestamp()
-                    self.dt = datetime.datetime(self.years, self.neztm, self.inmon, 0, 0)
+                    self.dt = datetime.datetime(
+                        self.years, self.neztm, self.inmon, 0, 0
+                    )
                     self.seconds_next = self.dt.timestamp()
                 else:
-                    self.dt = datetime.datetime(int(time.strftime('%Y')), int(time.strftime('%m')) + 1, 1, 0, 0)
+                    self.dt = datetime.datetime(
+                        int(time.strftime("%Y")), int(time.strftime("%m")) + 1, 1, 0, 0
+                    )
                     self.seconds = self.dt.timestamp()
-                    self.years = int(time.strftime('%Y'))
-                    self.neztm = int(time.strftime('%m')) + 1
-                    self.dt = datetime.datetime(self.years, self.neztm, self.inmon, 0, 0)
+                    self.years = int(time.strftime("%Y"))
+                    self.neztm = int(time.strftime("%m")) + 1
+                    self.dt = datetime.datetime(
+                        self.years, self.neztm, self.inmon, 0, 0
+                    )
                     self.seconds_next = self.dt.timestamp()
-                self._soname = str("{0}".format(self.priis['soname']))
-                self._name = str("{0}".format(self.priis['name']))
-                self._father = str("{0}".format(self.priis['father']))
+                self._soname = str("{0}".format(self.priis["soname"]))
+                self._name = str("{0}".format(self.priis["name"]))
+                self._father = str("{0}".format(self.priis["father"]))
                 if self.seconds <= self.timuot_dsr <= self.seconds_next:
-                    self.run_0 = "<b>-</b><b> ДСР</b> {3} {0} {1} {2}\n".format(self._soname, self._name, self._father,
-                                                                                self._dsr)
-                    self.sefi.write("<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-                    self.sefi.write("\t<p align=\"left\"> {0} </p>".format(str(self.run_0)))
+                    self.run_0 = "<b>-</b><b> ДСР</b> {3} {0} {1} {2}\n".format(
+                        self._soname, self._name, self._father, self._dsr
+                    )
+                    self.sefi.write(
+                        "<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                    )
+                    self.sefi.write(
+                        '\t<p align="left"> {0} </p>'.format(str(self.run_0))
+                    )
                 if self.seconds <= self.timuot_zbm <= self.seconds_next:
-                    self.run_1 = "<b>-</b><b> ЗБМ</b> {3} {0} {1} {2}\n".format(self._soname, self._name, self._father,
-                                                                                self._zbm)
-                    self.sefi.write("<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-                    self.sefi.write("\t<p align=\"left\"> {0} </p>".format(str(self.run_1)))
+                    self.run_1 = "<b>-</b><b> ЗБМ</b> {3} {0} {1} {2}\n".format(
+                        self._soname, self._name, self._father, self._zbm
+                    )
+                    self.sefi.write(
+                        "<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                    )
+                    self.sefi.write(
+                        '\t<p align="left"> {0} </p>'.format(str(self.run_1))
+                    )
                 if self.seconds <= self.timuot_udz <= self.seconds_next:
-                    self.run_2 = "<b>-</b><b> УДЗ</b> {3} {0} {1} {2}\n".format(self._soname, self._name, self._father,
-                                                                                self._udz)
-                    self.sefi.write("<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>")
-                    self.sefi.write("\t<p align=\"left\"> {0} </p>".format(str(self.run_2)))
+                    self.run_2 = "<b>-</b><b> УДЗ</b> {3} {0} {1} {2}\n".format(
+                        self._soname, self._name, self._father, self._udz
+                    )
+                    self.sefi.write(
+                        "<style>p{line-height: 0.5; font-family: 'Times New Roman'; font-size: 14pt;}</style>"
+                    )
+                    self.sefi.write(
+                        '\t<p align="left"> {0} </p>'.format(str(self.run_2))
+                    )
         self.sefi.close()
         self.uiN = Window("Пільги по підобліовим")
         self.uiN.handleOpen(self.orient, self.wor)
@@ -1327,41 +1493,57 @@ class Ui_Form(object):
         self.wor = 0
         self.mun, self.years = Dat().Daetes()
         self.temfil = self.pathtemp + "/_temp.html"
-        self.sefi = open(self.temfil, 'w')
+        self.sefi = open(self.temfil, "w")
         self.listprof = Dat().Spis_profs()
-        self.sefi.write("<p style=\"text-align: center; cursor: pointer;\"><img src=\"{0}\" width=\"55.35\" height=\"74.25\"></p>".format(self.pathtemp + self.gnam))
-        self.sefi.write("<style> p{line-height: 0.5; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 20pt;}</style>"
-                        "<p align=\"center\"><b>МІНІСТЕРСТВО ЮСТИЦІЇ УКРАЇНИ</b></font></p>"
-                        "<style> p{line-height: 0.5; adding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
-                        "<p align=\"center\"><b>ДЕРЖАВНА УСТАНОВА «ПОЛИЦЬКА ВИПРАВНА КОЛОНІЯ  (№76)»</b></p>"
-                        "<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 14pt;}</style><p align=\"center\">"
-                        "<pre><font face='Times New Roman'>с.Іванчі Вараського району Рiвненської області, 34375 тел.5-31-49,тел./факс 5-35-46 \nE-mail: pvk76@ukr.net код ЄДРПОУ 08564370\n</font></pre></p>"
-                        "<style> p{line-height: 1; padding-top: 50px;  padding-bottom: 50px; margin-top: 50em; margin-buttom: 1em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'>___________№___________ \t\tНа №5к/вих.//7709 вiд 25.10.2021р\n</font></pre></p>"
-                        "<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 2em; margin-buttom: 2em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"justify\"><pre><font face='Times New Roman'><b>\t\t\t\t\tНачальнику Західного\n\t\t\t\t\tміжрегіонального управління з\n\t\t\t\t\tпитань виконання "
-                        "кримінальних\n\t\t\t\t\tпокарань Міністерства юстиції\n\t\t\t\t\tкапітану внутрішньої служби\n\t\t\t\t\tІгорю ТИМОЧКУ</b></font></pre></p><br><style>"
-                        "p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"center\"><pre><font face='Times New Roman'><b>Шановний Ігорю Ярославовичу!</b></font></pre></p><style> "
-                        "p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"justify\"><pre><font face='Times New Roman'>\tНа виконання вказiвки Захiдного мiжрегiонального управлiння з питань "
-                        "виконання кримiнальних покарань Мiнiстерства юстицiї №5к/вих.//7709 вiд 25.10.2021р., "
-                        "та з метою забезпечення безпосереднього контролю за поведiнкою осiб, якi мають стiйку "
-                        "антисоцiальну орiентацiю, вчинили тяжкi резонанснi злочини або схильнi до їx вчинення, "
-                        "а також своечасного проведения стосовно них вiдповiдних заходiв щодо профiлактики кримiнальних "
-                        "правопорушень, надсилаю Вам списки зазначеної категорiї осiб за " + str(self.mun) + " мiсяць " + str(self.years) + "року </font></pre></p>"
-                        "<style> p{padding-top: 0em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'><b>\nДодаток:</b> на 1 арк.</font></pre></p><br>"
-                        "<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
-                        "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'><b>Начальник установи\nполковник внутрішньої служби\t\t\tСергій ГРАБОВСЬКИЙ</b></font></pre></p>"
-                        "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 10pt;}</style>"
-                        "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>")
+        self.sefi.write(
+            '<p style="text-align: center; cursor: pointer;"><img src="{0}" width="55.35" height="74.25"></p>'.format(
+                self.pathtemp + self.gnam
+            )
+        )
+        self.sefi.write(
+            "<style> p{line-height: 0.5; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 20pt;}</style>"
+            '<p align="center"><b>МІНІСТЕРСТВО ЮСТИЦІЇ УКРАЇНИ</b></font></p>'
+            "<style> p{line-height: 0.5; adding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 18pt;}</style>"
+            '<p align="center"><b>ДЕРЖАВНА УСТАНОВА «ПОЛИЦЬКА ВИПРАВНА КОЛОНІЯ  (№76)»</b></p>'
+            "<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 14pt;}</style><p align=\"center\">"
+            "<pre><font face='Times New Roman'>с.Іванчі Вараського району Рiвненської області, 34375 тел.5-31-49,тел./факс 5-35-46 \nE-mail: pvk76@ukr.net код ЄДРПОУ 08564370\n</font></pre></p>"
+            "<style> p{line-height: 1; padding-top: 50px;  padding-bottom: 50px; margin-top: 50em; margin-buttom: 1em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"left\"><pre><font face='Times New Roman'>___________№___________ \t\tНа №5к/вих.//7709 вiд 25.10.2021р\n</font></pre></p>"
+            "<style> p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 2em; margin-buttom: 2em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"justify\"><pre><font face='Times New Roman'><b>\t\t\t\t\tНачальнику Західного\n\t\t\t\t\tміжрегіонального управління з\n\t\t\t\t\tпитань виконання "
+            "кримінальних\n\t\t\t\t\tпокарань Міністерства юстиції\n\t\t\t\t\tкапітану внутрішньої служби\n\t\t\t\t\tІгорю ТИМОЧКУ</b></font></pre></p><br><style>"
+            "p{line-height: 1; padding-top: 0px;  padding-bottom: 0px; margin-top: 0em; margin-buttom: 0em; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"center\"><pre><font face='Times New Roman'><b>Шановний Ігорю Ярославовичу!</b></font></pre></p><style> "
+            "p{padding-top: 5px;  padding-bottom: 0em; margin-top: 3em; margin-buttom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"justify\"><pre><font face='Times New Roman'>\tНа виконання вказiвки Захiдного мiжрегiонального управлiння з питань "
+            "виконання кримiнальних покарань Мiнiстерства юстицiї №5к/вих.//7709 вiд 25.10.2021р., "
+            "та з метою забезпечення безпосереднього контролю за поведiнкою осiб, якi мають стiйку "
+            "антисоцiальну орiентацiю, вчинили тяжкi резонанснi злочини або схильнi до їx вчинення, "
+            "а також своечасного проведения стосовно них вiдповiдних заходiв щодо профiлактики кримiнальних "
+            "правопорушень, надсилаю Вам списки зазначеної категорiї осiб за "
+            + str(self.mun)
+            + " мiсяць "
+            + str(self.years)
+            + "року </font></pre></p>"
+            "<style> p{padding-top: 0em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"left\"><pre><font face='Times New Roman'><b>\nДодаток:</b> на 1 арк.</font></pre></p><br>"
+            "<style> p{padding-top: 2em;  padding-bottom: 0em;line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"left\"><pre><font face='Times New Roman'>З повагою,</font></pre></p>"
+            "<style> p{line-height: 1;  font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+            "<p align=\"left\"><pre><font face='Times New Roman'><b>Начальник установи\nполковник внутрішньої служби\t\t\tСергій ГРАБОВСЬКИЙ</b></font></pre></p>"
+            "<style> p{padding-top: 0em;  padding-bottom: 0em; line-height: 1;  font-family: 'Times New Roman'; font-size: 10pt;}</style>"
+            "<p align=\"left\"><pre><font face='Times New Roman'>Сергій ПОЛУНЕЦЬ\n0983733432</font></pre></p>"
+        )
         self.sefi.write("<br><br><br><br><br><br><br><br><br><br>")
-        self.sefi.write("<style> h1{line-height: 1; font-family: 'Times New Roman'; font-size: 20pt;}</style>")
-        self.sefi.write("<h1 align=\"center\"><pre><font face='Times New Roman'><b>Державна установа<br>«Полицька виправна колонія (№76)»</b></font></pre></h1>")
-        self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style>")
+        self.sefi.write(
+            "<style> h1{line-height: 1; font-family: 'Times New Roman'; font-size: 20pt;}</style>"
+        )
+        self.sefi.write(
+            "<h1 align=\"center\"><pre><font face='Times New Roman'><b>Державна установа<br>«Полицька виправна колонія (№76)»</b></font></pre></h1>"
+        )
+        self.sefi.write(
+            "<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+        )
         self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
         self.filess = self.ffs.read()
         self.ffs.close()
@@ -1378,7 +1560,11 @@ class Ui_Form(object):
                     for ip in self.proerss:
                         self.i = self.proerss.get(i)
                         if str(ip) == str(i):
-                            self.sefi.write("<p align=\"center\"><pre><font face='Times New Roman'><b>{0}</b></font></pre></p>".format(str(self.listprof.get(ip))))
+                            self.sefi.write(
+                                "<p align=\"center\"><pre><font face='Times New Roman'><b>{0}</b></font></pre></p>".format(
+                                    str(self.listprof.get(ip))
+                                )
+                            )
                             if self.i.__len__() > 0:
                                 self.list_keys = list(self.i.keys())
                                 self.list_keys.sort()
@@ -1386,18 +1572,43 @@ class Ui_Form(object):
                                 for ia in self.list_keys:
                                     self.xx += 1
                                     self.priis = self.i.setdefault(ia)
-                                    self._soname = str("{0}".format(self.priis['soname']))
-                                    self._name = str("{0}".format(self.priis['name']))
-                                    self._father = str("{0}".format(self.priis['father']))
-                                    self._brsd = str("{0}".format(self.priis['birsdey']))
-                                    self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style>")
-                                    self.sefi.write("<p align=\"left\"><font face='Times New Roman'>{0}. {1} {2} {3} {4} р.н.</font></p>"
-                                        .format(self.xx, self._soname, self._name, self._father, self._brsd))
-            self.sefi.write("<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style><br><br><br>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>державної установи «Полицька </b></font></pre></p>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>виправна колонія (№76)»</b></font></pre></p>")
-            self.sefi.write("\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>")
+                                    self._soname = str(
+                                        "{0}".format(self.priis["soname"])
+                                    )
+                                    self._name = str("{0}".format(self.priis["name"]))
+                                    self._father = str(
+                                        "{0}".format(self.priis["father"])
+                                    )
+                                    self._brsd = str(
+                                        "{0}".format(self.priis["birsdey"])
+                                    )
+                                    self.sefi.write(
+                                        "<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
+                                    )
+                                    self.sefi.write(
+                                        "<p align=\"left\"><font face='Times New Roman'>{0}. {1} {2} {3} {4} р.н.</font></p>".format(
+                                            self.xx,
+                                            self._soname,
+                                            self._name,
+                                            self._father,
+                                            self._brsd,
+                                        )
+                                    )
+            self.sefi.write(
+                "<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style><br><br><br>"
+            )
+            self.sefi.write(
+                "\t<p align=\"left\"><pre><font face='Times New Roman'><b>Оперуповноважений оперативного відділу </b></font></pre></p>"
+            )
+            self.sefi.write(
+                "\t<p align=\"left\"><pre><font face='Times New Roman'><b>державної установи «Полицька </b></font></pre></p>"
+            )
+            self.sefi.write(
+                "\t<p align=\"left\"><pre><font face='Times New Roman'><b>виправна колонія (№76)»</b></font></pre></p>"
+            )
+            self.sefi.write(
+                "\t<p align=\"left\"><pre><font face='Times New Roman'><b>капітан внутрішньої служби\t\t\t\tСергій ПОЛУНЕЦЬ</b></font></pre></p><br>"
+            )
         except:
             self.sefi.close()
             self.uiN = Window("Контроль що місячний")
@@ -1405,8 +1616,9 @@ class Ui_Form(object):
             self.uiN.show()
         self.sefi.close()
         self.uiN = Window("Контроль що місячний")
-        self.uiN.handleOpen(self.orient,self.wor)
+        self.uiN.handleOpen(self.orient, self.wor)
         self.uiN.show()
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
@@ -1417,19 +1629,21 @@ if __name__ == "__main__":
     font.setPixelSize(14)
     font.setWeight(QtGui.QFont.Bold)
     splash.setFont(font)
-    splash.showMessage("Завантаження...", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red)
+    splash.showMessage(
+        "Завантаження...", QtCore.Qt.AlignLeft | QtCore.Qt.AlignBottom, QtCore.Qt.red
+    )
     splash.show()
     app.processEvents()
     parser = argparse.ArgumentParser()
-    parser.add_argument('filename', nargs='?')
+    parser.add_argument("filename", nargs="?")
     args = parser.parse_args()
     if args.filename is not None:
         pethstart = args.filename
     else:
-        if sys.platform == 'win32':
-            pethstart = os.environ['USERPROFILE'] + "\Профоблік.dbs"
-        if sys.platform == 'linux':
-            pethstart = os.environ['HOME'] + "/Профоблік.dbs"
+        if sys.platform == "win32":
+            pethstart = os.environ["USERPROFILE"] + "\Профоблік.dbs"
+        if sys.platform == "linux":
+            pethstart = os.environ["HOME"] + "/Профоблік.dbs"
     time.sleep(3)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()

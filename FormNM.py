@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 
-import sys
-import WrData
-import zlib
 import os
-import tempfile
 import pickle
+import sys
+import tempfile
+import zlib
 from datetime import datetime
-import Profs_rc
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import Profs_rc
+import WrData
 from FormOBL import Ui_FormO
+
 
 class Ui_FormN(object):
     pathtemp = tempfile.gettempdir() + "/Proftemp"
+
     def setupUi(self, FormN):
-        with open(self.pathtemp + "/Profs.dbsp", "r")as f:
+        with open(self.pathtemp + "/Profs.dbsp", "r") as f:
             self.files = f.read()
             f.close()
         self.baza = WrData.Datas().Roblik(files=self.files)
@@ -24,11 +28,18 @@ class Ui_FormN(object):
         FormN.setObjectName("FormN")
         FormN.setFixedSize(599, 449)
         self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
-        if 'ANDROID_BOOTLOGO' in os.environ:
-            FormN.move(int((self.resolution.width() / 2)) - int((FormN.frameSize().width() / 2),0))
+        if "ANDROID_BOOTLOGO" in os.environ:
+            FormN.move(
+                int((self.resolution.width() / 2))
+                - int((FormN.frameSize().width() / 2), 0)
+            )
         else:
-            FormN.move(int((self.resolution.width() / 2)) - int((FormN.frameSize().width() / 2)),
-                       int((self.resolution.height()) / 2) - int((FormN.frameSize().height() / 2)))
+            FormN.move(
+                int((self.resolution.width() / 2))
+                - int((FormN.frameSize().width() / 2)),
+                int((self.resolution.height()) / 2)
+                - int((FormN.frameSize().height() / 2)),
+            )
         FormN.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         FormN.activateWindow()
         font = QtGui.QFont()
@@ -38,7 +49,9 @@ class Ui_FormN(object):
         font.setWeight(75)
         FormN.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off
+        )
         FormN.setWindowIcon(icon)
         FormN.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(FormN)
@@ -391,7 +404,9 @@ class Ui_FormN(object):
         self.comboBox_5.setAutoFillBackground(False)
         self.comboBox_5.setStyleSheet("")
         self.comboBox_5.setMaxVisibleItems(12)
-        self.comboBox_5.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
+        self.comboBox_5.setSizeAdjustPolicy(
+            QtWidgets.QComboBox.AdjustToMinimumContentsLength
+        )
         self.comboBox_5.setDuplicatesEnabled(False)
         self.comboBox_5.setFrame(True)
         self.comboBox_5.setObjectName("comboBox_5")
@@ -433,7 +448,9 @@ class Ui_FormN(object):
         self.comboBox_6.setFont(font)
         self.comboBox_6.setStyleSheet("")
         self.comboBox_6.setEnabled(False)
-        self.comboBox_6.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
+        self.comboBox_6.setSizeAdjustPolicy(
+            QtWidgets.QComboBox.AdjustToMinimumContentsLength
+        )
         self.comboBox_6.setDuplicatesEnabled(False)
         self.comboBox_6.setFrame(True)
         self.comboBox_6.setObjectName("comboBox_6")
@@ -490,7 +507,7 @@ class Ui_FormN(object):
         _translate = QtCore.QCoreApplication.translate
         FormN.setWindowTitle(_translate("FormN", "Редактор профелю"))
         self.label_39.setText(_translate("FormN", "ЗБМ"))
-        self.label_32.setText(_translate("FormN", "Ім\'я"))
+        self.label_32.setText(_translate("FormN", "Ім'я"))
         self.pushButton_10.setText(_translate("FormN", "Видалити"))
         self.label_37.setText(_translate("FormN", "Початок строку"))
         self.label_38.setText(_translate("FormN", "ДСР"))
@@ -506,7 +523,9 @@ class Ui_FormN(object):
         self.label_35.setText(_translate("FormN", "Підстава на облік"))
         self.label_2.setText(_translate("FormN", "Відділення"))
         for i in range(len(self.list_ov)):
-            self.comboBox_5.setItemText(i, _translate("FormN", "{0}".format(self.list_ov[i])))
+            self.comboBox_5.setItemText(
+                i, _translate("FormN", "{0}".format(self.list_ov[i]))
+            )
         self.pushButton_9.setText(_translate("FormN", "Вибрати фото"))
         self.comboBox_6.setItemText(0, _translate("FormN", "1"))
         self.comboBox_6.setItemText(1, _translate("FormN", "2"))
@@ -533,11 +552,16 @@ class Ui_FormN(object):
             self.out = "present"
 
     def filephot(self):
-        if sys.platform == 'win32':
-            self.loads = os.environ['USERPROFILE']
-        if sys.platform == 'linux':
-            self.loads = os.environ['HOME']
-        self.filesph = QtWidgets.QFileDialog.getOpenFileName(None, "Вибрати фото ...", self.loads + "/Documents", "Images (*.png *.jpg *.jpeg)")
+        if sys.platform == "win32":
+            self.loads = os.environ["USERPROFILE"]
+        if sys.platform == "linux":
+            self.loads = os.environ["HOME"]
+        self.filesph = QtWidgets.QFileDialog.getOpenFileName(
+            None,
+            "Вибрати фото ...",
+            self.loads + "/Documents",
+            "Images (*.png *.jpg *.jpeg)",
+        )
         self.filesph = self.filesph[0]
         if self.filesph == "":
             self.fp = open(self.pathtemp + "/_zpn.png", "rb")
@@ -588,10 +612,22 @@ class Ui_FormN(object):
             self.pr = self.profiless
         except:
             self.pr = "Авторитет"
-        self.mains.params(soname=self.lineEdit_42.text(), name=self.lineEdit_43.text(), father=self.lineEdit_44.text(),
-                          birsdey=self.dateEdit.text(), profov=self.pr, stt=self.lineEdit_45.text(),
-                          begin_dey=self.dateEdit_2.text(), DSR=self.dateEdit_3.text(), ZBM=self.dateEdit_4.text(),
-                          UDZ=self.dateEdit_5.text(), end_dey=self.dateEdit_6.text(), PHOT=self.filez, VID=self.vid, OUTS=self.out)
+        self.mains.params(
+            soname=self.lineEdit_42.text(),
+            name=self.lineEdit_43.text(),
+            father=self.lineEdit_44.text(),
+            birsdey=self.dateEdit.text(),
+            profov=self.pr,
+            stt=self.lineEdit_45.text(),
+            begin_dey=self.dateEdit_2.text(),
+            DSR=self.dateEdit_3.text(),
+            ZBM=self.dateEdit_4.text(),
+            UDZ=self.dateEdit_5.text(),
+            end_dey=self.dateEdit_6.text(),
+            PHOT=self.filez,
+            VID=self.vid,
+            OUTS=self.out,
+        )
         self.save_as()
 
     def save_as(self):
@@ -600,7 +636,7 @@ class Ui_FormN(object):
             with open(self.filess, "r") as f:
                 self.filest = f.read()
                 f.close()
-        except(Exception):
+        except Exception:
             pass
         if self.lineEdit_42.text() != "":
             self.files = self.filest
@@ -616,7 +652,7 @@ class Ui_FormN(object):
 
     def Deletes(self):
         self.pushButton_10.setEnabled(True)
-        self.tdbfile = open(self.pathtemp + "/Prof.dbsl", 'rb')
+        self.tdbfile = open(self.pathtemp + "/Prof.dbsl", "rb")
         self.datalists = pickle.load(self.tdbfile)
         if self.datalists[13] == "withdrawn":
             self.checkBox.setChecked(True)
@@ -639,27 +675,27 @@ class Ui_FormN(object):
         self.label.setPixmap(QtGui.QPixmap(self.pathtemp + "/_zpn.png"))
         if self.datalists[3] == "":
             self.datalists[3] = "17.09.1930"
-        self.year = datetime.strptime(self.datalists[3], '%d.%m.%Y').date()
+        self.year = datetime.strptime(self.datalists[3], "%d.%m.%Y").date()
         self.dateEdit.setDate(self.year)
         if self.datalists[6] == "":
             self.datalists[6] = "01.01.2001"
-        self.year = datetime.strptime(self.datalists[6], '%d.%m.%Y').date()
+        self.year = datetime.strptime(self.datalists[6], "%d.%m.%Y").date()
         self.dateEdit_2.setDate(self.year)
         if self.datalists[7] == "":
             self.datalists[7] = "03.01.2016"
-        self.year = datetime.strptime(self.datalists[7], '%d.%m.%Y').date()
+        self.year = datetime.strptime(self.datalists[7], "%d.%m.%Y").date()
         self.dateEdit_3.setDate(self.year)
         if self.datalists[8] == "":
             self.datalists[8] = "01.01.2017"
-        self.year = datetime.strptime(self.datalists[8], '%d.%m.%Y').date()
+        self.year = datetime.strptime(self.datalists[8], "%d.%m.%Y").date()
         self.dateEdit_4.setDate(self.year)
         if self.datalists[9] == "":
             self.datalists[9] = "01.01.2017"
-        self.year = datetime.strptime(self.datalists[9], '%d.%m.%Y').date()
+        self.year = datetime.strptime(self.datalists[9], "%d.%m.%Y").date()
         self.dateEdit_5.setDate(self.year)
         if self.datalists[10] == "":
             self.datalists[10] = "02.01.2018"
-        self.year = datetime.strptime(self.datalists[10], '%d.%m.%Y').date()
+        self.year = datetime.strptime(self.datalists[10], "%d.%m.%Y").date()
         self.dateEdit_6.setDate(self.year)
 
     def Delers(self):
@@ -672,24 +708,28 @@ class Ui_FormN(object):
         self.lineEdit_45.setText("")
         self.comboBox_5.setEditText("")
         self.label.setPixmap(QtGui.QPixmap(":/image/People.png"))
-        self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
+        self.year = datetime.strptime("01.01.2017", "%d.%m.%Y").date()
         self.dateEdit.setDate(self.year)
-        self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
+        self.year = datetime.strptime("01.01.2017", "%d.%m.%Y").date()
         self.dateEdit_2.setDate(self.year)
-        self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
+        self.year = datetime.strptime("01.01.2017", "%d.%m.%Y").date()
         self.dateEdit_3.setDate(self.year)
-        self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
+        self.year = datetime.strptime("01.01.2017", "%d.%m.%Y").date()
         self.dateEdit_4.setDate(self.year)
-        self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
+        self.year = datetime.strptime("01.01.2017", "%d.%m.%Y").date()
         self.dateEdit_5.setDate(self.year)
-        self.year = datetime.strptime("01.01.2017", '%d.%m.%Y').date()
+        self.year = datetime.strptime("01.01.2017", "%d.%m.%Y").date()
         self.dateEdit_6.setDate(self.year)
         self.comboBox_5.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
         self.comboBox_6.setStyleSheet("QComboBox:editable{ color:  rgb(0, 0, 0)}")
         self.pushButton_11.setEnabled(False)
 
     def cengbut(self):
-        if self.lineEdit_42.text() == "" or self.lineEdit_43.text() == "" or self.lineEdit_44.text() == "":
+        if (
+            self.lineEdit_42.text() == ""
+            or self.lineEdit_43.text() == ""
+            or self.lineEdit_44.text() == ""
+        ):
             self.pushButton_11.setEnabled(False)
             self.checkBox.setChecked(True)
         else:
