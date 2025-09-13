@@ -557,7 +557,7 @@ class Ui_Form(object):
         self.pushButton_7.setText(self._translate("Form", "Контроль"))
         self.pushButton_8.setText(self._translate("Form", "Пільги"))
         self.pushButton_9.setText(self._translate("Form", "Налаштування"))
-        self.label_26.setText(self._translate("Form", "Тимчасово вибув з кстанови"))
+        self.label_26.setText(self._translate("Form", "Тимчасово вибув з установи"))
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(
                 self.files[:25], self.files[len(self.files) - 20 :]
