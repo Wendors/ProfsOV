@@ -25,6 +25,10 @@ from FormOBL import Ui_FormO
 from zvits import Window
 
 
+QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
+
+
 class Ui_Form(object):
     _translate = QtCore.QCoreApplication.translate
     if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
