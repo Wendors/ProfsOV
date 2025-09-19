@@ -24,7 +24,6 @@ from FormNM import Ui_FormN
 from FormOBL import Ui_FormO
 from zvits import Window
 
-
 QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
@@ -565,21 +564,22 @@ class Ui_Form(object):
         self.label_26.setText(self._translate("Form", "Тимчасово вибув з установи"))
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(
-                self.files[:25], self.files[len(self.files) - 20:]
+                self.files[:25], self.files[len(self.files) - 20 :]
             )
         self.label_21.setText("{0}".format(self.files))
         self.clearform()
 
     def CreatOBL(self):
-        self.listWidget.clear()
-        self.FormOB = QtWidgets.QWidget()
-        self.uiO = Ui_FormO()
-        self.FormOB.setWindowModality(QtCore.Qt.ApplicationModal)
-        self.uiO.setupUi(self.FormOB)
-        self.FormOB.show()
-        self.comboBox.update()
-        open(self.pathtemp + "/1", "wb").close()
-        #self.timers.start(1000)
+        # self.listWidget.clear()
+        # self.FormOB = QtWidgets.QWidget()
+        # self.uiO = Ui_FormO()
+        # self.FormOB.setWindowModality(QtCore.Qt.ApplicationModal)
+        # self.uiO.setupUi(self.FormOB)
+        # self.FormOB.show()
+        # self.comboBox.update()
+        # open(self.pathtemp + "/1", "wb").close()
+        # self.timers.start(1000)
+        pass
 
     def Uplodfi(self):
         if os.path.exists(self.pathtemp + "/1") == True:
@@ -622,7 +622,7 @@ class Ui_Form(object):
         self.pushButton_2.setEnabled(False)
         if len(self.files) > 45:
             self.files = "{0}...{1}".format(
-                self.files[:25], self.files[len(self.files) - 20:]
+                self.files[:25], self.files[len(self.files) - 20 :]
             )
         self.label_21.setText("{0}".format(self.files))
         self.baza = WrData.Datas().Roblik(files=self.files)
@@ -723,14 +723,14 @@ class Ui_Form(object):
         self.item = item.text()
         self.itemin = self.item.find(" ")
         if self.xPro == True:
-            self.item = self.item[self.itemin + 1:]
+            self.item = self.item[self.itemin + 1 :]
             for ai in self.lispr:
                 self.i = self.lispr.get(ai)
                 for ip in self.i:
                     if ip == self.item:
                         self.priis = self.i.setdefault(ip)
         if self.xPro == False:
-            self.item = self.item[0: self.itemin]
+            self.item = self.item[0 : self.itemin]
             self.priis = self.xlis[int(self.item) - 1][1]
             self.textsp = str("{0}".format(self.priis["profov"]))
         self._soname = str("{0}".format(self.priis["soname"]))

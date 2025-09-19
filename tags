@@ -1,0 +1,120 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ClearDB	WrData.py	/^    def ClearDB(self, files):$/;"	m	class:Datas
+Control	Baza.py	/^    def Control(self):$/;"	m	class:Ui_Form
+CreatOBL	Baza.py	/^    def CreatOBL(self):$/;"	m	class:Ui_Form
+Creatobl	WrData.py	/^    def Creatobl(self, files):$/;"	m	class:Datas
+Daetes	Datas.py	/^    def Daetes(self):$/;"	m	class:Dat
+Dat	Datas.py	/^class Dat():$/;"	c
+Datas	WrData.py	/^class Datas:$/;"	c
+Delers	FormNM.py	/^    def Delers(self):$/;"	m	class:Ui_FormN
+Deleter	WrData.py	/^    def Deleter(self, _prf):$/;"	m	class:Datas
+Deletes	FormNM.py	/^    def Deletes(self):$/;"	m	class:Ui_FormN
+EditProf	Baza.py	/^    def EditProf(self):$/;"	m	class:Ui_Form
+Editers	WrData.py	/^    def Editers(self, _soname, _name, _father, _birsdey, _profov, _stt, _begin_dey, _DSR, _ZBM, _UDZ, _end_dey, _VID, _PHOT, _OUTS):$/;"	m	class:Datas
+Exitss	Baza.py	/^    def Exitss(self):$/;"	m	class:Ui_Form
+Exports	Baza.py	/^    def Exports(self):$/;"	m	class:Ui_Form
+Form	Baza.py	/^    Form = QtWidgets.QWidget()$/;"	v
+Loadeds	Baza.py	/^    def Loadeds(self):$/;"	m	class:Ui_Form
+MainWindow	Bazas.py	/^    MainWindow = QtWidgets.QMainWindow()$/;"	v	class:Ui_MainWindow
+Pilgi	Baza.py	/^    def Pilgi(self):$/;"	m	class:Ui_Form
+RewProf	Baza.py	/^    def RewProf(self):$/;"	m	class:Ui_Form
+Roblik	WrData.py	/^    def Roblik(self, files):# Створення файлу з обліком та читання його та створеня списку обліку$/;"	m	class:Datas
+SavProfs	Baza.py	/^    def SavProfs(self):$/;"	m	class:Ui_Form
+Spis_profs	Datas.py	/^    def Spis_profs(self):$/;"	m	class:Dat
+Ui_Form	Baza.py	/^class Ui_Form(object):$/;"	c
+Ui_FormN	FormNM.py	/^class Ui_FormN(object):$/;"	c
+Ui_FormO	FormOBL.py	/^class Ui_FormO(object):$/;"	c
+Ui_MainWindow	Bazas.py	/^class Ui_MainWindow(object):$/;"	c
+Upcombo	Baza.py	/^    def Upcombo(self):$/;"	m	class:Ui_Form
+Uplodfi	Baza.py	/^    def Uplodfi(self):$/;"	m	class:Ui_Form
+Window	zvits.py	/^class Window(QtWidgets.QWidget):$/;"	c
+Wordtext	zvits.py	/^    def Wordtext(self):$/;"	m	class:Window
+Worrd_2	zvits.py	/^    def Worrd_2(self):$/;"	m	class:Window
+Zvit	Baza.py	/^    def Zvit(self):$/;"	m	class:Ui_Form
+__author__	Baza.py	/^__author__ = "Wandors"$/;"	v
+__author__	Bazas.py	/^__author__ = "Сергій Полунець"$/;"	v
+__init__	zvits.py	/^    def __init__(self, titles):$/;"	m	class:Window
+__savss	WrData.py	/^    def __savss(self):$/;"	m	class:Datas	file:
+__versions__	Baza.py	/^__versions__ = "v.4.0.3"$/;"	v
+__versions__	Bazas.py	/^__versions__ = "v.6.5.2"$/;"	v
+_saves	FormNM.py	/^    def _saves(self):$/;"	m	class:Ui_FormN
+_translate	Baza.py	/^    _translate = QtCore.QCoreApplication.translate$/;"	v	class:Ui_Form
+app	Baza.py	/^    app = QtWidgets.QApplication(sys.argv)$/;"	v
+app	Bazas.py	/^    app = QtWidgets.QApplication(sys.argv)$/;"	v	class:Ui_MainWindow
+args	Baza.py	/^    args = parser.parse_args()$/;"	v
+args	Bazas.py	/^    args = parser.parse_args()$/;"	v	class:Ui_MainWindow
+btnstate	FormNM.py	/^    def btnstate(self, b):$/;"	m	class:Ui_FormN
+cengbut	FormNM.py	/^    def cengbut(self):$/;"	m	class:Ui_FormN
+clearform	Baza.py	/^    def clearform(self):$/;"	m	class:Ui_Form
+closes	FormNM.py	/^    def closes(self, forms):$/;"	m	class:Ui_FormN
+combo_chosen	Baza.py	/^    def combo_chosen(self):$/;"	m	class:Ui_Form
+combo_chosens	FormNM.py	/^    def combo_chosens(self):$/;"	m	class:Ui_FormN
+combo_fil	FormNM.py	/^    def combo_fil(self):$/;"	m	class:Ui_FormN
+cur	zvits.py	/^    cur = 0$/;"	v	class:Window
+filephot	FormNM.py	/^    def filephot(self):$/;"	m	class:Ui_FormN
+font	Baza.py	/^    font = splash.font()$/;"	v
+font	Bazas.py	/^    font = splash.font()$/;"	v	class:Ui_MainWindow
+handleOpen	zvits.py	/^    def handleOpen(self, orent, wor):$/;"	m	class:Window
+handlePreview	zvits.py	/^    def handlePreview(self):$/;"	m	class:Window
+handlePrint	zvits.py	/^    def handlePrint(self):$/;"	m	class:Window
+handleTextChanged	zvits.py	/^    def handleTextChanged(self):$/;"	m	class:Window
+hirCurs	zvits.py	/^    def hirCurs(self):$/;"	m	class:Window
+icons	pyinstaler.py	/^icons = "Profico"$/;"	v
+mun	Datas.py	/^    mun = 0$/;"	v	class:Dat
+names	pyinstaler.py	/^names = "Профоблік"$/;"	v
+num	pyinstaler.py	/^num = 2$/;"	v
+orient	zvits.py	/^    orient = 0$/;"	v	class:Window
+pacs	pyinstaler.py	/^    pacs = "--console"$/;"	v
+pacs	pyinstaler.py	/^    pacs = "--onefile --console"$/;"	v
+pacs	pyinstaler.py	/^    pacs = "--onefile --windowed"$/;"	v
+pacs	pyinstaler.py	/^    pacs = "--windowed"$/;"	v
+params	WrData.py	/^    def params(self, soname="", name="", father="", birsdey="", profov="", stt="", begin_dey="", DSR="", ZBM="", UDZ="", end_dey="", PHOT="", VID="", OUTS=""):$/;"	m	class:Datas
+parser	Baza.py	/^    parser = argparse.ArgumentParser()$/;"	v
+parser	Bazas.py	/^    parser = argparse.ArgumentParser()$/;"	v	class:Ui_MainWindow
+path	pyinstaler.py	/^path = '"C:\/Program Files (x86)\/Windows Kits\/10\/Redist\/10.0.17763.0\/ucrt\/DLLs\/x86"'$/;"	v
+pathQt	pyinstaler.py	/^pathQt = 'C:\/Python37\/Lib\/site-packages\/PyQt5\/Qt\/bin'$/;"	v
+pathlibs	pyinstaler.py	/^pathlibs = os.environ["VIRTUAL_ENV"] + "\/lib\/python3.10\/site-packages\/"$/;"	v
+pathtemp	Baza.py	/^    pathtemp = tempfile.gettempdir() + "\/Proftemp"$/;"	v	class:Ui_Form
+pathtemp	Bazas.py	/^    pathtemp = tempfile.gettempdir() + "\\Proftemp"$/;"	v	class:Ui_MainWindow
+pathtemp	FormNM.py	/^    pathtemp = tempfile.gettempdir() + "\/Proftemp"$/;"	v	class:Ui_FormN
+pathtemp	WrData.py	/^    pathtemp = tempfile.gettempdir() + "\/Proftemp"$/;"	v	class:Datas
+pathtemp	zvits.py	/^    pathtemp = tempfile.gettempdir() + "\/Proftemp"$/;"	v	class:Window
+qCleanupResources	Profs_rc.py	/^def qCleanupResources():$/;"	f
+qInitResources	Profs_rc.py	/^def qInitResources():$/;"	f
+qt_resource_data	Profs_rc.py	/^"$/;"	v
+qt_resource_name	Profs_rc.py	/^"$/;"	v
+qt_resource_struct	Profs_rc.py	/^    qt_resource_struct = qt_resource_struct_v1$/;"	v
+qt_resource_struct	Profs_rc.py	/^    qt_resource_struct = qt_resource_struct_v2$/;"	v
+qt_resource_struct_v1	Profs_rc.py	/^"$/;"	v
+qt_resource_struct_v2	Profs_rc.py	/^"$/;"	v
+qt_version	Profs_rc.py	/^qt_version = [int(v) for v in QtCore.qVersion().split('.')]$/;"	v
+rcc_version	Profs_rc.py	/^    rcc_version = 1$/;"	v
+rcc_version	Profs_rc.py	/^    rcc_version = 2$/;"	v
+reddata	WrData.py	/^    def reddata(self, files):$/;"	m	class:Datas
+retranslateUi	Baza.py	/^    def retranslateUi(self, Form):$/;"	m	class:Ui_Form
+retranslateUi	Bazas.py	/^    def retranslateUi(self, MainWindow):$/;"	m	class:Ui_MainWindow
+retranslateUi	FormNM.py	/^    def retranslateUi(self, FormN):$/;"	m	class:Ui_FormN
+retranslateUi	FormOBL.py	/^    def retranslateUi(self, FormO):$/;"	m	class:Ui_FormO
+save_as	FormNM.py	/^    def save_as(self):$/;"	m	class:Ui_FormN
+scripts	pyinstaler.py	/^scripts = "Baza"$/;"	v
+setupUi	Baza.py	/^    def setupUi(self, Form, path):$/;"	m	class:Ui_Form
+setupUi	Bazas.py	/^    def setupUi(self, MainWindow, path):$/;"	m	class:Ui_MainWindow
+setupUi	FormNM.py	/^    def setupUi(self, FormN):$/;"	m	class:Ui_FormN
+setupUi	FormOBL.py	/^    def setupUi(self, FormO):$/;"	m	class:Ui_FormO
+showItem	Baza.py	/^    def showItem(self, item):$/;"	m	class:Ui_Form
+splash	Baza.py	/^    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)$/;"	v
+splash	Bazas.py	/^    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)$/;"	v	class:Ui_MainWindow
+splash_pix	Baza.py	/^    splash_pix = QtGui.QPixmap(":\/image\/Splash.png")$/;"	v
+splash_pix	Bazas.py	/^    splash_pix = QtGui.QPixmap(":\/image\/Splash.png")$/;"	v	class:Ui_MainWindow
+topdf	zvits.py	/^    def topdf(self):$/;"	m	class:Window
+ui	Baza.py	/^    ui = Ui_Form()$/;"	v
+ui	Bazas.py	/^    ui = Ui_MainWindow()$/;"	v	class:Ui_MainWindow
+wor	zvits.py	/^    wor = 0$/;"	v	class:Window
+wridata	WrData.py	/^    def wridata(self, filer):$/;"	m	class:Datas
+x	Testq.py	/^x = 30$/;"	v
+year	Datas.py	/^    year = 0$/;"	v	class:Dat
