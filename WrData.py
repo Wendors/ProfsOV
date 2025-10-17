@@ -6,7 +6,7 @@ import pickle
 
 
 class Datas:
-    pathtemp = tempfile.gettempdir() + "/Proftemp"
+    pathtemp = os.path.join(tempfile.gettempdir(), "Proftemp")
     def params(self, soname="", name="", father="", birsdey="", profov="", stt="", begin_dey="", DSR="", ZBM="", UDZ="", end_dey="", PHOT="", VID="", OUTS=""):
         self.soname = soname
         self.name = name
@@ -106,13 +106,13 @@ class Datas:
         self.__OUTS = _OUTS
         self.namepro = [self.__soname, self.__name, self.__father, self.__brsd, self.__profer, self.__sttu,
                         self.__begistr, self.__dsr, self.__zbm, self.__udz, self.__endstr, self.__vid, self.__PHOT, self.__OUTS]
-        self.dbfile = open(self.pathtemp + "/Prof.dbsl", 'wb')
+        self.dbfile = open(os.path.join(self.pathtemp, "Prof.dbsl"), 'wb')
         self.dbms = self.namepro
         pickle.dump(self.dbms, self.dbfile)
         self.dbfile.close()
 
     def Deleter(self, _prf):
-        self.filess = self.pathtemp + "/Profs.dbsp"
+        self.filess = os.path.join(self.pathtemp, "Profs.dbsp")
         with open(self.filess, "r") as f:
             self.filest = f.read()
             f.close()

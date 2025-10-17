@@ -7,7 +7,7 @@ import tempfile
 import zlib
 from datetime import datetime
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 import Profs_rc
 import WrData
@@ -15,10 +15,10 @@ from FormOBL import Ui_FormO
 
 
 class Ui_FormN(object):
-    pathtemp = tempfile.gettempdir() + "/Proftemp"
+    pathtemp = os.path.join(tempfile.gettempdir(), "Proftemp")
 
     def setupUi(self, FormN):
-        with open(self.pathtemp + "/Profs.dbsp", "r") as f:
+        with open(os.path.join(self.pathtemp, "Profs.dbsp"), "r") as f:
             self.files = f.read()
             f.close()
         self.baza = WrData.Datas().Roblik(files=self.files)
@@ -27,7 +27,8 @@ class Ui_FormN(object):
         self.mains = WrData.Datas()
         FormN.setObjectName("FormN")
         FormN.setFixedSize(599, 449)
-        self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        screen = QtWidgets.QApplication.primaryScreen()
+        self.resolution = screen.geometry()
         if "ANDROID_BOOTLOGO" in os.environ:
             FormN.move(
                 int((self.resolution.width() / 2))
@@ -46,7 +47,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(12)
         font.setBold(True)
-        font.setWeight(75)
+        
         FormN.setFont(font)
         icon = QtGui.QIcon()
         icon.addPixmap(
@@ -63,7 +64,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.lineEdit_43.setFont(font)
         self.lineEdit_43.setStyleSheet("")
         self.lineEdit_43.setAlignment(QtCore.Qt.AlignCenter)
@@ -74,7 +75,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_39.setFont(font)
         self.label_39.setStyleSheet("")
         self.label_39.setObjectName("label_39")
@@ -84,7 +85,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.lineEdit_44.setFont(font)
         self.lineEdit_44.setStyleSheet("")
         self.lineEdit_44.setAlignment(QtCore.Qt.AlignCenter)
@@ -95,7 +96,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_32.setFont(font)
         self.label_32.setStyleSheet("")
         self.label_32.setObjectName("label_32")
@@ -107,7 +108,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.pushButton_10.setFont(font)
         self.pushButton_10.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_10.setStyleSheet("")
@@ -119,7 +120,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.dateEdit_2.setFont(font)
         self.dateEdit_2.setStyleSheet("")
         self.dateEdit_2.setDisplayFormat("dd.MM.yyyy")
@@ -133,7 +134,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_37.setFont(font)
         self.label_37.setStyleSheet("")
         self.label_37.setObjectName("label_37")
@@ -143,7 +144,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_38.setFont(font)
         self.label_38.setStyleSheet("")
         self.label_38.setObjectName("label_38")
@@ -153,7 +154,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_31.setFont(font)
         self.label_31.setStyleSheet("")
         self.label_31.setObjectName("label_31")
@@ -163,7 +164,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_33.setFont(font)
         self.label_33.setStyleSheet("")
         self.label_33.setObjectName("label_33")
@@ -173,7 +174,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.dateEdit_3.setFont(font)
         self.dateEdit_3.setStyleSheet("")
         self.dateEdit_3.setDisplayFormat("dd.MM.yyyy")
@@ -187,7 +188,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_34.setFont(font)
         self.label_34.setStyleSheet("")
         self.label_34.setObjectName("label_34")
@@ -197,7 +198,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(20)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_29.setFont(font)
         self.label_29.setStyleSheet("")
         self.label_29.setAlignment(QtCore.Qt.AlignCenter)
@@ -208,7 +209,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_36.setFont(font)
         self.label_36.setStyleSheet("")
         self.label_36.setObjectName("label_36")
@@ -218,7 +219,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.pushButton_12.setFont(font)
         self.pushButton_12.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_12.setStyleSheet("")
@@ -232,7 +233,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.line_11.setFont(font)
         self.line_11.setStyleSheet("")
         self.line_11.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -245,7 +246,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.line_12.setFont(font)
         self.line_12.setStyleSheet("")
         self.line_12.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -258,7 +259,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.dateEdit_4.setFont(font)
         self.dateEdit_4.setStyleSheet("")
         self.dateEdit_4.setDisplayFormat("dd.MM.yyyy")
@@ -273,7 +274,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.pushButton_11.setFont(font)
         self.pushButton_11.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_11.setStyleSheet("")
@@ -286,7 +287,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_41.setFont(font)
         self.label_41.setStyleSheet("")
         self.label_41.setObjectName("label_41")
@@ -296,7 +297,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.dateEdit.setFont(font)
         self.dateEdit.setStyleSheet("")
         self.dateEdit.setDisplayFormat("dd.MM.yyyy")
@@ -310,7 +311,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.dateEdit_6.setFont(font)
         self.dateEdit_6.setStyleSheet("")
         self.dateEdit_6.setDisplayFormat("dd.MM.yyyy")
@@ -324,7 +325,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.dateEdit_5.setFont(font)
         self.dateEdit_5.setStyleSheet("")
         self.dateEdit_5.setDisplayFormat("dd.MM.yyyy")
@@ -338,7 +339,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_40.setFont(font)
         self.label_40.setStyleSheet("")
         self.label_40.setObjectName("label_40")
@@ -348,7 +349,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_35.setFont(font)
         self.label_35.setStyleSheet("")
         self.label_35.setObjectName("label_35")
@@ -358,7 +359,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.lineEdit_45.setFont(font)
         self.lineEdit_45.setStyleSheet("")
         self.lineEdit_45.setAlignment(QtCore.Qt.AlignCenter)
@@ -368,7 +369,7 @@ class Ui_FormN(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("")
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
@@ -387,7 +388,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.lineEdit_42.setFont(font)
         self.lineEdit_42.setStyleSheet("")
         self.lineEdit_42.setAlignment(QtCore.Qt.AlignCenter)
@@ -398,14 +399,14 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(13)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.comboBox_5.setFont(font)
         self.comboBox_5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.comboBox_5.setAutoFillBackground(False)
         self.comboBox_5.setStyleSheet("")
         self.comboBox_5.setMaxVisibleItems(12)
         self.comboBox_5.setSizeAdjustPolicy(
-            QtWidgets.QComboBox.AdjustToMinimumContentsLength
+            QtWidgets.QComboBox.SizeAdjustPolicy.AdjustToContents
         )
         self.comboBox_5.setDuplicatesEnabled(False)
         self.comboBox_5.setFrame(True)
@@ -418,7 +419,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label.setFont(font)
         self.label.setStyleSheet("")
         self.label.setText("")
@@ -432,7 +433,7 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.pushButton_9.setFont(font)
         self.pushButton_9.setStyleSheet("")
         self.pushButton_9.setEnabled(False)
@@ -444,12 +445,12 @@ class Ui_FormN(object):
         font.setFamily("Times New Roman")
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.comboBox_6.setFont(font)
         self.comboBox_6.setStyleSheet("")
         self.comboBox_6.setEnabled(False)
         self.comboBox_6.setSizeAdjustPolicy(
-            QtWidgets.QComboBox.AdjustToMinimumContentsLength
+            QtWidgets.QComboBox.SizeAdjustPolicy.AdjustToContents
         )
         self.comboBox_6.setDuplicatesEnabled(False)
         self.comboBox_6.setFrame(True)
@@ -564,16 +565,16 @@ class Ui_FormN(object):
         )
         self.filesph = self.filesph[0]
         if self.filesph == "":
-            self.fp = open(self.pathtemp + "/_zpn.png", "rb")
+            self.fp = open(os.path.join(self.pathtemp, "_zpn.png"), "rb")
             self.fpb = self.fp.read()
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
         else:
             self.imag = QtGui.QPixmap(self.filesph)
             self.imagp = self.imag.scaled(QtCore.QSize(135, 130))
-            self.imagp.save(self.pathtemp + "/_zpn.png")
-            self.label.setPixmap(QtGui.QPixmap(self.pathtemp + "/_zpn.png"))
-            self.fp = open(self.pathtemp + "/_zpn.png", "rb")
+            self.imagp.save(os.path.join(self.pathtemp, "_zpn.png"))
+            self.label.setPixmap(QtGui.QPixmap(os.path.join(self.pathtemp, "_zpn.png")))
+            self.fp = open(os.path.join(self.pathtemp, "_zpn.png"), "rb")
             self.fpb = self.fp.read()
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
@@ -592,7 +593,7 @@ class Ui_FormN(object):
 
     def _saves(self):
         try:
-            self.fpp = open(self.pathtemp + "/_zpn.png", "rb")
+            self.fpp = open(os.path.join(self.pathtemp, "_zpn.png"), "rb")
             self.filez = self.fpp.read()
             self.fpp.close()
             self.filez = zlib.compress(self.filez)
@@ -601,10 +602,10 @@ class Ui_FormN(object):
             imageFile.open(QtCore.QIODevice.ReadOnly)
             self.imageData = imageFile.readAll()
             imageFile.close()
-            self.fp = open(self.pathtemp + "/_zpn.png", "wb")
+            self.fp = open(os.path.join(self.pathtemp, "_zpn.png"), "wb")
             self.fp.write(self.imageData)
             self.fp.close()
-            self.fp = open(self.pathtemp + "/_zpn.png", "rb")
+            self.fp = open(os.path.join(self.pathtemp, "_zpn.png"), "rb")
             self.fpb = self.fp.read()
             self.fp.close()
             self.filez = zlib.compress(self.fpb)
@@ -631,7 +632,7 @@ class Ui_FormN(object):
         self.save_as()
 
     def save_as(self):
-        self.filess = self.pathtemp + "/Profs.dbsp"
+        self.filess = os.path.join(self.pathtemp, "Profs.dbsp")
         try:
             with open(self.filess, "r") as f:
                 self.filest = f.read()
@@ -652,7 +653,7 @@ class Ui_FormN(object):
 
     def Deletes(self):
         self.pushButton_10.setEnabled(True)
-        self.tdbfile = open(self.pathtemp + "/Prof.dbsl", "rb")
+        self.tdbfile = open(os.path.join(self.pathtemp, "Prof.dbsl"), "rb")
         self.datalists = pickle.load(self.tdbfile)
         if self.datalists[13] == "withdrawn":
             self.checkBox.setChecked(True)
@@ -669,10 +670,10 @@ class Ui_FormN(object):
         self.comboBox_6.setCurrentText(self.datalists[11])
         self.fzp = zlib.decompress(self.datalists[12])
         self.WrData = WrData.Datas()
-        self.fpp = open(self.pathtemp + "/_zpn.png", "wb")
+        self.fpp = open(os.path.join(self.pathtemp, "_zpn.png"), "wb")
         self.fpp.write(self.fzp)
         self.fpp.close()
-        self.label.setPixmap(QtGui.QPixmap(self.pathtemp + "/_zpn.png"))
+        self.label.setPixmap(QtGui.QPixmap(os.path.join(self.pathtemp, "_zpn.png")))
         if self.datalists[3] == "":
             self.datalists[3] = "17.09.1930"
         self.year = datetime.strptime(self.datalists[3], "%d.%m.%Y").date()

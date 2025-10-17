@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-iltins
+# -*- coding: utf-8 -*-
 
 __author__ = "Сергій Полунець"
-__versions__ = "v.6.5.2"
+__versions__ = "v.7.0.0"
 
 import argparse
 import datetime
@@ -14,20 +14,19 @@ import time
 import zlib
 import operator
 import Profs_rc
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 import WrData
 from FormNM import Ui_FormN
 from zvits import Window
-import Profs_rc
 
 class Ui_MainWindow(object):
-    if not os.path.exists(tempfile.gettempdir() + "\Proftemp"):
-        os.mkdir(tempfile.gettempdir() + "\Proftemp")
-    pathtemp = tempfile.gettempdir() + "\Proftemp"
+    pathtemp = os.path.join(tempfile.gettempdir(), "Proftemp")
+    if not os.path.exists(pathtemp):
+        os.mkdir(pathtemp)
 
     def setupUi(self, MainWindow, path):
         self.files = path
-        with open(self.pathtemp + "/Profs.dbsp", "w") as f:
+        with open(os.path.join(self.pathtemp, "Profs.dbsp"), "w") as f:
             f.write(str(self.files))
             f.close()
         if not os.path.exists(self.files):
@@ -35,13 +34,14 @@ class Ui_MainWindow(object):
             self.f.close()
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(990, 630)
-        self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        screen = QtWidgets.QApplication.primaryScreen()
+        self.resolution = screen.geometry()
         MainWindow.move((self.resolution.width() / 2) - (MainWindow.frameSize().width() / 2),
                   (self.resolution.height() / 2) - (MainWindow.frameSize().height() / 2))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(False)
-        font.setWeight(75)
+
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -71,7 +71,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_13.setFont(font)
         self.label_13.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -140,7 +140,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_18.setFont(font)
         self.label_18.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -175,7 +175,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_14.setFont(font)
         self.label_14.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -241,7 +241,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_10.setFont(font)
         self.label_10.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -254,7 +254,7 @@ class Ui_MainWindow(object):
         font.setFamily("Arial")
         font.setPointSize(10)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.listWidget.setFont(font)
         self.listWidget.setFrameShape(QtWidgets.QFrame.Box)
         self.listWidget.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -283,7 +283,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_15.setFont(font)
         self.label_15.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -296,7 +296,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_11.setFont(font)
         self.label_11.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -325,7 +325,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_12.setFont(font)
         self.label_12.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -402,7 +402,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_16.setFont(font)
         self.label_16.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -423,7 +423,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(9)
+
         self.label_17.setFont(font)
         self.label_17.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(255, 255, 255);")
@@ -456,7 +456,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(35)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.label_19.setFont(font)
         self.label_19.setAlignment(QtCore.Qt.AlignCenter)
         self.label_19.setWordWrap(True)
@@ -484,7 +484,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
-        font.setWeight(50)
+
         self.label_21.setFont(font)
         self.label_21.setAlignment(QtCore.Qt.AlignCenter)
         self.label_21.setObjectName("label_21")
@@ -623,12 +623,13 @@ if __name__ == "__main__":
     if args.filename is not None:
         pethstart = args.filename
     else:
-        pethstart = os.environ['USERPROFILE'] + "\Профоблік.dbs"
+        home_dir = os.path.expanduser("~")
+        pethstart = os.path.join(home_dir, "Профоблік.dbs")
     time.sleep(3)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow, path=pethstart)
     splash.finish(MainWindow)
     MainWindow.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 

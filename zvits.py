@@ -9,28 +9,29 @@ from docx import Document
 from docx.enum.text import WD_BREAK, WD_LINE_SPACING, WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.shared import Cm, Inches, Pt
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 from Datas import Dat
 
 if "ANDROID_BOOTLOGO" in os.environ:
     pass
 else:
-    from PyQt5 import QtPrintSupport
+    from PySide6 import QtPrintSupport
 
 import Profs_rc
 
 
-class Window(QtWidgets.QWidget):
-    pathtemp = tempfile.gettempdir() + "/Proftemp"
+class Window(QtWidgets.QDialog):
+    pathtemp = os.path.join(tempfile.gettempdir(), "Proftemp")
     orient = 0
     wor = 0
     cur = 0
 
     def __init__(self, titles):
-        QtWidgets.QDialog.__init__(self)
+        super().__init__()
         self.setFixedSize(960, 600)
-        self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        screen = QtWidgets.QApplication.primaryScreen()
+        self.resolution = screen.geometry()
         if "ANDROID_BOOTLOGO" in os.environ:
             self.move(
                 int((self.resolution.width() / 2) - (self.frameSize().width() / 2)),
@@ -51,7 +52,7 @@ class Window(QtWidgets.QWidget):
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setWindowIcon(icon)
         self.editor = QtWidgets.QTextEdit(self)
-        self.editor.setLineWrapMode(self.editor.WidgetWidth)
+        self.editor.setLineWrapMode(QtWidgets.QTextEdit.LineWrapMode.WidgetWidth)
         self.editor.textChanged.connect(self.handleTextChanged)
         self.buttonOpen = QtWidgets.QPushButton("В pdf", self)
         self.buttonOpen.setAutoDefault(True)
@@ -83,7 +84,7 @@ class Window(QtWidgets.QWidget):
     def handleOpen(self, orent, wor):
         self.orient = orent
         self.wor = wor
-        path = self.pathtemp + "/_temp.html"
+        path = os.path.join(self.pathtemp, "_temp.html")
         info = QtCore.QFileInfo(path)
         f = open(path, "r")
         text = f.read()
@@ -96,7 +97,7 @@ class Window(QtWidgets.QWidget):
             self.editor.setPlainText(text)
 
     def handlePrint(self):
-        location = self.pathtemp + "/_temp.html"
+        location = os.path.join(self.pathtemp, "_temp.html")
         with open(location, "w") as f:
             f.write(self.editor.document().toHtml())
             f.close()
@@ -105,7 +106,7 @@ class Window(QtWidgets.QWidget):
             QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off
         )
         doc = QtGui.QTextDocument()
-        location = self.pathtemp + "/_temp.html"
+        location = os.path.join(self.pathtemp, "_temp.html")
         html = open(location).read()
         doc.setHtml(html)
         if "ANDROID_BOOTLOGO" in os.environ:
@@ -113,20 +114,20 @@ class Window(QtWidgets.QWidget):
         else:
             printerd = QtPrintSupport.QPrinter(QtPrintSupport.QPrinter.HighResolution)
             if self.orient == 1:
-                printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
+                printerd.setPageOrientation(QtGui.QPageLayout.Orientation.Landscape)
                 printerd.setResolution(300)
                 printerd.setPageMargins(
-                    30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter
+                    QtCore.QMarginsF(30, 10, 10, 20), QtGui.QPageLayout.Unit.Millimeter
                 )
-                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                printerd.setPageSize(QtGui.QPageSize(QtGui.QPageSize.PageSizeId.A4))
                 sizes = QtCore.QSizeF(794, 1123)
             else:
-                printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
+                printerd.setPageOrientation(QtGui.QPageLayout.Orientation.Portrait)
                 printerd.setResolution(300)
                 printerd.setPageMargins(
-                    30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter
+                    QtCore.QMarginsF(30, 10, 10, 20), QtGui.QPageLayout.Unit.Millimeter
                 )
-                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                printerd.setPageSize(QtGui.QPageSize(QtGui.QPageSize.PageSizeId.A4))
                 sizes = QtCore.QSizeF(794, 1123)
             dialog = QtPrintSupport.QPrintDialog(printerd, self)
             dialog.setWindowFlags(
@@ -136,11 +137,11 @@ class Window(QtWidgets.QWidget):
             )
             dialog.setWindowIcon(icon)
             doc.setPageSize(sizes)
-            if dialog.exec_() == QtWidgets.QDialog.Accepted:
+            if dialog.exec() == QtWidgets.QDialog.Accepted:
                 doc.print_(dialog.printer())
 
     def handlePreview(self):
-        location = self.pathtemp + "/_temp.html"
+        location = os.path.join(self.pathtemp, "_temp.html")
         with open(location, "w") as f:
             f.write(self.editor.document().toHtml())
             f.close()
@@ -149,7 +150,7 @@ class Window(QtWidgets.QWidget):
             QtGui.QPixmap(":/Icon/Profico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off
         )
         doc = QtGui.QTextDocument()
-        location = self.pathtemp + "/_temp.html"
+        location = os.path.join(self.pathtemp, "_temp.html")
         html = open(location).read()
         doc.setHtml(html)
         if "ANDROID_BOOTLOGO" in os.environ:
@@ -159,19 +160,19 @@ class Window(QtWidgets.QWidget):
                 QtPrintSupport.QPrinter.PrinterResolution
             )
             if self.orient == 1:
-                printerd.setOrientation(QtPrintSupport.QPrinter.Landscape)
+                printerd.setPageOrientation(QtGui.QPageLayout.Orientation.Landscape)
                 printerd.setResolution(300)
-                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                printerd.setPageSize(QtGui.QPageSize(QtGui.QPageSize.PageSizeId.A4))
                 printerd.setPageMargins(
-                    30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter
+                    QtCore.QMarginsF(30, 10, 10, 20), QtGui.QPageLayout.Unit.Millimeter
                 )
                 sizes = QtCore.QSizeF(1123, 794)
             else:
-                printerd.setOrientation(QtPrintSupport.QPrinter.Portrait)
+                printerd.setPageOrientation(QtGui.QPageLayout.Orientation.Portrait)
                 printerd.setResolution(300)
-                printerd.setPageSize(QtPrintSupport.QPrinter.A4)
+                printerd.setPageSize(QtGui.QPageSize(QtGui.QPageSize.PageSizeId.A4))
                 printerd.setPageMargins(
-                    30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter
+                    QtCore.QMarginsF(30, 10, 10, 20), QtGui.QPageLayout.Unit.Millimeter
                 )
                 sizes = QtCore.QSizeF(794, 1123)
             dialog = QtPrintSupport.QPrintPreviewDialog(printerd, self)
@@ -183,7 +184,7 @@ class Window(QtWidgets.QWidget):
             dialog.setWindowIcon(icon)
             doc.setPageSize(sizes)
             dialog.paintRequested.connect(doc.print_)
-            dialog.exec_()
+            dialog.exec()
 
     def handleTextChanged(self):
         enable = not self.editor.document().isEmpty()
@@ -202,7 +203,7 @@ class Window(QtWidgets.QWidget):
         self.files = self.files[0]
         if self.files != "":
             doc = QtGui.QTextDocument()
-            location = self.pathtemp + "/_temp.html"
+            location = os.path.join(self.pathtemp, "_temp.html")
             with open(location, "w") as f:
                 f.write(self.editor.document().toHtml())
                 f.close()
@@ -215,19 +216,19 @@ class Window(QtWidgets.QWidget):
                 printer.setOutputFileName(self.files)
                 printer.setOutputFormat(QtPrintSupport.QPrinter.PdfFormat)
                 if self.orient == 1:
-                    printer.setOrientation(QtPrintSupport.QPrinter.Landscape)
+                    printer.setPageOrientation(QtGui.QPageLayout.Orientation.Landscape)
                     printer.setResolution(300)
-                    printer.setPageSize(QtPrintSupport.QPrinter.A4)
+                    printer.setPageSize(QtGui.QPageSize(QtGui.QPageSize.PageSizeId.A4))
                     printer.setPageMargins(
-                        30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter
+                        QtCore.QMarginsF(30, 10, 10, 20), QtGui.QPageLayout.Unit.Millimeter
                     )
                     sizes = QtCore.QSizeF(1123, 794)
                 else:
-                    printer.setOrientation(QtPrintSupport.QPrinter.Portrait)
+                    printer.setPageOrientation(QtGui.QPageLayout.Orientation.Portrait)
                     printer.setResolution(300)
-                    printer.setPageSize(QtPrintSupport.QPrinter.A4)
+                    printer.setPageSize(QtGui.QPageSize(QtGui.QPageSize.PageSizeId.A4))
                     printer.setPageMargins(
-                        30, 10, 10, 20, QtPrintSupport.QPrinter.Millimeter
+                        QtCore.QMarginsF(30, 10, 10, 20), QtGui.QPageLayout.Unit.Millimeter
                     )
                     sizes = QtCore.QSizeF(794, 1123)
                 doc.setPageSize(sizes)
@@ -384,7 +385,7 @@ class Window(QtWidgets.QWidget):
         self.rpol_1.font.size = Pt(16)
         self.rpol_1.bold = True
         self.pol.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-        self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
+        self.ffs = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
         self.filess = self.ffs.read()
         self.ffs.close()
         try:

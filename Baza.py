@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-iltins
+# -*- coding: utf-8 -*-
 
 __author__ = "Wandors"
-__versions__ = "v.4.0.3"
+__versions__ = "v.5.0.0"
 
 
 import argparse
@@ -15,7 +15,7 @@ import tempfile
 import time
 import zlib
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 import Profs_rc
 import WrData
@@ -24,19 +24,16 @@ from FormNM import Ui_FormN
 from FormOBL import Ui_FormO
 from zvits import Window
 
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-
 
 class Ui_Form(object):
     _translate = QtCore.QCoreApplication.translate
-    if not os.path.exists(tempfile.gettempdir() + "/Proftemp"):
-        os.mkdir(tempfile.gettempdir() + "/Proftemp")
-    pathtemp = tempfile.gettempdir() + "/Proftemp"
+    pathtemp = os.path.join(tempfile.gettempdir(), "Proftemp")
+    if not os.path.exists(pathtemp):
+        os.mkdir(pathtemp)
 
     def setupUi(self, Form, path):
         self.files = path
-        with open(self.pathtemp + "/Profs.dbsp", "w") as f:
+        with open(os.path.join(self.pathtemp, "Profs.dbsp"), "w") as f:
             f.write(str(self.files))
             f.close()
         if not os.path.exists(self.files):
@@ -47,7 +44,8 @@ class Ui_Form(object):
         self.baza = WrData.Datas().Roblik(files=self.files)
         self.list_ov = self.baza["prof_ov"]
         Form.setObjectName("Form")
-        self.resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        screen = QtWidgets.QApplication.primaryScreen()
+        self.resolution = screen.geometry()
         Form.setFixedSize(1120, 650)
         Form.move(
             int((self.resolution.width() / 2) - (Form.frameSize().width() / 2)),
@@ -56,7 +54,6 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
-        font.setWeight(75)
         Form.setFont(font)
         icon = QtGui.QIcon()
         icon.addPixmap(
@@ -251,7 +248,7 @@ class Ui_Form(object):
         font.setFamily("Arial")
         font.setPointSize(10)
         font.setBold(True)
-        font.setWeight(75)
+        
         self.listWidget.setFont(font)
         self.listWidget.setFrameShape(QtWidgets.QFrame.Box)
         self.listWidget.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -485,7 +482,7 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
-        font.setWeight(50)
+
         self.label_21.setFont(font)
         self.label_21.setAlignment(QtCore.Qt.AlignCenter)
         self.label_21.setObjectName("label_21")
@@ -577,12 +574,12 @@ class Ui_Form(object):
         # self.uiO.setupUi(self.FormOB)
         # self.FormOB.show()
         # self.comboBox.update()
-        # open(self.pathtemp + "/1", "wb").close()
+        # open(os.path.join(self.pathtemp, "1"), "wb").close()
         # self.timers.start(1000)
         pass
 
     def Uplodfi(self):
-        if os.path.exists(self.pathtemp + "/1") == True:
+        if os.path.exists(os.path.join(self.pathtemp, "1")) == True:
             self.Upcombo()
         else:
             self.timers.stop()
@@ -601,20 +598,17 @@ class Ui_Form(object):
 
     def Loadeds(self):
         self.comboBox.clear()
-        if sys.platform == "win32":
-            self.loads = os.environ["USERPROFILE"]
-        if sys.platform == "linux":
-            self.loads = os.environ["HOME"]
+        self.loads = os.path.expanduser("~")
         self.files = QtWidgets.QFileDialog.getOpenFileName(
             Form, "Завантажити базу ...", self.loads, "dbs (*dbs)"
         )
         self.files = self.files[0]
         if self.files == "":
-            self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
+            self.ff = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
             self.files = self.ff.read()
             self.ff.close()
         else:
-            self.ff = open(self.pathtemp + "/Profs.dbsp", "w")
+            self.ff = open(os.path.join(self.pathtemp, "Profs.dbsp"), "w")
             self.ff.write(str(self.files))
             self.ff.close()
             self.listWidget.clear()
@@ -635,21 +629,18 @@ class Ui_Form(object):
             )
 
     def SavProfs(self):
-        if sys.platform == "win32":
-            self.sevs = os.environ["USERPROFILE"]
-        if sys.platform == "linux":
-            self.sevs = os.environ["HOME"]
+        self.sevs = os.path.expanduser("~")
         self.files = QtWidgets.QFileDialog.getSaveFileName(
             Form, "Зберегти дані", self.sevs, "dbs files (*.dbs)"
         )
 
         self.files = self.files[0]
         if self.files == "":
-            self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
+            self.ff = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
             self.files = self.ff.read()
             self.ff.close()
         else:
-            self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
+            self.ff = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
             self.ffpath = self.ff.read()
             self.ff.close()
             shutil.copyfile(self.ffpath, self.files)
@@ -664,7 +655,7 @@ class Ui_Form(object):
         try:
             self.texts = self.comboBox.currentText()
             self.textsp = self.texts
-            self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
+            self.ff = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
             self.files = self.ff.read()
             self.ff.close()
             WrData.Datas().ClearDB(files=self.files)
@@ -756,10 +747,10 @@ class Ui_Form(object):
         self.label_24.setText(self._vids)
         self.photozl = self.priis["PHOT"]
         self._photof = zlib.decompress(self.photozl)
-        self.df = open(self.pathtemp + "/_zpn.png", "wb")
+        self.df = open(os.path.join(self.pathtemp, "_zpn.png"), "wb")
         self.df.write(self._photof)
         self.df.close()
-        self.fpho = self.pathtemp + "/_zpn.png"
+        self.fpho = os.path.join(self.pathtemp, "_zpn.png")
         self.label_10.setText(
             "{0} {1} {2}".format(self._soname, self._name, self._father)
         )
@@ -779,7 +770,7 @@ class Ui_Form(object):
         imageFile.open(QtCore.QIODevice.ReadOnly)
         self.imageData = imageFile.readAll()
         imageFile.close()
-        self.fp = open(self.pathtemp + "/_zpn.png", "wb")
+        self.fp = open(os.path.join(self.pathtemp, "_zpn.png"), "wb")
         self.fp.write(self.imageData)
         self.fp.close()
         self.FormNN = QtWidgets.QWidget()
@@ -791,7 +782,7 @@ class Ui_Form(object):
 
     def EditProf(self):
         self.WrData = WrData.Datas()
-        self.fp = open(self.pathtemp + "/_zpn.png", "rb")
+        self.fp = open(os.path.join(self.pathtemp, "_zpn.png"), "rb")
         self.fpb = self.fp.read()
         self.fp.close()
         self.filez = zlib.compress(self.fpb)
@@ -849,7 +840,7 @@ class Ui_Form(object):
     def Exports(self):
         self.orient = 1
         self.wor = 1
-        self.temfil = self.pathtemp + "/_temp.html"
+        self.temfil = os.path.join(self.pathtemp, "_temp.html")
         self.prof_list = []
         self.sefi = open(self.temfil, "w")
         self.sefi.write("<!DOCTYPE html>")
@@ -990,7 +981,7 @@ class Ui_Form(object):
         self.wars = []
         self.podat = []
         self.viag = []
-        self.temfil = self.pathtemp + "/_temp.html"
+        self.temfil = os.path.join(self.pathtemp, "_temp.html")
         self.sefi = open(self.temfil, "w")
         self.sefi.write("<!DOCTYPE html>")
         self.sefi.write('<html lang="en">')
@@ -998,7 +989,7 @@ class Ui_Form(object):
         self.sefi.write('\t<meta charset="windows-1251">')
         self.sefi.write("</head>")
         self.sefi.write("<body>")
-        self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
+        self.ffs = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
         self.filess = self.ffs.read()
         self.ffs.close()
         try:
@@ -1334,7 +1325,7 @@ class Ui_Form(object):
     def Pilgi(self):
         self.orient = 0
         self.wor = 1
-        self.temfil = self.pathtemp + "/_temp.html"
+        self.temfil = os.path.join(self.pathtemp, "_temp.html")
         self.sefi = open(self.temfil, "w")
         self.sefi.write("<!DOCTYPE html>")
         self.sefi.write('<html lang="en">')
@@ -1390,7 +1381,7 @@ class Ui_Form(object):
                 self.mun, str(self.years)
             )
         )
-        self.ff = open(self.pathtemp + "/Profs.dbsp", "r")
+        self.ff = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
         self.files = self.ff.read()
         self.ff.close()
         self.dats = WrData.Datas().reddata(files=self.files)
@@ -1491,18 +1482,18 @@ class Ui_Form(object):
         self.uiN.show()
 
     def Control(self):
-        self.gnam = "/gerb.png"
+        self.gnam = "gerb.png"
         self.images = QtGui.QImage(":gerb/Gerb.png")
-        self.images.save(self.pathtemp + self.gnam)
+        self.images.save(os.path.join(self.pathtemp, self.gnam))
         self.orient = 0
         self.wor = 0
         self.mun, self.years = Dat().Daetes()
-        self.temfil = self.pathtemp + "/_temp.html"
+        self.temfil = os.path.join(self.pathtemp, "_temp.html")
         self.sefi = open(self.temfil, "w")
         self.listprof = Dat().Spis_profs()
         self.sefi.write(
             '<p style="text-align: center; cursor: pointer;"><img src="{0}" width="55.35" height="74.25"></p>'.format(
-                self.pathtemp + self.gnam
+                os.path.join(self.pathtemp, self.gnam)
             )
         )
         self.sefi.write(
@@ -1549,7 +1540,7 @@ class Ui_Form(object):
         self.sefi.write(
             "<style>p {line-height: 0.5; font-family: 'Times New Roman'; font-size: 16pt;}</style>"
         )
-        self.ffs = open(self.pathtemp + "/Profs.dbsp", "r")
+        self.ffs = open(os.path.join(self.pathtemp, "Profs.dbsp"), "r")
         self.filess = self.ffs.read()
         self.ffs.close()
         try:
@@ -1645,14 +1636,12 @@ if __name__ == "__main__":
     if args.filename is not None:
         pethstart = args.filename
     else:
-        if sys.platform == "win32":
-            pethstart = os.environ["USERPROFILE"] + "\Профоблік.dbs"
-        if sys.platform == "linux":
-            pethstart = os.environ["HOME"] + "/Профоблік.dbs"
+        home_dir = os.path.expanduser("~")
+        pethstart = os.path.join(home_dir, "Профоблік.dbs")
     time.sleep(3)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form, path=pethstart)
     splash.finish(Form)
     Form.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
